@@ -12,7 +12,7 @@ class Home extends React.Component {
 	render(){
 		return (
 			<div>
-				Hey it's the home screen yall
+				"Hey it's the home screen yall"
 			</div>
 		)
 	}
