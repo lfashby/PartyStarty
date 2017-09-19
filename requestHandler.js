@@ -1,21 +1,32 @@
 var request = require('request');
 var crypto = require('crypto');
-var bcrypt = require('bcrypt-nodejs');
+var bcrypt = require('bcrypt');
 var key = require('dotenv').config();
 
-var db = require('../db.js');
-var Event = require('../model/event.js');
-var Movie = require('../model/moviequeue.js');
-var User = require('../model/user.js');
+var db = require('./db.js');
+var Event = require('./model/event.js');
+var Movie = require('./model/moviequeue.js');
+var User = require('./model/user.js');
+var util = require('./lib/utility');
 
 module.exports = {
   // User log in
   getUser: function(req, res, next) {
-    User.find().exec(function(err, users) {
-      if (users) {
-        res.status(200).send(users);
+    var username = req.body.username;
+    var password = req.body.password;
+
+    User.findOne({ username: username })
+    .exec(function(err, user) {
+      if (!user) {
+        res.redirect('/');
       } else {
-        res.end('User does not exist');
+        User.comparePassword(password, user.password, function(err, match) {
+          if (match) {
+            util.createSession(req, res, user);
+          } else {
+            res.redirect('/');
+          }
+        });
       }
     });
   },
@@ -27,33 +38,52 @@ module.exports = {
     User.findOne({username: username})
       .exec(function(err, user) {
         if(!user) {
-          bcrypt.genSalt(saltRounds, function(err, salt) {
-            bcrypt.has(password, salt, function(err, has) {
+          // bcrypt.hash(password, null, null, function(err, hash) {
               if (err) {
                 throw err;
               } else {
                 User.create({
                   username: username,
-                  password: hash
+                  password: password
+                }).then(function() {
+                  util.createSession(req, res, user);
+                  console.log('session created');
                 });
+                res.redirect('/');
               }
-            });
-          });
+          // });
         } else {
           console.log('Account already exists');
-          res.redirect('/signup');
+          res.redirect('/');
         }
       });
   },
-  // Retrieve existing events
-  getEvent: function(req, res, next) {
-    Event.find().exec(function(err, events) {
-      if (events) {
-        res.status(200).send(events);
+  // Retrieve existing events for particular user
+  getEvents: function(req, res, next) {
+    var username = req.body.username;
+
+    User.findOne({ username: username })
+    .exec(function(err, user) {
+      if (!user) {
+        res.send('User not found');
       } else {
-        res.end('Event does not exist');
+        res.status(200).send(user.events);
       }
     });
+  },
+
+  // Retrieve event details
+  getEventDetail: function(req, res, next) {
+    var eventTitle = req.body.eventTitle;
+ 
+    Event.findOne({eventTitle: eventTitle})
+      .exec(function(err, event) {
+        if (events) {
+          res.status(200).send(event);
+        } else {
+          res.end('Event does not exist');
+        }
+      });
   },
   // Create event
   addEvent: function(req, res) {
@@ -71,8 +101,9 @@ module.exports = {
             eventTime: eventTime,
             eventUsers: [eventUsers]
           })
+          res.redirect('/');
         } else {
-          console.log('Event does not exisit');
+          res.send('Event does not exisit');
         }
       });
   },
@@ -84,7 +115,7 @@ module.exports = {
     Event.findOne({eventTitle: eventTitle})
       .exec(function(err, event) {
         if(!event) {
-          { "$push": { "eventUsers": eventUser } },
+          // { "$push": { "eventUsers": eventUser } },
         } else {
           console.log('Event does not exisit');
         }
@@ -131,9 +162,8 @@ module.exports = {
                 voteCount: movieEntry.vote_count,
                 voteAvg: movieEntry.vote_average,
                 event: event
-              }
-
               });
+
               newMovie.save(function(err, entry) {
                 if(err) {
                   res.send(500,err);

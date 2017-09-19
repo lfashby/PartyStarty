@@ -9,30 +9,33 @@ import {Router, Route} from 'react-router';
 
 
 class App extends React.Component {
-	constructor(props){
-		super(props)
-		this.state = {
+  constructor(props){
+    super(props)
+    this.state = {
 
-		}
-	}
-	render(){
-		return (
-				<div>
-				</div>
-		)
-	}
+    }
+  }
+  render(){
+    return (
+        <div>
+        </div>
+    )
+  }
 }
 
 
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render(
-    <Router>
-					<Route Path="/" component={Home}/>
-					<Route Path="/signin" component={SignIn} />
-					<Route Path="/signup" component={SignUp} />
-					<Route Path="/create" component={Create}/>
-					<Route Path="/search" component={Search} />
-		</Router>,
+    <div>
+     <Router>
+           <Route path="/" component={Home}/>
+           <Route path="/signin" component={SignIn} />
+           <Route path="/signup" component={SignUp} />
+           <Route path="/create" component={Create}/>
+           <Route path="/search" component={Search} />
+     </Router>
+    </div>,
     document.getElementById('mount')
   );
 });
+
