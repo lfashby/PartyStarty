@@ -19,7 +19,7 @@ class Create extends React.Component {
 	}
 
 	handleSubmit(){
-		axios.post('DATABASE_URL', {
+		axios.post('/create', {
 			title: this.state.title, 
 			location: this.state.location,
 			time: this.state.time,

@@ -16,4 +16,4 @@ var MovieQueueSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Job', JobSchema);
+module.exports = mongoose.model('Movie', MovieQueueSchema);
