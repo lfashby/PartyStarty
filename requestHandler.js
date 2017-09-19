@@ -153,12 +153,40 @@ module.exports = {
       })
   },
   // upvote movie
-  upvote: function() {
+  upvote: function(req, res) {
+    var title = req.body.title;
+    var event = req.body.event;
 
+    Movie.findOne({title: title, event: event}).exec(function(err, movie) {
+      if(movie) {
+        movie.upvotes++;
+        movie.save(function(err, entry) {
+          if(err) {
+            res.send(500, err);
+          }
+        })
+      } else{
+        console.log('Movie not found, please vote for other movie');
+      }
+    });
   },
   // downvote movie
-  downvote: function() {
-
+  downvote: function (req, res) {
+    var title = req.body.title;
+    var event = req.body.event;
+    Movie.findOne({title: title, event: event}).exec(function (err, movie) {
+      if(movie) {
+        movie.downvotes++;
+        movie.save(function(err, entry) {
+          if(err) {
+            res.send(500, err);
+          }
+        })
+      } else{
+        console.log('Movie not found, please vote for other movie');
+      }
+    });
   }
+
 
 };

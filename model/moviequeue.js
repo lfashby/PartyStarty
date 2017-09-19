@@ -9,7 +9,7 @@ var MovieQueueSchema = new mongoose.Schema({
   title: String,
   popularity: Number,
   voteCount: Number,
-  voteAvg: Number
+  voteAvg: Number,
   event: { type: String,
     required: true
   }
