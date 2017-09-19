@@ -14,7 +14,7 @@ class SignUp extends React.Component {
 	}
 
 		handleSubmit(){
-		axios.post('DATABASE_URL', {username: this.state.username, password: this.state.password})
+		axios.post('/signup', {username: this.state.username, password: this.state.password})
 		.then((response) => {
 			console.log(response);
 		})
