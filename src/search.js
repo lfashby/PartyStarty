@@ -15,14 +15,9 @@ class Search extends React.Component {
 		}
 		this.handleSearch = this.handleSearch.bind(this);
 	}
-
-<<<<<<< HEAD
-	handleSearch(e){
-		this.setState({input: e.target.value})
-=======
+	
 	handleSearch(e){ 
 		this.setState({input: e.target.value});
->>>>>>> Completed Search feature + added MovieQueueList
 	}
 
 
