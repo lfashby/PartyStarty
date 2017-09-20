@@ -11,7 +11,7 @@ class SignIn extends React.Component {
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleUserInput = this.handleUserInput.bind(this);
-		this.handlePassword = this.handlePassword.bind(this);
+		this.handlePasswordInput = this.handlePasswordInput.bind(this);
 	}
 
 	handleSubmit(){
