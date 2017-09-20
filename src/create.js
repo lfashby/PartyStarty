@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Search from './search';
 var axios = require('axios');
 
 class Create extends React.Component {
@@ -57,6 +58,9 @@ class Create extends React.Component {
 					<input onChange={this.handleLocation} type="date"/>
 					<input onChange={this.handleTime} type="time"/>
 					<input onChange={this.handleDescription} type="text" defaultValue="description" />
+					<br></br>
+					<p>Create movie queue</p>
+					<Search />
 					<input type="submit" value="Create Event"/>
 				</form>
 				<button>Sign Up</button>

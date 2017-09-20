@@ -36,8 +36,8 @@ class SignIn extends React.Component {
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>
-					<input onChange={this.handleUserInput} type="text" defaultValue="Username" />
-					<input onChange={this.handlePasswordInput} type="text" defaultValue="Password" />
+					<input onChange={this.handleUserInput} type="text" placeholder="Username" />
+					<input onChange={this.handlePasswordInput} type="text" placeholder="Password" />
 					<input type="submit" value="Sign In"/>
 				</form>
 				<button>Sign Up</button>

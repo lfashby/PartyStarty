@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+var $ = require("jquery");
 //import SearchResultsDisplay from './searchresultsdisplay';
 var axios = require('axios');
-var Typeahead = require('typeahead');
-var Bloodhound = require('bloodhound-js')
+import Typeahead from 'typeahead.js';
 
 class Search extends React.Component {
 	constructor(props){
@@ -26,33 +25,47 @@ class Search extends React.Component {
 	}
 	// BLOODHOUND +  TYPE AHEAD
 	componentDidMount(){
+	
 	var MovieTitles = new Bloodhound({
-	  queryTokenizer: Bloodhound.tokenizers.whitespace,
 	  datumTokenizer: Bloodhound.tokenizers.whitespace,
-	  remote: {
-	  	url: "API_URL"
-	  	// filter: function(movies){
-	  	// 	return $.map(movies.data, function(data){
-	  	// 		return {
-	  	// 			id: data.id,
-	  	// 			title: data.title
-	  	// 		}
-	  	// 	})
-	  }
+	  queryTokenizer: function(data){
+	  	Bloodhound.tokenizers.whitespace(data.value);
+		},
+		local: ['ape, babe, cape, drake']
+	  // remote: {
+	  // 	url: "https://api.themoviedb.org/3/search/movie?query=%QUERY&api_key=d048a770f228472a4201b947da86a0a5",
+	  // 	filter: function(movies){
+	  // 		return $.map(movies.data, function(data){
+	  // 			return {
+	  // 				id: data.id,
+	  // 				title: data.title
+	  // 			}
+	  // 		})
+	  // 	}
+	  // }	
 	})
 
+	MovieTitles.initialize();
+
 	$('.typeahead').typeahead({
-	  highlight: true,
-	  hint: true
-	},
-	{
-	  name: 'MovieTitles',
-	  source: MovieTitles
-	})
-	.on('typeahead:selected', function(err, movie) {
-		if(err) console.log('ERROR RENDERING MOVIES')
-    this.selectMovie(movie)
-  }.bind(this));
+      hint: true,
+      highlight: true,
+      minLength: 2
+    }, {source: MovieTitles.ttAdapter()}).on('typeahead:selected', function(obj, datum) {
+      this.fetchMovieID(datum.id)
+    }.bind(this));
+	// $('.typeahead').typeahead({
+	//   highlight: true,
+	//   hint: true
+	// },
+	// {
+	//   name: 'MovieTitles',
+	//   source: MovieTitles
+	// })
+	// .on('typeahead:selected', function(err, movie) {
+	// 	if(err) console.log('ERROR RENDERING MOVIES')
+ //    this.selectMovie(movie)
+ //  }.bind(this));
 	
 	}
 	// <SearchResultsDisplay currentMovie={this.state.currentMovie}/> 
@@ -60,7 +73,7 @@ class Search extends React.Component {
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>
-					<input onChange={this.handleSearch} type="text" defaultValue="Search for movies..." />
+					<input onChange={this.handleSearch} className="typeahead" type="text" placeholder="Search for movies..." />
 				</form>
 				
 			</div>

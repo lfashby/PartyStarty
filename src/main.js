@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render((
     <BrowserRouter basename='/#'>
     	<Switch>
+    			<Route exact path="/" component={Home} />
 					<Route path="/signin" component={SignIn} />
 					<Route exact path="/signup" component={SignUp} />
 					<Route path="/create" component={Create}/>
