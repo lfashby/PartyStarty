@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 //import SearchResultsDisplay from './searchresultsdisplay';
 var axios = require('axios');
 var Typeahead = require('typeahead');

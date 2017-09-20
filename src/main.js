@@ -5,7 +5,7 @@ import SignUp from './signup';
 import Search from './search';
 import Create from './create';
 import Home from './home'
-import {Router, Route} from 'react-router';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -25,16 +25,15 @@ class App extends React.Component {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render(
-    <div>
-     <Router>
-           <Route path="/" component={Home}/>
-           <Route path="/signin" component={SignIn} />
-           <Route path="/signup" component={SignUp} />
-           <Route path="/create" component={Create}/>
-           <Route path="/search" component={Search} />
-     </Router>
-    </div>,
+  ReactDOM.render((
+    <BrowserRouter basename='/#'>
+    	<Switch>
+					<Route path="/signin" component={SignIn} />
+					<Route exact path="/signup" component={SignUp} />
+					<Route path="/create" component={Create}/>
+					<Route path="/search" component={Search} />
+			</Switch>
+		</BrowserRouter>),
     document.getElementById('mount')
   );
 });
