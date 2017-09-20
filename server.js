@@ -13,7 +13,7 @@ const util = require('./lib/utility');
 
 const app = express();
 const compiler = webpack(webpackConfig);
- 
+
 app.use(express.static(__dirname + '/www'));
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
@@ -55,15 +55,11 @@ app.get('/signin', function(req, res) {
 
 app.post('/create', util.checkUser, requestHandler.addEvent);
 
-app.post('upvote', );
-app.post('downvote',);
+// app.post('upvote', );
+// app.post('downvote',);
 
 // app.get('/logout', function(req, res) {
 //   req.session.destroy(funciton() {
 //     res.redirect('/');
 //   });
 // });
-
-
-
-
