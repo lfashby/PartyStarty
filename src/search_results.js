@@ -1,35 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var SearchResultsDisplay = (props) => (
+class SearchResults extends React.component {
+  constructor(props) {
+      super(props);
 
-render() {
+      // need to add movies to queue from results display
+      this.handleAddMoviestoQueue = this.handleAddMoviestoQueue.bind(this);
+    }
 
-  let apiData = this.props.data
+// buld func to add movie to queue
 
-  // identify each piece of response obj:
-  // data.title
-  // data.description
-  // data.poster
-
-  // handle conditions if data ins't avail for the above ^
-  return (
-    <div className="results-display">
-    <div className="results-display-details">
-    <h3>{props.data.title}</h3>
-    <div>{data.tagline}</div>
-    <div>{props.data.overview}</div>
-    <div>Length:{props.data.runtime}</div>
-    <div>Voting:{props.data.vote}</div>
-    <div>{props.data.poster_path}</div>
-    </div>
-    </div>
-  );
+// render results with add button on page
+  render() {
+    return (
+      <div>
+        <div>
+        <h3>{currentMovie.title}</h3>
+          <div>{currentMovie.poster_path}</div>
+          <button>Add to queue</button>
+          <div>{currentMovie.tagline}</div>
+          <div>{currentMovie.overview}</div>
+          <div>Length: {currentMovie.runtime}</div>
+          <div>Voting: {currentMovie.vote}</div>
+        </div>
+      </div>
+    );
+  }
 }
 
 
 
 module.exports = SearchResultsDisplay;
-
-// !--
-// need a handleSearchResultsEntryTitleClick func in search component
