@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SignIn from './signin';
-import SignUp from './signup'; 
+import SignUp from './signup';
 import Search from './search';
 import Create from './create';
 import Home from './home'
@@ -25,17 +25,18 @@ class App extends React.Component {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render((
-    <BrowserRouter basename='/#'>
-    	<Switch>
-    			<Route exact path="/" component={Home} />
-					<Route path="/signin" component={SignIn} />
-					<Route exact path="/signup" component={SignUp} />
-					<Route path="/create" component={Create}/>
-					<Route path="/search" component={Search} />
-			</Switch>
-		</BrowserRouter>),
+  ReactDOM.render(
+    <Router>
+					<Route Path="/" component={Home}/>
+					<Route Path="/signin" component={SignIn} />
+					<Route Path="/signup" component={SignUp} />
+					<Route Path="/create" component={Create}/>
+					<Route Path="/search" component={Search} />
+
+		</Router>,
     document.getElementById('mount')
   );
 });
 
+
+// <Route Path="/search_results" component={SearchResults} />

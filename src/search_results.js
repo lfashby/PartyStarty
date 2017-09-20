@@ -31,4 +31,7 @@ class SearchResults extends React.component {
 
 
 
+
 module.exports = SearchResultsDisplay;
+
+export default SearchResults;
