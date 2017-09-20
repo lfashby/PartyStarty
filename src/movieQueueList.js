@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 var $ = require("jquery");
-import SearchResultsDisplay from './searchresultsdisplay';
 var axios = require('axios');
 
 class MovieQueueList extends React.Component {
@@ -9,7 +8,6 @@ class MovieQueueList extends React.Component {
 		super(props)
 		this.state = {
 		}
-		this.handleSearch = this.handleSearch.bind(this);
 	}
 	handleUpvote(){
 		console.log('upvoted');
@@ -33,4 +31,4 @@ class MovieQueueList extends React.Component {
 	}
 }
 
-export default Search; 
+export default MovieQueueList; 

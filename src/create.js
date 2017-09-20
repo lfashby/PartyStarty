@@ -55,12 +55,13 @@ class Create extends React.Component {
 			<div>
 				<form onSubmit={this.handleSubmit}>
 					<input onChange={this.handleTitle} type="text" defaultValue="Title" />
-					<input onChange={this.handleLocation} type="date"/>
+					<input onChange={this.handleLocation} type="text"/>
 					<input onChange={this.handleTime} type="time"/>
 					<input onChange={this.handleDescription} type="text" defaultValue="description" />
 					<br></br>
-					<p>Create movie queue</p>
+					<p>Create Movie Queue</p>
 					<Search />
+					<br></br>
 					<input type="submit" value="Create Event"/>
 				</form>
 				<button>Sign Up</button>

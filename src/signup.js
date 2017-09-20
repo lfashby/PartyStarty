@@ -36,7 +36,6 @@ class SignUp extends React.Component {
 	render(){
 		return (
 			<div>
-				<Link to="/signup"></Link>
 				<form onSubmit={this.handleSubmit}>
 					<input onChange={this.handleUserInput} type="text" placeholder="Username" />
 					<input onChange={this.handlePasswordInput} type="text" placeholder="Password" />
