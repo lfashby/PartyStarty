@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 import Search from './search';
+import SignIn from './signin';
+import SignUp from './signup';
+import Create from './create';
 var axios = require('axios');
 
 class Home extends React.Component {
@@ -10,7 +13,6 @@ class Home extends React.Component {
 		this.state = {
 			// events: [],
 			// currentEvent: events[0]
-			//queue: currentEvent.queue
 		}
 	}
 	// EACH VIDEO LIST ENTRY SHOULD HAVE ONCLICK TO DIRECT TO /EVENTID
@@ -26,16 +28,39 @@ class Home extends React.Component {
 		// })
 	}
 	// <Event event={this.state.currentEvent}/>
+	handleSignUpClick(){
+		axios.get('/signup')
+		.then(data => {
+		})
+		.catch(error => {
+			console.log(error);
+		})
+	}
+	handleSignInClick(){
+		axios.get('/create')
+		.then(data => {
+		})
+		.catch(error => {
+			console.log(error);
+		})
+	}
+	handleCreateClick(){
+		axios.get('/create')
+		.then(data => {
+		})
+		.catch(error => {
+			console.log(error);
+		})
+	}
 	render(){
 		return (
 			<div>
 				"Hey it's the home screen yall"
+				<button>Sign In</button>
 				<br></br>
-				<Link to="/signup">Sign Up</Link>
+				<button>Sign Up</button>
 				<br></br>
-				<Link to="/signin">Sign In</Link>
-				<br></br>
-				<Link to="/create">Create</Link>
+				<button>Create</button>
 			</div>
 		)
 	}
