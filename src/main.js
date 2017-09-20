@@ -4,6 +4,7 @@ import SignIn from './signin';
 import SignUp from './signup';
 import Search from './search';
 import Create from './create';
+import SearchResults from './search_results';
 import Home from './home'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -25,18 +26,17 @@ class App extends React.Component {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render(
-    <Router>
-					<Route Path="/" component={Home}/>
-					<Route Path="/signin" component={SignIn} />
-					<Route Path="/signup" component={SignUp} />
-					<Route Path="/create" component={Create}/>
-					<Route Path="/search" component={Search} />
-
-		</Router>,
+  ReactDOM.render((
+    <BrowserRouter basename='/#'>
+    	<Switch>
+    			<Route exact path="/" component={Home} />
+					<Route path="/signin" component={SignIn} />
+					<Route exact path="/signup" component={SignUp} />
+					<Route path="/create" component={Create}/>
+					<Route path="/search" component={Search} />
+					<Route Path="/search_results" component={SearchResults} />
+			</Switch>
+		</BrowserRouter>),
     document.getElementById('mount')
   );
 });
-
-
-// <Route Path="/search_results" component={SearchResults} />
