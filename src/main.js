@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SignIn from './signin';
-import SignUp from './signup'; 
+import SignUp from './signup';
 import Search from './search';
 import Create from './create';
+import SearchResults from './search_results';
 import Home from './home'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -33,9 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
 					<Route exact path="/signup" component={SignUp} />
 					<Route path="/create" component={Create}/>
 					<Route path="/search" component={Search} />
+					<Route Path="/search_results" component={SearchResults} />
 			</Switch>
 		</BrowserRouter>),
     document.getElementById('mount')
   );
 });
-
