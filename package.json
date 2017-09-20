@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "compile": "webpack --watch",
-    "start": "node server.js",
+    "start": "node server.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,19 +34,15 @@
     "express": "^4.15.4",
     "express-partial": "^0.1.0",
     "express-session": "^1.15.5",
-    "bcrypt": "*",
-    "bloodhound-js": "^1.2.2",
-    "crypto": "*",
-    "dotenv": "^4.0.0",
-    "express": "^4.15.4",
     "jquery": "^3.2.1",
-    "mongoose": "*",
+    "mongoose": "^4.11.12",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "request": "*",
+    "request": "^2.82.0",
     "typeahead": "^0.2.2",
+    "typeahead.js": "^0.11.1",
     "webpack": "^3.6.0",
     "webpack-dev-middleware": "^1.12.0"
   }
