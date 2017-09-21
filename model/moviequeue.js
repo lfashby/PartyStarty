@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
 
 var MovieQueueSchema = new mongoose.Schema({
+  title: String,
+  id: Number,
+  poster: String,
+  overview: String,
+  votes: Number,
   upvotes: Number,
   downvotes: Number,
-  poster: String, 
-  overview: String,
-  releaseDate: String,
-  title: String,
-  popularity: Number,
-  voteCount: Number,
-  voteAvg: Number,
-  event: { type: String,
-    required: true
+  event: { type: String
+    // required: true
   }
 
 });
