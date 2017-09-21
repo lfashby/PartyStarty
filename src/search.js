@@ -100,7 +100,7 @@ class Search extends React.Component {
 		return (
 			<div className="container">
 			<div className="row">
-				<div className="col-lg">
+				<div className="col-10">
 						<input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm form-control" type="text" placeholder="Search for movies..." />
 
 					<div className="card w-75">
@@ -109,16 +109,15 @@ class Search extends React.Component {
 							<h3 className="card-title">{this.state.currentMovie.title}</h3>
 							<div className="card-text">
 								<p>{this.state.currentMovie.overview}</p>
-								<p>Release Date</p>	
-								<p>{this.state.currentMovie.date}</p>
-								<p>Average Score</p>
-								<p>{this.state.currentMovie.votes}</p>
+								<p>Release Date {this.state.currentMovie.date}</p>
+								<p>Average Score {this.state.currentMovie.votes}</p>
 							</div>	
 						</div>
-						<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary"> ADD TO QUEUE </p>
+						<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary w-50 center"> ADD TO QUEUE </p>
+						<br></br>
 					</div>	
 					</div>
-				<div className="col-sm">
+				<div className="col-2">
 					<MovieQueueList movies={this.state.movies}/>
 				</div>
 				</div>

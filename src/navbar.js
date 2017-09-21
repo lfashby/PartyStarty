@@ -14,6 +14,10 @@ class Navbar extends React.Component {
 			// events: [],
 			// currentEvent: events[0]
 		}
+		this.handleSignOut = this.handleSignOut.bind(this);
+	}
+	handleSignOut(){
+		axios.get('/logout');
 	}
 	render(){
 		return (
@@ -26,6 +30,8 @@ class Navbar extends React.Component {
 				<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign In</Link>
 				
 				<Link to="/create" style={{textDecoration: 'none' }} className="Link nav-link h4">Create</Link>
+
+				<p style={{textDecoration: 'none' }} className="Link nav-link h4" id="logout" onClick={this.handleSignout}>Signout</p>
 				
 				</div>
 			</div>
