@@ -101,7 +101,7 @@ module.exports = {
             eventTime: eventTime,
             eventUsers: [eventUsers]
           })
-          res.redirect('/');
+          res.render('/');
         } else {
           res.send('Event does not exisit');
         }

@@ -5,6 +5,7 @@ import Search from './search';
 import SignIn from './signin';
 import SignUp from './signup';
 import Create from './create';
+import Navbar from './navbar';
 var axios = require('axios');
 
 class Home extends React.Component {
@@ -14,11 +15,24 @@ class Home extends React.Component {
 			// events: [],
 			// currentEvent: events[0]
 		}
-		// this.handleSignInClick = this.handleSignInClick.bind(this);
+	}
+	render(){
+		return (
+			<div>
+
+			<Navbar />
+			<h4 id="home">HOME SCREEN</h4>
+			</div>
+		)
+	}
+}
+
+export default Home; 
+
+// this.handleSignInClick = this.handleSignInClick.bind(this);
 		// this.handleSignUpClick = this.handleSignUpClick.bind(this);
 		// this.handleCreateClick = this.handleCreateClick.bind(this);
-	}
-	// EACH VIDEO LIST ENTRY SHOULD HAVE ONCLICK TO DIRECT TO /EVENTID
+// EACH VIDEO LIST ENTRY SHOULD HAVE ONCLICK TO DIRECT TO /EVENTID
 	// componentDidMount(){
 		// axios.get('/home')
 		// .then(data => {
@@ -61,20 +75,3 @@ class Home extends React.Component {
 				// <button onClick={this.handleSignUpClick}>Sign Up</button>
 				// <br></br>
 				// <button onClick={this.handleCreateClick}>Create</button>
-	render(){
-		return (
-			<div>
-				"Hey it's the home screen yall"
-				<br></br>
-				<Link to="/signup">Sign Up</Link>
-				<br></br>
-				<Link to="/signin">Sign In</Link>
-				<br></br>
-				<Link to="/create">Create</Link>
-				<br></br>
-			</div>
-		)
-	}
-}
-
-export default Home; 

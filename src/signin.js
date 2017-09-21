@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Link} from 'react-router-dom';
 var axios = require('axios');
 
 class SignIn extends React.Component {
@@ -15,7 +16,6 @@ class SignIn extends React.Component {
 	}
 
 	handleSubmit(event){
-		event.preventDefault();
 		axios.post('/signin', {username: this.state.username, password: this.state.password})
 		.then((response) => {
 			console.log(response);
@@ -36,12 +36,12 @@ class SignIn extends React.Component {
 	render(){
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
+				<form>
 					<input onChange={this.handleUserInput} type="text" placeholder="Username" />
 					<input onChange={this.handlePasswordInput} type="text" placeholder="Password" />
-					<input type="submit" value="Sign In"/>
+					<Link to="/" className="btn btn-secondary" onClick={this.handleSubmit}>Sign In</Link>
 				</form>
-				<button>Sign Up</button>
+				<Link to="/signup" className="btn btn-secondary">Sign Up</Link>
 			</div>
 		)
 	}

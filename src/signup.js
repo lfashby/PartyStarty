@@ -16,7 +16,6 @@ class SignUp extends React.Component {
 	}
 
 		handleSubmit(event){
-		event.preventDefault();
 		axios.post('/signup', {username: this.state.username, password: this.state.password})
 		.then((response) => {
 			console.log(response);
@@ -37,10 +36,10 @@ class SignUp extends React.Component {
 	render(){
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
+				<form>
 					<input onChange={this.handleUserInput} type="text" placeholder="Username" />
 					<input onChange={this.handlePasswordInput} type="text" placeholder="Password" />
-					<input type="submit" value="Sign Up"/>
+					<Link to="/" className="btn btn-secondary" onClick={this.handleSubmit}>Sign Up</Link>
 				</form>
 			</div>
 		)

@@ -14,6 +14,7 @@ class MovieQueueList extends React.Component {
 	render(){
 		return (
 			<div>
+				<p>MOVIE QUEUE</p>
 				{this.props.movies.map( (movie,i) => {
 					return <MovieQueueListEntry movie={movie} key={i} />
 				})}

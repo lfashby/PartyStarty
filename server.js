@@ -6,7 +6,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const axios = require('axios');
 const bodyParser = require('body-parser') ;
-
+const path = require('path');
 const webpackConfig = require('./webpack.config.js');
 const requestHandler = require('./requestHandler.js');
 const util = require('./lib/utility');
@@ -49,12 +49,18 @@ app.post('/signup', requestHandler.addUser);
 // })
 
 app.post('/signin', requestHandler.getUser);
+// app.post('/signin', function(req,res) {
+//   res.redirect('/#/home')
+// })
 app.get('/signin', function(req, res) {
   res.render('/');
 });
 
 app.post('/create', util.checkUser, requestHandler.addEvent);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'src', 'home.js'));
+});
 // app.post('upvote', );
 // app.post('downvote',);
 

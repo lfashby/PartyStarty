@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Search from './search';
+import Navbar from './navbar';
+import {Link} from 'react-router-dom';
+import Home from './home'
 var axios = require('axios');
 
 class Create extends React.Component {
@@ -9,20 +12,23 @@ class Create extends React.Component {
 		this.state = {
 			title: "",
 			location: "",
+			date: "",
 			time: "",
 			description: ""
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleTitle = this.handleTitle.bind(this);
 		this.handleLocation = this.handleLocation.bind(this);
+		this.handleDate = this.handleDate.bind(this);
 		this.handleTime = this.handleTime.bind(this);
 		this.handleDescription = this.handleDescription.bind(this);
 	}
 
-	handleSubmit(){
+	handleSubmit(e){
 		axios.post('/create', {
 			title: this.state.title, 
 			location: this.state.location,
+			date: this.state.date,
 			time: this.state.time,
 			description: this.state.description
 		})
@@ -42,6 +48,10 @@ class Create extends React.Component {
 		this.setState({location: e.target.value});
 	}
 
+	handleDate(e){
+		this.setState({date: e.target.value});
+	}
+
 	handleTime(e){
 		this.setState({time: e.target.value});
 	}
@@ -50,21 +60,41 @@ class Create extends React.Component {
 		this.setState({description: e.target.value});
 	}
 
+
 	render(){
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
-					<input onChange={this.handleTitle} type="text" defaultValue="Title" />
-					<input onChange={this.handleLocation} type="text"/>
-					<input onChange={this.handleTime} type="time"/>
-					<input onChange={this.handleDescription} type="text" defaultValue="description" />
+				<Navbar />
+				<div className="createpage">
+					<h2>Create Event</h2>
+				<form >
+					<label>Title</label>
+					<input onChange={this.handleTitle} className="form-control" type="text" placeholder="Title" />
+					<br></br>
+					<label>Location</label>
+					<input onChange={this.handleLocation} className="form-control" type="text" placeholder="Location"/>
+					<br></br>
+					<label>Date</label>
+					<input onChange={this.handleDate} className="form-control" type="date" />
+					<br></br>
+					<label>Time</label>
+					<input onChange={this.handleTime} className="form-control" type="time"/>
+					<br></br>
+					<label>Description</label>
+					<input onChange={this.handleDescription} className="form-control" type="text" placeholder="Description" />
 					<br></br>
 					<p>Create Movie Queue</p>
 					<Search />
 					<br></br>
-					<input type="submit" value="Create Event"/>
+					<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg">Create Event</Link>
 				</form>
-				<button>Sign Up</button>
+
+
+
+
+
+
+				</div>
 			</div>
 		)
 	}
