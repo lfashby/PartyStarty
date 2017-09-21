@@ -44,19 +44,12 @@ const server = app.listen(3000, function() {
 });
 
 app.post('/signup', requestHandler.addUser);
-// app.get('/signup', function(req, res) {
-//   res.render('/');
-// })
 
 app.post('/signin', requestHandler.getUser);
-// app.post('/signin', function(req,res) {
-//   res.redirect('/#/home')
-// })
-app.get('/signin', function(req, res) {
-  res.render('/');
-});
 
 app.post('/create', util.checkUser, requestHandler.addEvent);
+
+app.post('/addMovie', util.checkUser, requestHandler.addMovie);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'src', 'home.js'));
