@@ -51,9 +51,9 @@ app.post('/create', util.checkUser, requestHandler.addEvent);
 
 app.post('/addMovie', util.checkUser, requestHandler.addMovie);
 
-app.post('/getEvents', util.checkUser, requestHandler.getEvents);
+app.get('/getEvents', util.checkUser, requestHandler.getEvents);
 
-app.post('/getEventDetail', util.checkUser, requestHandler.getEventDetail);
+app.get('/getEventDetail', util.checkUser, requestHandler.getEventDetail);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'src', 'home.js'));

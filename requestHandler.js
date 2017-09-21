@@ -57,7 +57,7 @@ module.exports = {
   },
   // Retrieve existing events for particular user
   getEvents: function(req, res, next) {
-    var username = req.body.username;
+    var username = req.session.user.username;
 
     User.findOne({ username: username })
     .exec(function(err, user) {
