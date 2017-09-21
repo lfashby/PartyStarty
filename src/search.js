@@ -37,9 +37,14 @@ class Search extends React.Component {
 
 	// Adds movie to queue 
 	handleAddMovieToQueue() {
+		axios.post("/addMovie",{currentMovie: this.state.currentMovie})
+		.then(response => {
+			console.log(response);
+		})
+		.catch(error => {
+			console.log(error);
+		})
     this.setState({movies: [...this.state.movies, this.state.currentMovie]});
-    console.log(this.state.movies);
-    console.log(this.state.currentMovie)
   };
 
 	componentDidMount(){

@@ -21,13 +21,15 @@ import {BrowserRouter, Route, Switch, browserHistory} from 'react-router-dom';
 //     )
 //   }
 // }
-
+function isAuth(){
+  console.log('hi');
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render((
     <BrowserRouter basename='/#' history={browserHistory}>
       <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Home} onEnter={isAuth}/>
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/create" component={Create}/>
