@@ -100,6 +100,16 @@ module.exports = {
           }, function(err, event) {
             console.log(event);
           });
+
+    User.findOne({username: eventUser})
+      .exec(function(err, user) {
+        if(user) {
+          user.events.push(eventTitle);
+          user.save();
+        } else {
+          console.log('user does not exisit');
+        }
+      });
   },
   // Add user to event
   updateEvent: function(req, res, next) {
