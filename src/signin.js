@@ -14,7 +14,8 @@ class SignIn extends React.Component {
 		this.handlePasswordInput = this.handlePasswordInput.bind(this);
 	}
 
-	handleSubmit(){
+	handleSubmit(event){
+		event.preventDefault();
 		axios.post('/signin', {username: this.state.username, password: this.state.password})
 		.then((response) => {
 			console.log(response);
