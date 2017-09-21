@@ -85,7 +85,7 @@ class Search extends React.Component {
 		if(err) console.log('ERROR RENDERING MOVIES')
     this.selectMovie(movie);
   	console.log(movie.title);
-		$('.typeahead').val('movie.title');
+		$('.typeahead').typeahead('val', movie.title);
   }.bind(this));
 	
 	}
@@ -93,23 +93,30 @@ class Search extends React.Component {
 	//RENDER
 	render(){
 		return (
-			<div>
-				<form onSubmit={this.handleSubmit}>
-					<input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm" type="text" placeholder="Search for movies..." />
-				</form>
+			<div className="container">
+			<div className="row">
+				<div className="col-lg">
+						<input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm form-control" type="text" placeholder="Search for movies..." />
 
-				<h3>{this.state.currentMovie.title}</h3>
-				<img src={`https://image.tmdb.org/t/p/w500${this.state.currentMovie.poster}`} />
-				<p>{this.state.currentMovie.overview}</p>
-				<p>Release Date</p>	
-				<p>{this.state.currentMovie.date}</p>
-				<p>Average Score</p>
-				<p>{this.state.currentMovie.votes}</p>
-
-				<h2 onClick={this.handleAddMovieToQueue}> ADD TO QUEUE </h2>
-				
-				<br></br>
-				<MovieQueueList movies={this.state.movies}/>
+					<div className="card w-75">
+						<img className="card-img-top" src={`https://image.tmdb.org/t/p/w500${this.state.currentMovie.poster}`} />
+						<div className="card-body">
+							<h3 className="card-title">{this.state.currentMovie.title}</h3>
+							<div className="card-text">
+								<p>{this.state.currentMovie.overview}</p>
+								<p>Release Date</p>	
+								<p>{this.state.currentMovie.date}</p>
+								<p>Average Score</p>
+								<p>{this.state.currentMovie.votes}</p>
+							</div>	
+						</div>
+						<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary"> ADD TO QUEUE </p>
+					</div>	
+					</div>
+				<div className="col-sm">
+					<MovieQueueList movies={this.state.movies}/>
+				</div>
+				</div>
 			</div>
 		)
 	}
