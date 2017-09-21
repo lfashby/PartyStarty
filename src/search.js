@@ -27,7 +27,6 @@ class Search extends React.Component {
 	// Handles picking a movie from suggestions
 	selectMovie(movie){
 		this.setState({currentMovie: movie});
-		$('.typeahead').val(movie.value);
 		console.log(this.state.currentMovie);
 	}
 
@@ -38,8 +37,9 @@ class Search extends React.Component {
 
 	// Adds movie to queue 
 	handleAddMovieToQueue() {
-    this.setState({movies: this.state.movies.concat([this.props.currentMovie])});
+    this.setState({movies: [...this.state.movies, this.state.currentMovie]});
     console.log(this.state.movies);
+    console.log(this.state.currentMovie)
   };
 
 	componentDidMount(){
@@ -83,7 +83,9 @@ class Search extends React.Component {
 	})
 	.on('typeahead:selected', function(err, movie) {
 		if(err) console.log('ERROR RENDERING MOVIES')
-    this.selectMovie(movie)
+    this.selectMovie(movie);
+  	console.log(movie.title);
+		$('.typeahead').val('movie.title');
   }.bind(this));
 	
 	}
@@ -95,6 +97,7 @@ class Search extends React.Component {
 				<form onSubmit={this.handleSubmit}>
 					<input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm" type="text" placeholder="Search for movies..." />
 				</form>
+
 				<h3>{this.state.currentMovie.title}</h3>
 				<img src={`https://image.tmdb.org/t/p/w500${this.state.currentMovie.poster}`} />
 				<p>{this.state.currentMovie.overview}</p>
@@ -102,7 +105,9 @@ class Search extends React.Component {
 				<p>{this.state.currentMovie.date}</p>
 				<p>Average Score</p>
 				<p>{this.state.currentMovie.votes}</p>
-				<button onClick={this.handleAddMovieToQueue}> ADD TO QUEUE </button>
+
+				<h2 onClick={this.handleAddMovieToQueue}> ADD TO QUEUE </h2>
+				
 				<br></br>
 				<MovieQueueList movies={this.state.movies}/>
 			</div>
