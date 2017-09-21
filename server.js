@@ -55,14 +55,16 @@ app.get('/getEvents', util.checkUser, requestHandler.getEvents);
 
 app.get('/getEventDetail', util.checkUser, requestHandler.getEventDetail);
 
+app.post('/upvote', util.checkUser, requestHandler.upvote);
+
+app.post('/downvote', util.checkUser, requestHandler.downvote);
+
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'src', 'home.js'));
 });
-// app.post('upvote', );
-// app.post('downvote',);
 
-// app.get('/logout', function(req, res) {
-//   req.session.destroy(funciton() {
-//     res.redirect('/');
-//   });
-// });
+app.get('/logout', function(req, res) {
+  req.session.destroy(function() {
+    res.send('logout');
+  });
+});
