@@ -20,14 +20,15 @@ module.exports = {
       if (!user) {
         console.log('User doesn\'t exisit');
         res.send('error');
-    } else {
-      if (password === user.password) {
-        util.createSession(req, res, user);
       } else {
-        console.log('user or password wrong');
-        res.send('error');
-      }  
-    }
+        if (password === user.password) {
+          util.createSession(req, res, user);
+          console.log('session created', user);
+        } else {
+          console.log('user or password wrong');
+          res.send('error');
+        }
+      }
     });
   },
   // User sign up
@@ -46,7 +47,6 @@ module.exports = {
               password: password
             }, function(err, user) {
                 util.createSession(req, res, user);
-                console.log(user);
             });
           }
         } else {
@@ -71,11 +71,11 @@ module.exports = {
 
   // Retrieve event details
   getEventDetail: function(req, res, next) {
-    var eventTitle = req.body.eventTitle;
-
+    var eventTitle = req.body.event;
     Event.findOne({eventTitle: eventTitle})
       .exec(function(err, event) {
-        if (events) {
+        if (event) {
+          console.log('got the event', event);
           res.status(200).send(event);
         } else {
           res.end('Event does not exist');
@@ -89,7 +89,6 @@ module.exports = {
     var eventDate = req.body.date;
     var eventDesc = req.body.description;
     var eventUser = req.session.user.username;
-    console.log(req.body);
 
     Event.create({
             eventTitle: eventTitle,
