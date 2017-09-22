@@ -34,10 +34,13 @@ class MovieQueueListEntry extends React.Component {
 	// <SearchResultsDisplay currentMovie={this.state.currentMovie}/> 
 	render(){
 		return (
-			<div>
-				{this.props.movie.title}
-				<p onClick={this.handleUpvote}>UPVOTE</p>
-				<p onClick={this.handleDownvote}>DOWNVOTE</p>
+			<div className="qEntry">
+				<ul>	
+					<li className="btn btn-primary">{this.props.movie.title}</li>
+					<li className="btn btn-secondary btn-sm" onClick={this.handleUpvote}>UPVOTE {this.props.movie.upvotes}</li>
+
+					<li className="btn btn-secondary btn-sm" onClick={this.handleDownvote}>DOWNVOTE {this.props.movie.downvotes}</li>
+				</ul>
 			</div>
 		)
 	}

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 var axios = require('axios');
 import {Link} from 'react-router-dom';
+import Navbar from './navbar';
 
 class SignUp extends React.Component {
 	constructor(props){
@@ -36,11 +37,17 @@ class SignUp extends React.Component {
 	render(){
 		return (
 			<div>
-				<form>
-					<input onChange={this.handleUserInput} type="text" placeholder="Username" />
-					<input onChange={this.handlePasswordInput} type="text" placeholder="Password" />
-					<Link to="/" className="btn btn-secondary" onClick={this.handleSubmit}>Sign Up</Link>
+				<Navbar />
+				<div className="signInForm">
+				<form className="">
+					<h2>Sign Up</h2>
+					<div className="form-group">
+						<input className="form-control userInput" onChange={this.handleUserInput} type="text" placeholder="Username" />
+						<input className="form-control passInput" onChange={this.handlePasswordInput} type="password" placeholder="Password" />
+					</div>
+					<Link to="/home" className="btn btn-secondary" onClick={this.handleSubmit}>Sign Up</Link>
 				</form>
+				</div>
 			</div>
 		)
 	}

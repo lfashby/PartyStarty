@@ -75,7 +75,7 @@ class Create extends React.Component {
 					<input onChange={this.handleLocation} className="form-control" type="text" placeholder="Location"/>
 					<br></br>
 					<label>Date</label>
-					<input onChange={this.handleDate} className="form-control" type="date" />
+					<input onChange={this.handleDate} className="form-control" type="date" id="example"/>
 					<br></br>
 					<label>Time</label>
 					<input onChange={this.handleTime} className="form-control" type="time"/>
@@ -83,10 +83,7 @@ class Create extends React.Component {
 					<label>Description</label>
 					<input onChange={this.handleDescription} className="form-control" type="text" placeholder="Description" />
 					<br></br>
-					<p>Create Movie Queue</p>
-					<Search />
-					<br></br>
-					<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg">Create Event</Link>
+					<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg textarea">Create Event</Link>
 				</form>
 
 
