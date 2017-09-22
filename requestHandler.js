@@ -159,6 +159,8 @@ module.exports = {
                   poster: moviePoster,
                   overview: movieOverview,
                   votes: movieVotes,
+                  upvotes: 0,
+                  downvotes: 0,
                   event: [event]
                 }, function(err, movie) {
                   console.log('Movie added to queue');
@@ -170,14 +172,19 @@ module.exports = {
   // upvote movie
   upvote: function(req, res) {
     var title = req.body.title;
-    var event = req.body.event;
-
-    Movie.findOne({title: title, event: event}).exec(function(err, movie) {
+    // var event = req.body.event;
+    Movie.findOne({title: title}).exec(function(err, movie) {
       if(movie) {
+        console.log('upvote movie found');
         movie.upvotes++;
         movie.save(function(err, entry) {
           if(err) {
+            console.log(movie);
+            console.log(err);
             res.send(500, err);
+          } else {
+            console.log('update successful');
+            res.send(201, movie.upvotes);
           }
         })
       } else{
@@ -188,8 +195,8 @@ module.exports = {
   // downvote movie
   downvote: function (req, res) {
     var title = req.body.title;
-    var event = req.body.event;
-    Movie.findOne({title: title, event: event}).exec(function (err, movie) {
+    // var event = req.body.event;
+    Movie.findOne({title: title}).exec(function (err, movie) {
       if(movie) {
         movie.downvotes++;
         movie.save(function(err, entry) {
