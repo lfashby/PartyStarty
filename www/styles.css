@@ -12,7 +12,7 @@
   width: 422px;
   margin-top: 0px;
   padding: 4px 0;
-  background-color: #B4BECB;
+  background-color: #e3e8ef;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-border-radius: 4px;
@@ -21,6 +21,7 @@
   -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
      -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
           box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  animation: ease-in-out;
 }
 
 .tt-suggestion {
@@ -44,6 +45,8 @@ body {
     margin: 0;
 }
 
+
+
 h2 {
   padding-top: 15px;
 }
@@ -53,26 +56,83 @@ h2 {
 }
 .createpage {
   margin-left: 10%;
+  margin-right: 10%;
 }
-/*.navbar{
+.navbar{
 display: flex;
 justify-content: space-around;
-}*/
+/*background-color: black;*/
+}
 
+.qEntry{
+  display:flex;
+  justify-content: center;
+}
+.center {
+  margin: auto;
+}
 .nav-brand {
   color: white;
   margin-left: 0;
   font-size: 40px;
   padding-right: 40px;
 }
+#logout:hover{
+  cursor: pointer;
+  color: #2257ad;
+}
+
+.signInForm {
+  margin-top: 10%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+ /* margin: 50%;
+  width: 50%;*/
+}
+
+.signInForm * {
+  margin: 5px;
+}
+
+.btn {
+  border: 1px grey solid;
+}
+
+.userInput, .passInput {
+  padding: 5px;
+  margin: 5px 0px 5px 0px;
+} 
+
+#title {
+  font-size: 40px;
+  font-weight: bolder;
+  /*background: -webkit-linear-gradient(green, yellow);*/
+  -webkit-background-clip: text;
+  /*-webkit-text-fill-color: transparent;*/
+  font-family: 'Helvetica';
+  padding: 0;
+}
+
+.searchComp {
+  padding-top: 20px;
+  padding-bottom: 20px
+}
+.card-header {
+  /*color: grey;*/
+  display: flex;
+  justify-content: center;
+}
+
+.center {
+  margin: auto;
+}
 /*.navLinks {
   display: flex;
   justify-content: space-between;
 }*/
 /* NAV BAR STYLING 
-#title {
-  font-size: 20px
-}
+
 
 .navbar {
     list-style-type: none;

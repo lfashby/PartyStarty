@@ -26,7 +26,7 @@ module.exports = {
       } else {
         console.log('user or password wrong');
         res.send('error');
-      }
+      }  
     }
     });
   },

@@ -5,8 +5,9 @@ import SignUp from './signup';
 import Search from './search';
 import Create from './create';
 import Home from './home'
-import {BrowserRouter, Route, Switch, browserHistory} from 'react-router-dom';
-
+import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
+import {BrowserRouter, Route, Switch, browserHistory, Redirect} from 'react-router-dom';
+// const history = createBrowserHistory();
 // class App extends React.Component {
 //   constructor(props){
 //     super(props)
@@ -21,15 +22,26 @@ import {BrowserRouter, Route, Switch, browserHistory} from 'react-router-dom';
 //     )
 //   }
 // }
-function isAuth(){
-  console.log('hi');
-}
+window.isAuth = false;
 
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render((
-    <BrowserRouter basename='/#' history={browserHistory}>
+    <BrowserRouter basename='/#' >
       <Switch>
-          <Route exact path="/" component={Home} onEnter={isAuth}/>
+          <Route exact path="/" render={() => (
+            isAuth ? (
+              <Redirect to="/home"/>
+            ) : (
+              <Redirect to="/signin"/>
+            )
+          )}/>
+          <Route exact path="/home" render={() => (
+            isAuth ? 
+              <Home /> : (
+              <Redirect to="/signin"/>
+            )
+          )}/>
+          <Route path="/home" component={Home}/>
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/create" component={Create}/>
