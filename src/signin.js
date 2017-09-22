@@ -63,7 +63,15 @@ class SignIn extends React.Component {
 // 				<Redirect to="/home" />
 // 			)
 // 			}
-	
+	// componentDidMount(){
+	// $('body').keypress(function(event) {
+ //    if (event.keyCode == 13 || event.which == 13) {
+ //        $('signin').trigger('click');
+ //        console.log('hello')
+ //    }
+	// });
+	// }
+
 	render(){
 		
 		return (

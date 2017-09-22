@@ -23,6 +23,10 @@ import {BrowserRouter, Route, Switch, browserHistory, Redirect} from 'react-rout
 //   }
 // }
 window.isAuth = false;
+// function checkAuth() {
+//   console.log('checked Auth')
+//   return setTimeout(()=> isAuth, 1000);
+// }
 
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render((

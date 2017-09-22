@@ -6,16 +6,16 @@ import EventListEntry from './eventListEntry'
 class EventList extends React.Component{
     constructor(props) {
         super(props);
-        }
+    }
 
   render() {
     return (
       <div>
-        <div className ="video-list">
+        <ul className ="video-list list-group">
           {this.props.events.map((event,i) => (
             <EventListEntry event={event} key={i} onClick={this.props.onClick}/>
           ))}
-        </div>
+        </ul>
       </div>
     )
   }

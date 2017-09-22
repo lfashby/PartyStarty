@@ -7,7 +7,8 @@ import SignUp from './signup';
 import Create from './create';
 import Navbar from './navbar';
 import EventList from './eventList.js';
-import Event from './event.js';
+import Event from './event'
+
 var axios = require('axios');
 
 class Home extends React.Component {
@@ -19,6 +20,7 @@ class Home extends React.Component {
 		}
 		this.componentWillMount = this.componentWillMount.bind(this);
 	}
+
 	componentWillMount(){
 		axios.get('/getEvents')
 		.then(data => {
@@ -49,11 +51,16 @@ class Home extends React.Component {
 		return (
 			<div>
 				<Navbar />
-				<div className= "EventList">
-					<EventList events={this.state.events} onClick={(event) => this.handleClick(event)}/>
+				<div className="container">
+					<div className="row">
+						<div className="EventList col-2"> 
+							<EventList events={this.state.events} onClick={(event) => this.handleClick(event)}/>
+						</div>
+						<div className="col-10">
+							<Event event={this.state.currentEvent} />
+						</div>
+					</div>
 				</div>
-				<Event event={this.state.currentEvent}/>
-				<Search />
 			</div>
 		)
 	}
