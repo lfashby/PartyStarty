@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Search from './search';
 var axios = require('axios');
 
 class Event extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			currentEvent: {this.props.event}
-			//queue: currentEvent.queue
 		}
 	}
 	// ADD QUEUE COMPONENT
@@ -29,10 +28,12 @@ class Event extends React.Component {
 	render(){
 		return (
 			<div>
-				<div>{this.state.currentEvent.title}</div>
-				<div>{this.state.currentEvent.location}</div>
-				<div>{this.state.currentEvent.time}</div>
-
+				<div>{this.props.currentEvent.title}</div>
+				<div>{this.props.currentEvent.location}</div>
+				<div>{this.props.currentEvent.date}</div>
+				<div>{this.props.currentEvent.time}</div>
+				<div>{this.props.currentEvent.description}</div>
+				<Search />
 			</div>
 		)
 	}

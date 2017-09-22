@@ -7,17 +7,19 @@ import SignUp from './signup';
 import Create from './create';
 import Navbar from './navbar';
 import EventList from './eventList.js';
+import Event from './event'
 var axios = require('axios');
 
 class Home extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			events: []
-			// currentEvent: events[0]
+			events: [],
+			currentEvent: {title:"fsdfdf",location:"erewrwere",time:"123123"},
 		}
 		this.componentWillMount = this.componentWillMount.bind(this);
 	}
+
 	componentWillMount(){
 		axios.get('/getEvents')
 		.then(data => {
@@ -31,24 +33,22 @@ class Home extends React.Component {
 			console.log('ERROR retrieving events')
 		})
 	}
-	componentDidMount() {
-
-	}
-
-	componentDidMount(){
-		// console.log(util.isLoggedIn);
-  	// window.isAuth ? (console.log('Good to go')) : (<Redirect to="/signin"/>); 
-	}
 
 	render(){
 		return (
 			// !this.state.events? <div>Loading</div>:
 			<div>
 				<Navbar />
-			<div className= "EventList"> 
-				<EventList events={this.state.events}/>
+				<div className="container">
+					<div className="row">
+						<div className="EventList col-2"> 
+							<EventList events={this.state.events}/>
+						</div>
+						<div className="col-10">
+							<Event currentEvent={this.state.currentEvent} />
+						</div>
+					</div>
 				</div>
-				<Search />
 			</div>
 		)
 	}

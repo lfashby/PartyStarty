@@ -7,23 +7,19 @@ class EventList extends React.Component{
     constructor(props) {
         super(props);
         this.state ={ 
-
         }
-        console.log(this.props.events)
-        }
+    }
 
 render() {
-return ( 
-    // !this.props.event? <div>Loading</div> :
+    return (
     <div>
-   
-    <div className ="video-list">
-    {this.props.events.map((event,i) => (
-        <EventListEntry event={event} key={i}/>
-    ))}  
-</div>
-</div>
-)
+        <ul className="list-group">
+            {this.props.events.map((event,i) => (
+                <EventListEntry event={event} key={i}/>
+            ))}  
+        </ul>
+    </div>
+    )
  }
 }
 
