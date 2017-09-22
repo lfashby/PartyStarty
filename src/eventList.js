@@ -6,21 +6,19 @@ import EventListEntry from './eventListEntry'
 class EventList extends React.Component{
     constructor(props) {
         super(props);
-        this.state ={ 
-        }
     }
 
-render() {
+  render() {
     return (
-    <div>
-        <ul className="list-group">
-            {this.props.events.map((event,i) => (
-                <EventListEntry event={event} key={i}/>
-            ))}  
+      <div>
+        <ul className ="video-list list-group">
+          {this.props.events.map((event,i) => (
+            <EventListEntry event={event} key={i} onClick={this.props.onClick}/>
+          ))}
         </ul>
-    </div>
+      </div>
     )
- }
+  }
 }
 
-export default EventList; 
+export default EventList;
