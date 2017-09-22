@@ -17,15 +17,16 @@ class SignIn extends React.Component {
 		this.handleUserInput = this.handleUserInput.bind(this);
 		this.handlePasswordInput = this.handlePasswordInput.bind(this);
 	}
-	// componentDidUpdate(){
-	// 	if(this.state.auth === true){
-	// 		this.setState(this.state)
+	// componentWillMount(){
+	// 	if(isAuth === true){
+	// 		render()
 	// 	}
-	// 	// if(this.state.auth !== window.isAuth){
-	// 	// 	this.setState({auth: isAuth});
-	// 	// }
+		// if(this.state.auth !== window.isAuth){
+		// 	this.setState({auth: isAuth});
+		// }
 	// }
 	handleSubmit(event){
+		var that = this;
 		console.log(this.state.username, this.state.password);
 		axios.post('/signin', {username: this.state.username, password: this.state.password})
 		.then((response) => {
@@ -57,16 +58,16 @@ class SignIn extends React.Component {
 	handlePasswordInput(e){
 		this.setState({password: e.target.value});
 	}
-
-	// if(window.isAuth){
-	// 		return (
-	// 			<Redirect to="/home" />
-	// 		)
-	// 	}
+// if(window.isAuth){
+// 			return (
+// 				<Redirect to="/home" />
+// 			)
+// 			}
+	
 	render(){
 		
 		return (
-
+			
 			<div ref="myRef">
 				<Navbar />
 				<div  className="signInForm">

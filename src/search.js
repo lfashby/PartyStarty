@@ -48,7 +48,7 @@ class Search extends React.Component {
   };
 
 	componentDidMount(){
-		//BLOOD HOUND
+	//BLOOD HOUND
 	var MovieTitles = new Bloodhound({
 	  queryTokenizer: Bloodhound.tokenizers.whitespace,
 	  datumTokenizer: function(data){
@@ -98,15 +98,16 @@ class Search extends React.Component {
 	//RENDER
 	render(){
 		return (
-			<div className="container">
+			<div className="container searchComp">
 			<div className="row">
 				<div className="col-10">
 						<input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm form-control" type="text" placeholder="Search for movies..." />
-
 					<div className="card w-75">
+					<div className="card-header">
+					    <h3 className="card-title">{this.state.currentMovie.title}</h3>
+					  </div>
 						<img className="card-img-top" src={`https://image.tmdb.org/t/p/w500${this.state.currentMovie.poster}`} />
 						<div className="card-body">
-							<h3 className="card-title">{this.state.currentMovie.title}</h3>
 							<div className="card-text">
 								<p>{this.state.currentMovie.overview}</p>
 								<p>Release Date {this.state.currentMovie.date}</p>

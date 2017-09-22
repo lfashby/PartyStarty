@@ -25,9 +25,7 @@ class Home extends React.Component {
 	render(){
 		return (
 			<div>
-
 				<Navbar />
-				<h4 id="home">HOME SCREEN</h4>
 				<Search />
 			</div>
 		)
