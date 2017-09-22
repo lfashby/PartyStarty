@@ -11,7 +11,7 @@ var MovieQueueSchema = new mongoose.Schema({
   event: { type: String
     // required: true
   }
-
+  
 });
 
 module.exports = mongoose.model('Movie', MovieQueueSchema);
