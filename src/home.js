@@ -7,14 +7,15 @@ import SignUp from './signup';
 import Create from './create';
 import Navbar from './navbar';
 import EventList from './eventList.js';
+import Event from './event.js';
 var axios = require('axios');
 
 class Home extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			events: []
-			// currentEvent: events[0]
+			events: [],
+			currentEvent: null,
 		}
 		this.componentWillMount = this.componentWillMount.bind(this);
 	}
@@ -31,28 +32,32 @@ class Home extends React.Component {
 			console.log('ERROR retrieving events')
 		})
 	}
-	componentDidMount() {
 
-	}
-
-	componentDidMount(){
-		// console.log(util.isLoggedIn);
-  	// window.isAuth ? (console.log('Good to go')) : (<Redirect to="/signin"/>); 
-	}
+	handleClick(event) {
+			axios.post('/getEventDetail', {event: event})
+				.then(data => {
+					this.setState({
+						currentEvent: data.data
+					});
+				})
+				.catch(error => {
+					console.log('ERROR retrieving Current Event')
+				})
+			}
 
 	render(){
 		return (
-			// !this.state.events? <div>Loading</div>:
 			<div>
 				<Navbar />
-			<div className= "EventList"> 
-				<EventList events={this.state.events}/>
+				<div className= "EventList">
+					<EventList events={this.state.events} onClick={(event) => this.handleClick(event)}/>
 				</div>
+				<Event event={this.state.currentEvent}/>
 				<Search />
 			</div>
 		)
 	}
-	
+
 }
 
-export default Home; 
+export default Home;

@@ -1,41 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-var axios = require('axios');
 
 class Event extends React.Component {
 	constructor(props){
-		super(props)
-		this.state = {
-			currentEvent: {this.props.event}
-			//queue: currentEvent.queue
-		}
+		super(props);
 	}
-	// ADD QUEUE COMPONENT
-	// ADD GUEST LIST 
-
-
-	// componentDidMount(){
-	// 	axios.get(`/${this.currentEvent._id}`)
-	// 	.then(data => {
-	// 		this.setState({
-	// 			events: data.events
-	// 		})
-	// 	}.bind(this))
-	// 	.catch(error => {
-	// 		console.log('ERROR retrieving events')
-	// 	})
-	// }
 
 	render(){
 		return (
 			<div>
-				<div>{this.state.currentEvent.title}</div>
-				<div>{this.state.currentEvent.location}</div>
-				<div>{this.state.currentEvent.time}</div>
-
+				<div>{this.props.event && this.props.event.eventTitle}</div>
+				<div>{this.props.event && this.props.event.eventLocation}</div>
+				<div>{this.props.event && this.props.event.eventTime}</div>
+				<div>{this.props.event && this.props.event.eventDesc}</div>
 			</div>
 		)
 	}
 }
 
-export default Event; 
+export default Event;

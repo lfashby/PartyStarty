@@ -53,7 +53,7 @@ app.post('/addMovie', util.checkUser, requestHandler.addMovie);
 
 app.get('/getEvents', util.checkUser, requestHandler.getEvents);
 
-app.get('/getEventDetail', util.checkUser, requestHandler.getEventDetail);
+app.post('/getEventDetail', util.checkUser, requestHandler.getEventDetail);
 
 app.post('/upvote', util.checkUser, requestHandler.upvote);
 
