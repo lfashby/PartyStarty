@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import SignIn from './signin';
 import SignUp from './signup';
 import Search from './search';
-import Create from './create';
-import Home from './home'
+import Create from './eventCreator/create';
+import Home from './home';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
 import {BrowserRouter, Route, Switch, browserHistory, Redirect} from 'react-router-dom';
 // const history = createBrowserHistory();

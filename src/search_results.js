@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// NOT CURRENTLY BEING USED
 class SearchResults extends React.Component {
   constructor(props) {
     super(props)
