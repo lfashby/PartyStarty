@@ -34,13 +34,14 @@ class MovieQueueListEntry extends React.Component {
 	// 		console.log(error);
 	// 	})
 	// }
-	// <SearchResultsDisplay currentMovie={this.state.currentMovie}/>
+	// <SearchResultsDisplay currentMovie={this.state.currentMovie}/> NOT BEING USED
 	render(){
 		return (
 			<div className="qEntry">
-				<ul  className="list-group">	
-					<li className="list-group-item">{this.props.movie.title}</li>
-				</ul>
+				{/* <ul  className="list-group">	 */}
+					{/* <li className="list-group-item">{this.props.movie.title}</li> */}
+					<img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${this.props.movie.poster}`} />
+				{/* </ul> */}
 			</div>
 		)
 	}

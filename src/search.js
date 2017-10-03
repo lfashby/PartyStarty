@@ -100,7 +100,7 @@ class Search extends React.Component {
 		return (
 			<div className="container searchComp">
 			<div className="row">
-				<div className="col-10">
+				<div className="col-6">
 						<input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm form-control" type="text" placeholder="Search for movies..." />
 					<div className="card w-75">
 					<div className="card-header">
@@ -118,7 +118,7 @@ class Search extends React.Component {
 						<br></br>
 					</div>	
 					</div>
-				<div className="col-2">
+				<div className="col-6">
 					<MovieQueueList movies={this.state.movies}/>
 				</div>
 				</div>
