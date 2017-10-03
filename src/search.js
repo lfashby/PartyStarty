@@ -114,7 +114,7 @@ class Search extends React.Component {
 								<p>Average Score {this.state.currentMovie.votes}</p>
 							</div>	
 						</div>
-						<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary w-50 center"> ADD TO QUEUE </p>
+						<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary w-50 center"> Add To Event </p>
 						<br></br>
 					</div>	
 					</div>
