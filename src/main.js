@@ -7,29 +7,25 @@ import Create from './create';
 import Home from './home'
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
 import {BrowserRouter, Route, Switch, browserHistory, Redirect} from 'react-router-dom';
+
 // const history = createBrowserHistory();
-// class App extends React.Component {
-//   constructor(props){
-//     super(props)
-//     this.state = {
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      lookingAtEvent: '',
+    }
+    this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
+  }
 
-//     }
-//   }
-//   render(){
-//     return (
-//         <div>
-//         </div>
-//     )
-//   }
-// }
-window.isAuth = false;
-// function checkAuth() {
-//   console.log('checked Auth')
-//   return setTimeout(()=> isAuth, 1000);
-// }
+  setLookingAtEvent (event) {
+    this.setState({
+      lookingAtEvent: event
+    })
+  }
 
-document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render((
+  render(){
+    return (
     <BrowserRouter basename='/#' >
       <Switch>
           <Route exact path="/" render={() => (
@@ -52,7 +48,19 @@ document.addEventListener('DOMContentLoaded', function() {
           <Route path="/search" component={Search} />
           <Route path="*" component={Home} />
       </Switch>
-    </BrowserRouter>),
+    </BrowserRouter>)
+  }
+}
+
+window.isAuth = false;
+// function checkAuth() {
+//   console.log('checked Auth')
+//   return setTimeout(()=> isAuth, 1000);
+// }
+
+document.addEventListener('DOMContentLoaded', function() {
+  ReactDOM.render(
+    (<App />),
     document.getElementById('mount')
   );
 });
