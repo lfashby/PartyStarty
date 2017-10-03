@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Search from './search';
+import Search from '../search.js';
 var axios = require('axios');
 
 class Event extends React.Component {
