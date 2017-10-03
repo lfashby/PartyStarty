@@ -19,6 +19,7 @@ class Home extends React.Component {
 			currentEvent: null,
 		}
 		this.componentWillMount = this.componentWillMount.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	componentWillMount(){
@@ -36,6 +37,7 @@ class Home extends React.Component {
 	}
 
 	handleClick(event) {
+			console.log('home', event);
 			axios.post('/getEventDetail', {event: event})
 				.then(data => {
 					this.setState({
@@ -54,7 +56,7 @@ class Home extends React.Component {
 				<div className="container">
 					<div className="row">
 						<div className="EventList col-2"> 
-							<EventList events={this.state.events} onClick={(event) => this.handleClick(event)}/>
+							<EventList events={this.state.events} click={this.handleClick}/>
 						</div>
 						<div className="col-10">
 							<Event event={this.state.currentEvent} />

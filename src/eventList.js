@@ -13,7 +13,7 @@ class EventList extends React.Component{
       <div>
         <ul className ="video-list list-group">
           {this.props.events.map((event,i) => (
-            <EventListEntry event={event} key={i} onClick={this.props.onClick}/>
+            <EventListEntry event={event} key={i} click2={this.props.click}/>
           ))}
         </ul>
       </div>
