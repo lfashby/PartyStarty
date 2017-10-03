@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SignIn from './signin';
 import SignUp from './signup';
-import Search from './eventCreator/search';
+import Search from './search';
 import Create from './eventCreator/create';
 import Home from './home';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'

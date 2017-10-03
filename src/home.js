@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link, Redirect} from 'react-router-dom';
-import Search from './eventCreator/search';
+import Search from './search';
 import SignIn from './signin';
 import SignUp from './signup';
 import Create from './eventCreator/create';
