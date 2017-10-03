@@ -36,11 +36,10 @@ class MovieQueueListEntry extends React.Component {
 	render(){
 		return (
 			<div className="qEntry">
-				<ul>
-					<li className="btn btn-primary">{this.props.movie.title}</li>
-					<li className="btn btn-secondary btn-sm" onClick={()=>this.handleUpvote(this.props.movie.title)}>UPVOTE {this.props.movie.upvotes}</li>
-
-					<li className="btn btn-secondary btn-sm" onClick={this.handleDownvote}>DOWNVOTE {this.props.movie.downvotes}</li>
+				<ul  className="list-group">	
+					<li className="list-group-item">{this.props.movie.title}</li>
+					<li className="btn btn-secondary btn-sm list-group-item movie-buttons" onClick={this.handleUpvote}>UPVOTE {this.props.movie.upvotes}</li>
+					<li className="btn btn-secondary btn-sm list-group-item movie-buttons" onClick={this.handleDownvote}>DOWNVOTE {this.props.movie.downvotes}</li>
 				</ul>
 			</div>
 		)
