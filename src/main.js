@@ -5,6 +5,7 @@ import SignUp from './signup';
 import Search from './search';
 import Create from './eventCreator/create';
 import Home from './home';
+import EventPage from './event/eventPage.js';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
 import {BrowserRouter, Route, Switch, browserHistory, Redirect} from 'react-router-dom';
 // const history = createBrowserHistory();
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <Route path="/signup" component={SignUp} />
           <Route path="/create" component={Create}/>
           <Route path="/search" component={Search} />
+          <Route path="/eventpage" component={EventPage} />
           <Route path="*" component={Home} />
       </Switch>
     </BrowserRouter>),

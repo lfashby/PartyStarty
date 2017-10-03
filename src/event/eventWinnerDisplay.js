@@ -1,12 +1,9 @@
-import react from ('react');
+import React from 'react';
 
-function EventWinnerDisplay(props) {
+const EventWinnerDisplay = (props) => {
   return (
     <div>
-      <div>{this.props.event && this.props.event.eventTitle}</div>
-      <div>{this.props.event && this.props.event.eventLocation}</div>
-      <div>{this.props.event && this.props.event.eventTime.slice(0,10)}</div>
-      <div>{this.props.event && this.props.event.eventDesc}</div>
+      Page shows
     </div>
   )
 }

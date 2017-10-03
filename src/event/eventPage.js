@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Search from './search';
-var axios = require('axios');
+import axios from 'axios';
 
-import EventVoter from ('./eventVoter.js');
-import eventWinnerDisplay from ('./eventWinnerDisplay');
+import EventVoter from './eventVoter.js';
+import EventWinnerDisplay from './eventWinnerDisplay.js';
 
 class EventPage extends React.Component {
 	constructor(props){
@@ -15,7 +14,6 @@ class EventPage extends React.Component {
 			threeMovies: []
     }
   };
-	
 	
 
 	getEvent() {
@@ -56,4 +54,4 @@ class EventPage extends React.Component {
 
 //render event voting system if event.finalized = false;
 //render moviedecided information if event.finalized = true;
-export default Event;
+export default EventPage;
