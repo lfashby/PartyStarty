@@ -6,8 +6,8 @@ import SignIn from './signin';
 import SignUp from './signup';
 import Create from './create';
 import Navbar from './navbar';
-import EventList from './eventList.js';
-import Event from './event'
+import EventList from './event/eventList.js';
+import Event from './event/event.js'
 
 var axios = require('axios');
 
