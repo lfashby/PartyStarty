@@ -11,10 +11,15 @@ class Event extends React.Component {
 	render(){
 		return (
 			<div>
-				<div>{this.props.event && this.props.event.eventTitle}</div>
-				<div>{this.props.event && this.props.event.eventLocation}</div>
-				<div>{this.props.event && this.props.event.eventTime.slice(0,10)}</div>
-				<div>{this.props.event && this.props.event.eventDesc}</div>
+				{
+					this.props.event ?
+					(<div>
+					<div>Title: {this.props.event.eventTitle}</div>
+					<div>Location: {this.props.event.eventLocation}</div>
+					<div>Time: {this.props.event.eventTime.slice(0,10)}</div>
+					<div>Description: {this.props.event.eventDesc}</div>
+					</div>) : null
+				}
 				<Search />
 			</div>
 		)
