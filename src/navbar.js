@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
-import Search from './search';
+import Search from './eventCreator/search';
 import SignIn from './signin';
 import SignUp from './signup';
-import Create from './create';
+import Create from './eventCreator/create';
 var axios = require('axios');
 
 class Navbar extends React.Component {

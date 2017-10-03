@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Search from './search';
-import Navbar from './navbar';
+import Navbar from '../navbar';
 import {Link} from 'react-router-dom';
-import Home from './home'
+import Home from '../home'
 var axios = require('axios');
 
 class Create extends React.Component {
@@ -14,14 +14,16 @@ class Create extends React.Component {
 			location: "",
 			date: "",
 			time: "",
-			description: ""
+      description: "",
+      filmsAdded: false
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleTitle = this.handleTitle.bind(this);
 		this.handleLocation = this.handleLocation.bind(this);
 		this.handleDate = this.handleDate.bind(this);
 		this.handleTime = this.handleTime.bind(this);
-		this.handleDescription = this.handleDescription.bind(this);
+    this.handleDescription = this.handleDescription.bind(this);
+    this.addFilmsClick = this.addFilmsClick.bind(this);
 	}
 
 	handleSubmit(e){
@@ -58,7 +60,11 @@ class Create extends React.Component {
 
 	handleDescription(e){
 		this.setState({description: e.target.value});
-	}
+  }
+  
+  addFilmsClick() {
+    this.setState({filmsAdded: true})
+  }
 
 
 	render(){
@@ -67,7 +73,7 @@ class Create extends React.Component {
 				<Navbar />
 				<div className="createpage">
 					<h2>Create Event</h2>
-				<form >
+				<form>
 					<label>Title</label>
 					<input onChange={this.handleTitle} className="form-control" type="text" placeholder="Title" />
 					<br></br>
@@ -83,18 +89,17 @@ class Create extends React.Component {
 					<label>Description</label>
 					<input onChange={this.handleDescription} className="form-control" type="text" placeholder="Description" />
 					<br></br>
-					<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg textarea">Create Event</Link>
-				</form>
-
-
-
-
-
-
+        </form>
+       {!this.state.filmsAdded ? (
+          <button onClick={this.addFilmsClick} className="btn btn-secondary btn-lg textarea">Add Films</button>
+       ) : (
+		  <Search />
+       )}
+        
 				</div>
 			</div>
 		)
 	}
 }
-
+// 	<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg textarea">Create Event</Link>
 export default Create; 
