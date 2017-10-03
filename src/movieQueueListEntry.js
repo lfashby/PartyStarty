@@ -11,9 +11,10 @@ class MovieQueueListEntry extends React.Component {
 		this.handleUpvote = this.handleUpvote.bind(this);
 		this.handleDownvote = this.handleDownvote.bind(this);
 	}
-	handleUpvote(){
+	handleUpvote(title){
 		console.log('upvoted');
-		axios.post('/upvote')
+		console.log(title);
+		axios.post('/upvote', {title: title})
 		.then(function(data){
 			console.log(data);
 		})
@@ -31,13 +32,13 @@ class MovieQueueListEntry extends React.Component {
 			console.log(error);
 		})
 	}
-	// <SearchResultsDisplay currentMovie={this.state.currentMovie}/> 
+	// <SearchResultsDisplay currentMovie={this.state.currentMovie}/>
 	render(){
 		return (
 			<div className="qEntry">
-				<ul>	
+				<ul>
 					<li className="btn btn-primary">{this.props.movie.title}</li>
-					<li className="btn btn-secondary btn-sm" onClick={this.handleUpvote}>UPVOTE {this.props.movie.upvotes}</li>
+					<li className="btn btn-secondary btn-sm" onClick={()=>this.handleUpvote(this.props.movie.title)}>UPVOTE {this.props.movie.upvotes}</li>
 
 					<li className="btn btn-secondary btn-sm" onClick={this.handleDownvote}>DOWNVOTE {this.props.movie.downvotes}</li>
 				</ul>
@@ -46,4 +47,4 @@ class MovieQueueListEntry extends React.Component {
 	}
 }
 
-export default MovieQueueListEntry; 
+export default MovieQueueListEntry;
