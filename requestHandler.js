@@ -71,8 +71,8 @@ module.exports = {
 
   // Retrieve event details
   getEventDetail: function(req, res, next) {
-    var eventTitle = req.body.event;
-    Event.findOne({eventTitle: eventTitle})
+    var event_id = req.body.event_id;
+    Event.findOne({event_id: event_id})
       .exec(function(err, event) {
         if (event) {
           console.log('got the event', event);
