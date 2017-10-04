@@ -5,9 +5,9 @@ const MessagesDisplay = ({ messages }) => {
     <div>
       <h3>See your messages here!</h3>
       <ul>
-        { messages.map((msg) => {
+        { messages.map((msg, inx) => {
           return (
-            <li>
+            <li key={ msg + inx } >
               { JSON.stringify(msg.text) }
             </li>
           );
