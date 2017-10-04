@@ -21,6 +21,7 @@ class Create extends React.Component {
       filmsAdded: false,
       filmsFinalized: false,
       eventId: '',
+      friendValue: '',
       friends: []
 		}
 		this.handleTitle = this.handleTitle.bind(this);
@@ -30,6 +31,8 @@ class Create extends React.Component {
     this.handleDescription = this.handleDescription.bind(this);
     this.addFilmsSubmit = this.addFilmsSubmit.bind(this);
     this.handleFinalizedFilms = this.handleFinalizedFilms.bind(this);
+    this.handleFriends = this.handleFriends.bind(this);
+    this.handleFriendChange = this.handleFriendChange.bind(this);
 	}
 
 	handleTitle(e){
@@ -81,11 +84,38 @@ class Create extends React.Component {
 		axios.post('/addMovies', {
       movies: movies,
       eventId: this.state.eventId
-		})
+    })
+    .then((response) => {
+      console.log('Films sent');
+    })
+    .catch((error) => {
+      console.log('Error sending films to db', error);
+    })
   }
 
-  handleFriends() {
-    
+  handleFriendChange(event) {
+    this.setState({friendValue: event.target.value});
+  }
+
+  handleFriends(e) {
+    e.preventDefault();
+    // Send friendValue to Collin
+    axios.post('/invite', {
+      invitedUserName: this.state.friendValue,
+      eventId: this.state.eventId,
+      eventTitle: this.state.title
+      // Host username picked up on other side
+    })
+    .then((response) => {
+      console.log('Invite sent to db successfully', response);
+    })
+    .catch((error) => {
+      console.log('Error sending invite', error)
+    })
+    this.setState({
+      friends: [...this.state.friends, this.state.friendValue],
+      friendValue: ''
+    })
   }
 
   renderStuff() { // CHANGE NAME
@@ -101,7 +131,12 @@ class Create extends React.Component {
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;
     } else {
-      return <Invite /> // And then send their personal information to the database
+      return <Invite 
+      handleFriends={this.handleFriends}
+      friendValue={this.state.friendValue}
+      handleFriendChange={this.handleFriendChange}
+      friends={this.state.friends}
+      /> // And then send their personal information to the database
     }
   }
 
