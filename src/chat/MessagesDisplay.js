@@ -5,13 +5,11 @@ const MessagesDisplay = ({ messages }) => {
     <div>
       <h3>See your messages here!</h3>
       <ul>
-        { messages.map((msg, inx) => {
-          return (
+        { messages.map((msg, inx) => (
             <li key={ msg + inx } >
-              { JSON.stringify(msg.text) }
+              { msg.text }
             </li>
-          );
-        }) }
+          ))}
       </ul>
     </div>
   );

@@ -17,29 +17,27 @@ class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: [
-        {from: 'me', text: 'hello there'},
-        {from: 'someone', text: 'hihi'},
-        {from: 'noOne', text: 'hihhhoohohsdfjsdlfj'}
-      ]
+      messages: [ß]
     };
-    listenToMessages(this.state.eventId, (msg) => {
-      messages: [msg, ...this.state.messages]
+    listenToMessages(this.props.eventId, (msg) => {
+      console.log('recieved message: ', msg);
+      this.setState({
+        messages: [msg, ...this.state.messages]
+      });
     });
     this.sendMessage = this.sendMessage.bind(this);
   }
 
-  sendMessage(msg, from='John Snow') {
+  sendMessage(text, from='John Snow') {
     // emit socket event with the message data
     // handle saving that message to the database on
     // the server side
     console.log(this.props);
     emitMessage('chat', {
-      msg,
+      text,
       from,
       eventId: this.props.eventId
     });
-    alert(`Your message is: ${msg}`);
   }
 
   render() {
