@@ -114,6 +114,7 @@ class EventPage extends React.Component {
   }
 
 	render(){
+		console.log(this.props);
 		const eventFinalized = this.state.eventFinalized;
 		let topBox = null;
 		if (!eventFinalized) {
