@@ -10,6 +10,7 @@ import Navbar from './navbar.js';
 import Invited from './user/Invited.js';
 import Going from './user/Going.js';
 import Hosting from './user/Hosting.js';
+import Navbar from './navbar.js';
 import EventPage from './event/eventPage.js';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
 import {BrowserRouter, Route, Switch, browserHistory, Redirect, withRouter} from 'react-router-dom';
@@ -25,7 +26,10 @@ class App extends React.Component {
       isAuth: false,
       invited: [],
       going: [],
-      hosting: []
+      hosting: [],
+      username: '',
+      password: '',
+      isAuth: false
     }
     this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
     this.login = this.login.bind(this);
@@ -35,6 +39,9 @@ class App extends React.Component {
     this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
     this.setInviteGoingHosting = this.setInviteGoingHosting.bind(this);
     this.mapOut = this.mapOut.bind(this);
+    this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   setLookingAtEvent (e) {
@@ -80,6 +87,20 @@ class App extends React.Component {
       })}
     </div>)
 
+  }
+  
+  login(username, password) {
+    this.setState({
+      username,
+      password,
+      isAuth: true
+    });
+  }
+
+  logout() {
+    this.setState({
+      isAuth: false
+    });
   }
 
   render(){
