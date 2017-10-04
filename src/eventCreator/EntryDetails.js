@@ -22,7 +22,7 @@ const EntryDetails = (props) => (
           <label>Description</label>
           <input onChange={props.handleDescription} className="form-control" type="text" placeholder="Description" />
           <br></br>
-          <button onClick={props.addFilmsClick} className="btn btn-secondary btn-lg textarea">Add Films</button>
+          <button onClick={props.addFilmsSubmit} className="btn btn-secondary btn-lg textarea">Add Films</button>
         </form>
 		</div>
 	</div>
