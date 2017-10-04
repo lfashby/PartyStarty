@@ -27,8 +27,7 @@ class App extends React.Component {
       going: [],
       hosting: [],
       username: '',
-      password: '',
-      isAuth: false
+      password: ''
     }
     this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
     this.login = this.login.bind(this);
@@ -106,7 +105,7 @@ class App extends React.Component {
   render(){
     return (
       <BrowserRouter basename='/#' >
-        <Navbar logout={ this.logout } >
+        <Navbar logout={ this.logout } signedIn={this.state.isAuth}>
         <Switch>
             <Route exact path="/" render={() => (
               this.state.isAuth ? (
