@@ -22,7 +22,8 @@ class Create extends React.Component {
       filmsFinalized: false,
       eventId: '',
       friendValue: '',
-      friends: []
+      friends: [],
+      public: false
 		}
 		this.handleTitle = this.handleTitle.bind(this);
 		this.handleLocation = this.handleLocation.bind(this);
@@ -34,6 +35,7 @@ class Create extends React.Component {
     this.handleFriends = this.handleFriends.bind(this);
     this.handleFriendChange = this.handleFriendChange.bind(this);
     this.renderSubmit = this.renderSubmit.bind(this);
+    this.isPublic = this.isPublic.bind(this);
 	}
 
 	handleTitle(e){
@@ -121,6 +123,11 @@ class Create extends React.Component {
 
   }
 
+  isPublic() {
+    this.setState({public: !this.state.public}) // Will need an if
+    
+  }
+
   renderViews() { // CHANGE NAME
     if (!this.state.filmsAdded) {
       return <EntryDetails 
@@ -140,7 +147,8 @@ class Create extends React.Component {
       handleFriendChange={this.handleFriendChange}
       friends={this.state.friends}
       renderSubmit={this.renderSubmit}
-
+      public={this.state.public}
+      isPublic={this.isPublic}
       /> 
     }
   }
