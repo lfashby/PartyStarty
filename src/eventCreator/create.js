@@ -4,7 +4,8 @@ import Search from '../search';
 import Navbar from '../navbar';
 import {Link} from 'react-router-dom';
 import Home from '../home'
-import EntryDetails from './entryDetails.js';
+import EntryDetails from './EntryDetails.js';
+import Invite from './Invite.js'
 import axios from 'axios';
 
 class Create extends React.Component {
@@ -19,7 +20,9 @@ class Create extends React.Component {
       entryDataSubmitted: false,
       filmsAdded: false,
       filmsFinalized: false,
-      eventId: ''
+      eventId: '',
+      friendValue: '',
+      friends: []
 		}
 		this.handleTitle = this.handleTitle.bind(this);
 		this.handleLocation = this.handleLocation.bind(this);
@@ -28,6 +31,8 @@ class Create extends React.Component {
     this.handleDescription = this.handleDescription.bind(this);
     this.addFilmsSubmit = this.addFilmsSubmit.bind(this);
     this.handleFinalizedFilms = this.handleFinalizedFilms.bind(this);
+    this.handleFriends = this.handleFriends.bind(this);
+    this.handleFriendChange = this.handleFriendChange.bind(this);
 	}
 
 	handleTitle(e){
@@ -79,7 +84,38 @@ class Create extends React.Component {
 		axios.post('/addMovies', {
       movies: movies,
       eventId: this.state.eventId
-		})
+    })
+    .then((response) => {
+      console.log('Films sent');
+    })
+    .catch((error) => {
+      console.log('Error sending films to db', error);
+    })
+  }
+
+  handleFriendChange(event) {
+    this.setState({friendValue: event.target.value});
+  }
+
+  handleFriends(e) {
+    e.preventDefault();
+    // Send friendValue to Collin
+    axios.post('/invite', {
+      invitedUserName: this.state.friendValue,
+      eventId: this.state.eventId,
+      eventTitle: this.state.title
+      // Host username picked up on other side
+    })
+    .then((response) => {
+      console.log('Invite sent to db successfully', response);
+    })
+    .catch((error) => {
+      console.log('Error sending invite', error)
+    })
+    this.setState({
+      friends: [...this.state.friends, this.state.friendValue],
+      friendValue: ''
+    })
   }
 
   renderStuff() { // CHANGE NAME
@@ -95,7 +131,12 @@ class Create extends React.Component {
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;
     } else {
-      return <p>ADD YOUR FRIENDS</p> // And then send their personal information to the database
+      return <Invite 
+      handleFriends={this.handleFriends}
+      friendValue={this.state.friendValue}
+      handleFriendChange={this.handleFriendChange}
+      friends={this.state.friends}
+      /> // And then send their personal information to the database
     }
   }
 
@@ -107,5 +148,5 @@ class Create extends React.Component {
     )
 	}
 }
-// 	<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg textarea">Create Event</Link>
+// 	<Link to="/" className="btn btn-secondary btn-lg textarea">Create Event</Link>
 export default Create;
