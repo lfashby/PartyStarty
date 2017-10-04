@@ -10,8 +10,6 @@ const Invite = (props) => (
         <form onSubmit={props.handleFriends}>
           <input value={props.friendValue} onChange={props.handleFriendChange} className="form-control" type="text" placeholder="Enter username" />
           <input className="btn btn-secondary btn-lg textarea" type="submit" value="Add user" />
-          Is this event public?
-          <input type="checkbox" checked={props.public} onChange={props.isPublic} />
         </form>
       <ul>
         {props.friends.map((friend, i) => {
