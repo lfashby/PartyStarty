@@ -205,6 +205,20 @@ justify-content: space-around;
 .hostingButton {
   background-color: #3b5998;
 }
+
+.voterBox {
+  display:flex;
+  justify-content:center;
+}
+.voterBox > div {
+  margin:10px;
+  background-color:#bada55;
+}
+.movieOption {
+  width:300px;
+}
+
+
 /*.navLinks {
   display: flex;
   justify-content: space-between;
