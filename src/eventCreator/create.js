@@ -18,7 +18,8 @@ class Create extends React.Component {
       description: "",
       entryDataSubmitted: false,
       filmsAdded: false,
-      filmsFinalized: false
+      filmsFinalized: false,
+      eventId: ''
 		}
 		this.handleTitle = this.handleTitle.bind(this);
 		this.handleLocation = this.handleLocation.bind(this);
@@ -50,13 +51,12 @@ class Create extends React.Component {
   }
   
   submitEntryData(){
-    this.setState({entryDataSubmitted: true})
+    this.setState({entryDataSubmitted: true});
   }
 
   // Send entry details to server.
   addFilmsSubmit() {
-    this.setState({filmsAdded: true})
-    // Send entry details to colin
+    this.setState({filmsAdded: true});
 		axios.post('/create', {
 			title: this.state.title, 
 			location: this.state.location,
@@ -65,7 +65,8 @@ class Create extends React.Component {
 			description: this.state.description
 		})
 		.then((response) => {
-			console.log('SUCCESS', response);
+      // console.log('SUCCESS', response.data._id); // Awesome
+      this.setState({eventId: response.data.id});
 		})
 		.catch((error) => {
 			console.log('ERROR', error);
