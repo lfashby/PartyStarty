@@ -66,6 +66,7 @@ app.put('/movies', util.checkUser, requestHandler.updateMovies);
 
 app.get('/movies', util.checkUser, requestHandler.getMovies);
 
+app.get('/publicEvents', util.checkUser, requestHandler.getPublicEvents);
 
 app.get('/event/:event_id', requestHandler.getEventDetail);
 // app.get('/event/:event_id', util.checkUser, requestHandler.getEventDetail);

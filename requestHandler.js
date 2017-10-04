@@ -128,6 +128,7 @@ module.exports = {
     var eventDate = req.body.date;
     var eventDesc = req.body.description;
     var eventTime = req.body.time;
+    var eventPublic = req.body.public;
     // var eventUser = req.session.user.username;
 
     // new needed information TODO
@@ -146,7 +147,8 @@ module.exports = {
             eventDesc,
             eventHostName,
             eventMoviePictureUrl,
-            eventFinalized
+            eventFinalized,
+            eventPublic
           }, function(err, event) {
             if (err) {
               console.log('error creating an event: ', err);
@@ -308,6 +310,18 @@ module.exports = {
                         });
                     }
                   });
+              }
+            });
+        },
+
+        getPublicEvents: function(req, res) {
+          Event.find({ eventPublic: true })
+            .exec(function(err, publicEvents) {
+              if(err) {
+                console.log('Error getting public events: ', err);
+                res.send('Error getting public events: ', err);
+              } else {
+                res.send(publicEvents);
               }
             });
         }
