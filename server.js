@@ -62,7 +62,9 @@ app.post('/addMovies', util.checkUser, requestHandler.addMovies);
 
 app.get('/getEvents', util.checkUser, requestHandler.getEvents);
 
-app.put('/movies', util.checkUser, requestHandler.updateMovies)
+app.put('/movies', util.checkUser, requestHandler.updateMovies);
+
+app.get('/movies', util.checkUser, requestHandler.getMovies);
 
 
 app.get('/event/:event_id', requestHandler.getEventDetail);
