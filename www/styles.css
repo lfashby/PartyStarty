@@ -188,6 +188,11 @@ justify-content: space-around;
   margin-bottom: 7%;
 }
 
+.goToEvent {
+  font-size: 180%;
+  background-color: rgba(255, 163, 0, 0.82);
+}
+
 .hosting {
   margin-top: 7%;
   margin-bottom: 10%;
@@ -215,6 +220,11 @@ justify-content: space-around;
 }
 .movieOption {
   width:300px;
+}
+
+.mapOfEvents {
+  width: 100%;
+  text-align: center;
 }
 
 
