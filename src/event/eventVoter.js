@@ -5,7 +5,9 @@ const EventVoter = (props) => (
   <div >
     <form className='voterBox'>
       <div className='movieOption'>
-        {props.movies[0].title}
+        <div className="qEntry">
+	        <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[0].poster}`} />
+	      </div>
         <select value={props.firstRating} onChange={props.handleFirstRating}>
           <option value="0">0</option>
           <option value="1">1</option>
@@ -21,7 +23,9 @@ const EventVoter = (props) => (
         </select>
       </div>
       <div className='movieOption'>
-        {props.movies[1].title}
+        <div className="qEntry">
+	        <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[1].poster}`} />
+	      </div>
         <select value={props.secondRating} onChange={props.handleSecondRating}>
           <option value="0">0</option>
           <option value="1">1</option>
@@ -37,7 +41,9 @@ const EventVoter = (props) => (
         </select>
       </div>
       <div className='movieOption'>
-        {props.movies[2].title}
+        <div className="qEntry">
+	        <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[2].poster}`} />
+	      </div>
         <select value={props.thirdRating} onChange={props.handleThirdRating}>
           <option value="0">0</option>
           <option value="1">1</option>

@@ -16,17 +16,39 @@ class EventPage extends React.Component {
       event: {},
 			eventFinalized: false,
 			threeMovies: [
-				{
-					title: 'hi',
-					eventId: 1,
-
-				}, {
-					title: 'hello',
-					eventId: 1
-				}, {
-					title: 'yes',
-					eventId: 1
-				}
+        {
+					"_id": "59d52fc9808c0f723595a0fd",
+					"title": "The Revenant",
+					"poster": "/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg",
+					"overview": "In the 1820s, a frontiersman, Hugh Glass, sets out on a path of vengeance against those who left him for dead after a bear mauling.",
+					"eventId": "59d52fa7808c0f723595a0fb",
+					"votes": 7.3,
+					"totalUserVotes": 0,
+					"__v": 0,
+					"votesByUser": []
+        },
+        {
+					"_id": "59d52fc9808c0f723595a0fe",
+					"title": "Blair Witch",
+					"poster": "/kqmGs9q5WZkxKub60K6pU37GdvU.jpg",
+					"overview": "Students on a camping trip discover something sinister is lurking beyond the trees.",
+					"eventId": "59d52fa7808c0f723595a0fb",
+					"votes": 4.9,
+					"totalUserVotes": 0,
+					"__v": 0,
+					"votesByUser": []
+        },
+        {
+					"_id": "59d52fc9808c0f723595a0ff",
+					"title": "Elf",
+					"poster": "/9jChHqqcpe0zHNTqkNqWZkwkgil.jpg",
+					"overview": "When young Buddy falls into Santa's gift sack on Christmas Eve, he's transported back to the North Pole and raised as a toy-making elf by Santa's helpers. But as he grows into adulthood, he can't shake the nagging feeling that he doesn't belong. Buddy vows to visit Manhattan and find his real dad, a workaholic publisher.",
+					"eventId": "59d52fa7808c0f723595a0fb",
+					"votes": 6.4,
+					"totalUserVotes": 0,
+					"__v": 0,
+					"votesByUser": []
+        }
 			],
 			firstRating: 0,
       secondRating: 0,
@@ -85,9 +107,10 @@ class EventPage extends React.Component {
 			})
 	}
 
-  onComponentDidMount() {
-		var eventId = this.props.eventId;
-		this.getEvent(eventId);
+  componentDidMount() {
+		//var eventId = this.props.event;
+		//console.log(this.props);
+		//this.getEvent(eventId);
   }
 
 	render(){

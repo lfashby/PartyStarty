@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 var $ = require("jquery");
 var axios = require('axios');
 
-
 // Shift to stateless
 const MovieQueueListEntry = (props) => (
 	<div className="qEntry">
@@ -11,9 +10,7 @@ const MovieQueueListEntry = (props) => (
 	</div>
 )
 
-
 export default MovieQueueListEntry;
-
 
 // <SearchResultsDisplay currentMovie={this.state.currentMovie}/> NOT BEING USED
 
