@@ -126,7 +126,7 @@ justify-content: space-around;
   font-size: 40px;
   font-weight: bolder;
   /*background: -webkit-linear-gradient(green, yellow);*/
-  -webkit-background-clip: text;
+  webkit-background-clip: text;
   /*-webkit-text-fill-color: transparent;*/
   font-family: 'Helvetica';
   padding: 0;
