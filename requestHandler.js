@@ -151,90 +151,107 @@ module.exports = {
             if (err) {
               console.log('error creating an event: ', err);
             } else {
-              // console.log(event);
+              Invite.create({
+                invitedUserName: event.eventHostUserName,
+                eventId: event._id,
+                eventTitle: event.eventTitle,
+                eventHostUserName: event.eventHostUserName,
+                eventMoviePictureUrl: event.eventMoviePictureUrl,
+                invitedUserResponded: false,
+                invitedUserGoing: null
+              }, function(err, invite) {
+                if(err) {
+                  console.log('err creating event host invite', err);
+                }
+              });
               res.send(event);
             }
-            // else {
-            //   invitedUserNames.forEach((invitedUserName) => {
-            //     Invite.create({
-            //       invitedUserName,
-            //       eventId: event._id,
-            //       eventTitle: event.eventTitle,
-            //       eventHostUserName: event.eventHostUserName,
-            //       eventMoviePictureUrl: event.eventMoviePictureUrl,
-            //       invitedUserResponded: false,
-            //       invitedUserGoing: null
-            //     });
-            //   });
-            //   Invite.create({
-            //     invitedUserName: event.eventHostUserName,
-            //     eventId: event._id,
-            //     eventTitle: event.eventTitle,
-            //     eventHostUserName: event.eventHostUserName,
-            //     eventMoviePictureUrl: event.eventMoviePictureUrl,
-            //     invitedUserResponded: false,
-            //     invitedUserGoing: null
-            //   });
-            // }
           });
-  },
-  // Add user to event
-  updateEvent: function(req, res, next) {
-    var eventTitle = req.body.eventTitle;
-    var eventUser = req.body.user;
-
-    Event.findOne({eventTitle: eventTitle})
-      .exec(function(err, event) {
-        if(event) {
-          event.eventUsers.push(eventUser);
-          event.save();
-        } else {
-          console.log('Event does not exisit');
-        }
-      });
-  },
-  // Retrieve existing movie queue
-  getMovie: function(req, res) {
-    Movie.find().exec(function(err, movies) {
-      if (movies) {
-        res.status(200).send(movies);
-      } else {
-        res.end('Movie queue does not exist');
-      }
-    });
-  },
-  // Create new movie queue
-  addMovie: function(req, res) {
-    console.log(req.body);
-    var title = req.body.currentMovie.title;
-    var event = req.body.event;
-
-    Movie.findOne({title: title, event: event})
-      .exec(function(err, movie) {
-        if(movie) {
-          console.log('Movie already in queue');
-          res.status(200).send(movie);
-        } else {
-          console.log('Movie not in queue yet');
-          var movieId = req.body.currentMovie.id;
-          var moviePoster = req.body.currentMovie.poster;
-          var movieOverview = req.body.currentMovie.overview;
-          var movieVotes = req.body.currentMovie.votes;
-
-          Movie.create({
-                  title: title,
-                  id: movieId,
-                  poster: moviePoster,
-                  overview: movieOverview,
-                  votes: movieVotes,
-                  upvotes: 0,
-                  downvotes: 0,
-                  event: [event]
-                }, function(err, movie) {
-                  console.log('Movie added to queue');
-                  res.send(movie);
+        },
+        // Add user to event
+        updateEvent: function(req, res, next) {
+          var eventTitle = req.body.eventTitle;
+          var eventUser = req.body.user;
+          
+          Event.findOne({eventTitle: eventTitle})
+          .exec(function(err, event) {
+            if(event) {
+              event.eventUsers.push(eventUser);
+              event.save();
+            } else {
+              console.log('Event does not exisit');
+            }
+          });
+        },
+        // Retrieve existing movie queue
+        getMovie: function(req, res) {
+          Movie.find().exec(function(err, movies) {
+            if (movies) {
+              res.status(200).send(movies);
+            } else {
+              res.end('Movie queue does not exist');
+            }
+          });
+        },
+        // Create new movie queue
+        addMovies: function(req, res) {
+          let movies = req.body.movies;
+          let eventId = req.body.eventId;
+          movies.forEach(function(movie) {
+            let title = movie.title;
+            let poster = movie.poster;
+            let overview = movie.overview;
+            let votes = movie.votes;
+            let votesByUser = [];
+            let totalVotes = 0;
+            Movie.create({
+              title,
+              poster,
+              overview,
+              eventId,
+              votes,
+              totalUserVotes,
+              votesByUser
+            }).exec(function(err, movie) {
+              if(err) {
+                console.log('error making movie: ', err);
+                res.send('Error making movie: ', err);
+              }
+            });
+          });
+        },
+        
+        addInvite: function(req, res) {
+          // TODO get the new invite info from the request object
+          let invitedUserName = req.body.invitedUserName;
+          let eventId = req.body.eventId;
+          let eventTitle = req.body.eventTitle;
+          let eventHostUserName = req.session.user.username;
+          let eventMoviePictureUrl = '';
+          User.findOne({ username: invitedUserName })
+            .exec(function(err, user) {
+              if(err) {
+                console.log('Error finding user for creating invite: ', err);
+                res.send('error');
+              } else {
+                Invite.create({
+                  invitedUserName,
+                  eventId,
+                  eventTitle,
+                  eventHostUserName,
+                  eventMoviePictureUrl,
+                  invitedUserResponded: false,
+                  invitedUserGoing: null
+                }).exec(function(err, invite) {
+                  if (err) {
+                    console.log('Error creating invite: ', err);
+                    res.send('error');
+                  } else {
+                    res.send('success')
+                  }
                 });
-          }
-        });
-  }
-};
+              }
+            }) 
+        }
+      };
+      

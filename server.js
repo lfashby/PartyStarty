@@ -54,9 +54,11 @@ app.post('/signup', requestHandler.addUser);
 
 app.post('/signin', requestHandler.getUser);
 
+app.post('/invite', util.checkUser, requestHandler.addInvite);
+
 app.post('/create', util.checkUser, requestHandler.addEvent);
 
-app.post('/addMovie', util.checkUser, requestHandler.addMovie);
+app.post('/addMovies', util.checkUser, requestHandler.addMovies);
 
 app.get('/getEvents', util.checkUser, requestHandler.getEvents);
 
