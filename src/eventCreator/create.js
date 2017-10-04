@@ -72,7 +72,7 @@ class Create extends React.Component {
 		})
 		.then((response) => {
       // console.log('SUCCESS', response.data._id); // Awesome
-      this.setState({eventId: response.data.id});
+      this.setState({eventId: response.data._id});
 		})
 		.catch((error) => {
 			console.log('ERROR', error);
@@ -81,7 +81,6 @@ class Create extends React.Component {
 
   handleFinalizedFilms(movies) {
     this.setState({filmsFinalized: true});
-    // console.log(movies); 
 		axios.post('/addMovies', {
       movies: movies,
       eventId: this.state.eventId
