@@ -52,7 +52,6 @@ class Home extends React.Component {
 	render(){
 		return (
 			<div>
-				<Navbar />
 				<div className="container">
 					<div className="row">
 						<div className="EventList col-2"> 

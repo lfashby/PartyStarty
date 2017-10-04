@@ -81,7 +81,7 @@ class Create extends React.Component {
 
   handleFinalizedFilms(movies) {
     this.setState({filmsFinalized: true});
-    console.log(movies); // Send movies to colin
+    // console.log(movies); 
 		axios.post('/addMovies', {
       movies: movies,
       eventId: this.state.eventId
