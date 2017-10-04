@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Link , Redirect} from 'react-router-dom';
+import {Link , Redirect, withRouter} from 'react-router-dom';
 import Navbar from './navbar'
 var $ = require('jquery');
 var axios = require('axios');
@@ -11,66 +11,34 @@ class SignIn extends React.Component {
 		this.state = {
 			username: "",
 			password: "",
-			auth: false
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleUserInput = this.handleUserInput.bind(this);
 		this.handlePasswordInput = this.handlePasswordInput.bind(this);
 	}
-	// componentWillMount(){
-	// 	if(isAuth === true){
-	// 		render()
-	// 	}
-		// if(this.state.auth !== window.isAuth){
-		// 	this.setState({auth: isAuth});
-		// }
-	// }
+
 	handleSubmit(event){
-		var that = this;
 		console.log(this.state.username, this.state.password);
 		axios.post('/signin', {username: this.state.username, password: this.state.password})
 		.then((response) => {
-			return response;
-		})
-		.then((response) => {
 			console.log("res data ", response.data);
-				console.log("auth: ", this.state.auth);
-			if(response.data === 'error'){	
-			// if (this.refs.myRef) {this.setState({auth:false})}
-				window.isAuth = false; 
-			} else {
-			// 
-				window.isAuth = true;
+			console.log("auth: ", this.state.auth);
+			if(!(response.data === 'error')) {	
+				this.props.login(this.state.username, this.state.password);
+				this.props.history.push('/');
 			}
-			console.log('isaAuth in promise',isAuth);
-			// $('#signin').click();
 		})
-		// .then((response)=>{
-		// 	this.setState({auth:true})
 		.catch((error) => {
 			console.log(error);
 		})
-		// this.context.history.push('/home');
 	}
+
 	handleUserInput(e){
 		this.setState({username: e.target.value});
 	}
 	handlePasswordInput(e){
 		this.setState({password: e.target.value});
 	}
-// if(window.isAuth){
-// 			return (
-// 				<Redirect to="/home" />
-// 			)
-// 			}
-	// componentDidMount(){
-	// $('body').keypress(function(event) {
- //    if (event.keyCode == 13 || event.which == 13) {
- //        $('signin').trigger('click');
- //        console.log('hello')
- //    }
-	// });
-	// }
 
 	render(){
 		
@@ -94,4 +62,4 @@ class SignIn extends React.Component {
 	}
 }
 
-export default SignIn; 
+export default withRouter(SignIn); 

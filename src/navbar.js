@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import Search from './search';
 import SignIn from './signin';
 import SignUp from './signup';
@@ -11,23 +11,21 @@ var axios = require('axios');
 class Navbar extends React.Component {
 	constructor(props){
 		super(props)
-		this.state = {
-			// events: [],
-			// currentEvent: events[0]
-		}
-		this.handleSignOut = this.handleSignOut.bind(this);
+		this.state = {};
+		this.handleLogout = this.handleLogout.bind(this);
 	}
 
-	handleSignOut(){
+	handleLogout() {
+		this.props.logout();
 		axios.get('/logout')
 		.then((data) => {
 			console.log(data);
+			this.props.history.push('/signin');
 		})
 		.catch(error => {
 			console.log(error);
 		}) 
-		console.log('clicked')
-		window.isAuth = false;
+		console.log('clicked!');
 	}
 
 	render(){
@@ -44,13 +42,14 @@ class Navbar extends React.Component {
 				
 				<Link to="/create" style={{textDecoration: 'none' }} className="Link nav-link h4">Create</Link>
 
-				<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4" id="logout" onClick={this.handleSignOut} >Sign Out</Link>
+				<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4" id="logout" onClick={ this.handleLogout }>Sign Out</Link>
 				
 				<Link to="/eventpage" style={{textDecoration: 'none' }} className="Link nav-link h4">EventPage</Link>
 				</div>
+				{ this.props.children }
 			</div>
 		)
 	}
 }
 
-export default Navbar; 
+export default withRouter(Navbar); 

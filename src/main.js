@@ -6,12 +6,13 @@ import Search from './search';
 import Create from './eventCreator/create';
 import Home from './home';
 import User from './user/user.js';
+import Navbar from './navbar.js';
 import Invited from './user/Invited.js';
 import Going from './user/Going.js';
 import Hosting from './user/Hosting.js';
 import EventPage from './event/eventPage.js';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
-import {BrowserRouter, Route, Switch, browserHistory, Redirect} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, browserHistory, Redirect, withRouter} from 'react-router-dom';
 
 // const history = createBrowserHistory();
 class App extends React.Component {
@@ -19,10 +20,18 @@ class App extends React.Component {
     super(props)
     this.state = {
       lookingAtEvent: ``,
+      username: '',
+      password: '',
+      isAuth: false,
       invited: [],
       going: [],
       hosting: []
     }
+    this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+
+    
     this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
     this.setInviteGoingHosting = this.setInviteGoingHosting.bind(this);
     this.mapOut = this.mapOut.bind(this);
@@ -35,6 +44,19 @@ class App extends React.Component {
       lookingAtEvent: event
     })
   }
+
+  login(username, password) {
+    this.setState({
+      username,
+      password,
+      isAuth: true
+    });
+  }
+
+  logout() {
+    this.setState({
+      isAuth: false
+    });
 
   setInviteGoingHosting (props, values) {
     this.setState({
@@ -57,25 +79,50 @@ class App extends React.Component {
         )
       })}
     </div>)
+
   }
 
   render(){
     return (
       <BrowserRouter basename='/#' >
+        <Navbar logout={ this.logout } >
         <Switch>
             <Route exact path="/" render={() => (
-              isAuth ? (
+              this.state.isAuth ? (
                 <Redirect to="/home"/>
               ) : (
                 <Redirect to="/signin"/>
               )
             )}/>
             <Route exact path="/home" render={() => (
-              isAuth ? 
-                <Home /> : (
+              this.state.isAuth ? (
+                <Home /> 
+              ) : (
                 <Redirect to="/signin"/>
               )
             )}/>
+            <Route exact path="/create" render={() => (
+              this.state.isAuth ? (
+                <Create /> 
+              ) : (
+                <Redirect to="/signin"/>
+              )
+            )}/>
+            <Route path='/userpage' render={() => (
+              this.state.isAuth ? (
+                <User setLookingAtEvent={this.setLookingAtEvent}/>
+              ) : (
+                <Redirect to="/signin" />
+              )
+            )}/>
+            <Route path="/eventpage" render={() => (
+              this.state.isAuth ?
+              <EventPage event={this.state.lookingAtEvent}/> :
+              <Redirect to="/signin" />
+            )} />
+            <Route path="/signin" render={() => (
+              <SignIn login={ this.login } />
+            )} />
             <Route path="/home" component={Home}/>
 
             <Route path='/userpage' render={() => {
@@ -104,27 +151,14 @@ class App extends React.Component {
 
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
-            <Route path="/create" component={Create}/>
-            <Route path="/search" component={Search} />
-            <Route path="/eventpage" render={() => {
-              return <EventPage event={this.state.lookingAtEvent}/>
-            }} />
             <Route path="*" component={Home} />
         </Switch>
+      </Navbar>
       </BrowserRouter>
     )
   }
 }
-
-window.isAuth = false;
-// function checkAuth() {
-//   console.log('checked Auth')
-//   return setTimeout(()=> isAuth, 1000);
-// }
-
-document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render(
-    (<App />),
-    document.getElementById('mount')
-  );
-});
+ReactDOM.render(
+  (<App/>),
+  document.getElementById('mount')
+);
