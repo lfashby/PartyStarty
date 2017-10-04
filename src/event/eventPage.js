@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import EventVoter from './eventVoter.js';
 import EventWinnerDisplay from './eventWinnerDisplay.js';
-import Chat from '../chat.js'
+import Chat from '../chat/chat.js'
 
 //receives the eventId through props, nothing else
 
@@ -117,7 +117,7 @@ class EventPage extends React.Component {
 		return (
 			<div>
 				{topBox}
-				<Chat />
+				<Chat eventId={ this.props.eventId }/>
 			</div>
 		)
 	}
