@@ -85,8 +85,8 @@ class App extends React.Component {
           </Link>
         )
       })}
-    </div>)
-
+    </div>
+    )
   }
   
   login(username, password) {

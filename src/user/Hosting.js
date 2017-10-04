@@ -11,7 +11,6 @@ class Hosting extends React.Component {
   render () {
     return (
       <div>
-        <Navbar />
         <div className='userEvents'>Hosting Following Events</div>
         {
           this.props.mapOut(`hosting`)
