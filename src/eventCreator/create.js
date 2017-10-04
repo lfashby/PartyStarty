@@ -4,7 +4,8 @@ import Search from '../search';
 import Navbar from '../navbar';
 import {Link} from 'react-router-dom';
 import Home from '../home'
-import EntryDetails from './entryDetails.js';
+import EntryDetails from './EntryDetails.js';
+import Invite from './Invite.js'
 import axios from 'axios';
 
 class Create extends React.Component {
@@ -19,7 +20,8 @@ class Create extends React.Component {
       entryDataSubmitted: false,
       filmsAdded: false,
       filmsFinalized: false,
-      eventId: ''
+      eventId: '',
+      friends: []
 		}
 		this.handleTitle = this.handleTitle.bind(this);
 		this.handleLocation = this.handleLocation.bind(this);
@@ -82,6 +84,10 @@ class Create extends React.Component {
 		})
   }
 
+  handleFriends() {
+    
+  }
+
   renderStuff() { // CHANGE NAME
     if (!this.state.filmsAdded) {
       return <EntryDetails 
@@ -95,7 +101,7 @@ class Create extends React.Component {
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;
     } else {
-      return <p>ADD YOUR FRIENDS</p> // And then send their personal information to the database
+      return <Invite /> // And then send their personal information to the database
     }
   }
 
@@ -107,5 +113,5 @@ class Create extends React.Component {
     )
 	}
 }
-// 	<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg textarea">Create Event</Link>
+// 	<Link to="/" className="btn btn-secondary btn-lg textarea">Create Event</Link>
 export default Create;

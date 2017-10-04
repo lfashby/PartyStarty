@@ -42,13 +42,13 @@ class Search extends React.Component {
 	handleAddMovieToQueue() {
 		// As long as less than 3
 		this.setState({movies: [...this.state.movies, this.state.currentMovie]});
-		axios.post("/addMovie",{currentMovie: this.state.currentMovie})
-		.then(response => {
-			console.log(response);
-		})
-		.catch(error => {
-			console.log(error);
-		})
+		// axios.post("/addMovie",{currentMovie: this.state.currentMovie})
+		// .then(response => {
+		// 	console.log(response);
+		// })
+		// .catch(error => {
+		// 	console.log(error);
+		// })
 	};
 	
 	// submitQueue() {
