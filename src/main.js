@@ -12,7 +12,7 @@ import Going from './user/Going.js';
 import Hosting from './user/Hosting.js';
 import EventPage from './event/eventPage.js';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
-import {BrowserRouter, Route, Switch, browserHistory, Redirect, withRouter} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, browserHistory, Redirect, withRouter, Link} from 'react-router-dom';
 
 // const history = createBrowserHistory();
 class App extends React.Component {
@@ -73,11 +73,12 @@ class App extends React.Component {
   }
 
   mapOut (type) {
+    console.log('working with data ', this.state[type])
     return (
     <div>
       {this.state[type].map((event,i) => {
         return (
-          <Link to='eventpage'>
+          <Link to='eventpage' key={i}>
             <div key={i}
             onClick={this.setLookAtEvent}
             value={event.eventTitle}> event.eventTitle </div>
@@ -130,7 +131,8 @@ class App extends React.Component {
             )}/>
             <Route path='/userpage' render={() => (
               this.state.isAuth ? (
-                <User setLookingAtEvent={this.setLookingAtEvent}/>
+                <User setLookingAtEvent={this.setLookingAtEvent}
+                  setInviteGoingHosting={this.setInviteGoingHosting}/>
               ) : (
                 <Redirect to="/signin" />
               )
