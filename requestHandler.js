@@ -276,6 +276,40 @@ module.exports = {
                 }              
               });
           });
+        },
+
+        getMovies: function(req, res) {
+          let eventId = req.body.eventId;
+
+          Event.findOne({ _id: eventId })
+            .exec(function(err, event) {
+              if(err) {
+                console.log('Error getting event info for event: ', err);
+                res.send('Error getting event info for event: ', err);
+              } else {
+                Movie.find({ eventId })
+                  .exec(function(err, movies) {
+                    if(err) {
+                      console.log('error getting movies to send back for event: ', err);
+                      res.send('error getting movies to send back for event: ', err);
+                    } else {
+                      Invite.find({ eventId })
+                        .exec(function(err, invites) {
+                          if(err) {
+                            console.log('Error getting invites for event: ', err);
+                            res.send('Error getting invites for event: ', err);
+                          } else {
+                            res.send({
+                              event,
+                              movies,
+                              invites
+                            });
+                          }
+                        });
+                    }
+                  });
+              }
+            });
         }
       };
       
