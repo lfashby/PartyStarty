@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import EventVoter from './eventVoter.js';
 import EventWinnerDisplay from './eventWinnerDisplay.js';
+import Chat from '../chat.js'
 
 class EventPage extends React.Component {
 	constructor(props){
@@ -36,20 +37,20 @@ class EventPage extends React.Component {
 	render(){
 		const eventFinalized = this.state.eventFinalized;
 		
+		let topBox = null;
 		if (!eventFinalized) {
-			return (
-				<EventVoter 
-					threeMovies={this.state.threeMovies}
-			/>)
-		} else if (eventFinalized) {
-			return (
-			<EventWinnerDisplay
-					event={this.state.event}
-					threeMovies={this.state.threeMovies}
-			/>)
+			topBox = <EventVoter threeMovies={this.state.threeMovies}/>;
+		} else {
+			topBox = <EventWinnerDisplay event={this.state.event} threeMovies={this.state.threeMovies}/>;
 		}
+		
+		return (
+			<div>
+				{topBox}
+				<Chat />
+			</div>
+		)
 	}
-
 }
 
 //render event voting system if event.finalized = false;
