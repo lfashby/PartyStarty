@@ -3,3 +3,4 @@ www/bundle.js
 .DS_store
 package-lock.json
 .env
+config.js

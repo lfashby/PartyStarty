@@ -43,8 +43,9 @@ class App extends React.Component {
   }
 
   setLookingAtEvent (e) {
-    e.preventDefault();
+    // e.preventDefault();
     var event = e.target.value;
+    console.log('event' , e.target.value);
     this.setState({
       lookingAtEvent: event
     })
@@ -73,23 +74,23 @@ class App extends React.Component {
   }
 
   mapOut (type) {
-    console.log('working with data ', this.state[type])
+    console.log('working with data ', this.state[type],'this.setLookingAtEvent',this.setLookingAtEvent)
     return (
-    <div className='mapOfEvents'>
-      {this.state[type].map((event,i) => {
-        return (
-          <Link to='eventpage' key={i}>
-            <button key={i}
-            type='button'
-            className='goToEvent'
-            onClick={this.setLookAtEvent}
-            value={event._id}
-            > {event.eventTitle} </button>
-            <br/>
-          </Link>
-        )
-      })}
-    </div>
+      <div className='mapOfEvents'>
+        {this.state[type].map((event,i) => {
+          return (
+            <Link to='/eventpage' key={i} style={{fontSize:`180%`}}>
+              <button key={i}
+              type='button'
+              className='goToEvent'
+              onClick={this.setLookingAtEvent}
+              value={event._id}
+              > {event.eventTitle} </button>
+              <br/>
+            </Link>
+          )
+        })}
+      </div>
     )
   }
   
