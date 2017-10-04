@@ -5,8 +5,7 @@ import Navbar from '../navbar';
 import {Link} from 'react-router-dom';
 import Home from '../home'
 import EntryDetails from './entryDetails.js';
-
-var axios = require('axios');
+import axios from 'axios';
 
 class Create extends React.Component {
 	constructor(props){
@@ -21,30 +20,13 @@ class Create extends React.Component {
       filmsAdded: false,
       filmsFinalized: false
 		}
-		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleTitle = this.handleTitle.bind(this);
 		this.handleLocation = this.handleLocation.bind(this);
 		this.handleDate = this.handleDate.bind(this);
 		this.handleTime = this.handleTime.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
-    this.addFilmsClick = this.addFilmsClick.bind(this);
+    this.addFilmsSubmit = this.addFilmsSubmit.bind(this);
     this.handleFinalizedFilms = this.handleFinalizedFilms.bind(this);
-	}
-
-	handleSubmit(e){
-		axios.post('/create', {
-			title: this.state.title, 
-			location: this.state.location,
-			date: this.state.date,
-			time: this.state.time,
-			description: this.state.description
-		})
-		.then((response) => {
-			console.log(response);
-		})
-		.catch((error) => {
-			console.log(error);
-		})
 	}
 
 	handleTitle(e){
@@ -71,9 +53,23 @@ class Create extends React.Component {
     this.setState({entryDataSubmitted: true})
   }
 
-  addFilmsClick() {
+  // Send entry details to server.
+  addFilmsSubmit() {
     this.setState({filmsAdded: true})
     // Send entry details to colin
+		axios.post('/create', {
+			title: this.state.title, 
+			location: this.state.location,
+			date: this.state.date,
+			time: this.state.time,
+			description: this.state.description
+		})
+		.then((response) => {
+			console.log('SUCCESS', response);
+		})
+		.catch((error) => {
+			console.log('ERROR', error);
+		})
   }
 
   handleFinalizedFilms(movies) {
@@ -89,7 +85,7 @@ class Create extends React.Component {
       handleDate={this.handleDate}
       handleTime={this.handleTime}
       handleDescription={this.handleDescription}
-      addFilmsClick={this.addFilmsClick}
+      addFilmsSubmit={this.addFilmsSubmit}
       />
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;

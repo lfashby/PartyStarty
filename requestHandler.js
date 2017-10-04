@@ -121,26 +121,29 @@ module.exports = {
   },
   // Create event
   addEvent: function(req, res) {
+    console.log('HELLLLO', req.body);
+    
     var eventTitle = req.body.title;
     var eventLocation = req.body.location;
     var eventDate = req.body.date;
     var eventDesc = req.body.description;
-    var eventUser = req.session.user.username;
+    var eventTime = req.body.time;
+    // var eventUser = req.session.user.username;
 
     // new needed information TODO
-    var eventHostName = req.body.hostName;
+    var eventHostName = req.session.user.username;
     // TODO an array of user names or ids
     var invitedUserNames = req.body.invitedUserNames;
     // initialized to null, change when the event is finalized
     var eventMoviePictureUrl = null;
     var eventFinalized = null;
-
+    
     Event.create({
             eventTitle,
             eventLocation,
             eventTime,
             eventDesc,
-            eventHostUserName,
+            eventHostName,
             eventMoviePictureUrl,
             eventFinalized
           }, function(err, event) {
