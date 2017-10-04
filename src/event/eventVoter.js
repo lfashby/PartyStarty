@@ -52,7 +52,7 @@ const EventVoter = (props) => (
           <option value="10">10</option>
         </select>
       </div>
-      <button onClick={props.submitRatings} className="btn btn-secondary btn-lg textarea">Vote</button>
+      <button onClick={(e) => {props.submitRatings(e)}} className="btn btn-secondary btn-lg textarea">Vote</button>
     </form>
   </div>
 )

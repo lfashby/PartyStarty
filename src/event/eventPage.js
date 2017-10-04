@@ -6,14 +6,27 @@ import EventVoter from './eventVoter.js';
 import EventWinnerDisplay from './eventWinnerDisplay.js';
 import Chat from '../chat.js'
 
+//receives the eventId through props, nothing else
+
 class EventPage extends React.Component {
 	constructor(props){
     super(props);
     this.state = {
+			hasVoted: false,
       event: {},
 			eventFinalized: false,
 			threeMovies: [
-				{title: 'hi'}, {title: 'hello'}, {title: 'yes'}
+				{
+					title: 'hi',
+					eventId: 1,
+
+				}, {
+					title: 'hello',
+					eventId: 1
+				}, {
+					title: 'yes',
+					eventId: 1
+				}
 			],
 			firstRating: 0,
       secondRating: 0,
@@ -35,26 +48,32 @@ class EventPage extends React.Component {
 		this.setState({thirdRating: e.target.value});
 	}
 
-	submitRatings() {
-		console.log('submit ratings is getting triggered')
-		// axios.post('/create', {
-		// 	title: this.state.title, 
-		// 	location: this.state.location,
-		// 	date: this.state.date,
-		// 	time: this.state.time,
-		// 	description: this.state.description
-		// })
-		// .then((response) => {
-    //   // console.log('SUCCESS', response.data._id); // Awesome
-    //   this.setState({eventId: response.data.id});
-		// })
-		// .catch((error) => {
-		// 	console.log('ERROR', error);
-		// })
+	submitRatings(e) {
+		e.preventDefault();
+		var firstMovie = this.state.threeMovies[0];
+		firstMovie.votes = this.state.firstRating;
+		var secondMovie = this.state.threeMovies[1];
+		secondMovie.votes = this.state.secondRating;
+		var thirdMovie = this.state.threeMovies[2];
+		thirdMovie.votes = this.state.thirdRating;
+		var movies = [];
+		movies.push(firstMovie, secondMovie, thirdMovie);
+
+		axios.put('/movies', movies)
+		.then((response) => {
+			alert('vote sent');
+		})
+		.catch((error) => {
+			console.log('ERROR', error);
+		})
   }
 
-	getEvent() {
-		axios.get('/events/:event_id')
+	getEvent(eventId) {
+		axios.get('/events', {
+			params: {
+				eventId: eventId 
+			}
+		})
 			.then(res => {
 				this.setState({
 					threeMovies: res.data.movies,
@@ -67,7 +86,8 @@ class EventPage extends React.Component {
 	}
 
   onComponentDidMount() {
-		this.getEvent();
+		var eventId = this.props.eventId;
+		this.getEvent(eventId);
   }
 
 	render(){
