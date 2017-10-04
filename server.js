@@ -11,8 +11,7 @@ const webpackConfig = require('./webpack.config.js');
 const requestHandler = require('./requestHandler.js');
 const util = require('./lib/utility');
 const morgan = require('morgan');
-
-
+const recipeRouter = require('./Routes/food.js');
 const app = express();
 
 // sockets for the chat app
@@ -70,6 +69,8 @@ app.get('/publicEvents', util.checkUser, requestHandler.getPublicEvents);
 
 app.get('/event/:event_id', requestHandler.getEventDetail);
 // app.get('/event/:event_id', util.checkUser, requestHandler.getEventDetail);
+
+app.post('/recipes', recipeRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'src', 'home.js'));
