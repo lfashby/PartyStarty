@@ -36,7 +36,7 @@ class Navbar extends React.Component {
 				<div className="navbar navbar-expand-lg navbar-dark bg-dark" >
 				<Link to="/" style={{textDecoration: 'none' }} className="nav-brand" id="title">Greenfield</Link>
 				
-				<Link to='/userpage' style={{textDecoration: 'none' }} className="nav-brand" id="title">User Profile</Link>
+				<Link to='/userpage' style={{textDecoration: 'none' }} className="Link nav-link h4">User Profile</Link>
 
 				<Link to="/signup" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign Up</Link>
 			

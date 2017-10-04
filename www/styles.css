@@ -143,6 +143,11 @@ justify-content: space-around;
 .center {
   margin: auto;
 }
+
+.userHead {
+  font-size: 250%;
+  text-align: center;
+}
 /*.navLinks {
   display: flex;
   justify-content: space-between;
