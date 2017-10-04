@@ -29,27 +29,97 @@ class Navbar extends React.Component {
 	}
 
 	render(){
+		var nav = this.props.signedIn ? 
+			(
+				<div>
+					<div className="navbar navbar-expand-lg navbar-dark bg-dark" >
+						<Link to="/" 
+							style={{textDecoration: 'none' }} 
+							className="nav-brand" 
+							id="title">Greenfield</Link>
+						
+						<Link to='/userpage' 
+							style={{textDecoration: 'none' }} 
+							className="Link nav-link h4">User Profile</Link>
+
+						<Link to="/create" 
+							style={{textDecoration: 'none' }} 
+							className="Link nav-link h4">Create</Link>
+
+						<Link to="/eventpage" 
+							style={{textDecoration: 'none' }} 
+							className="Link nav-link h4">EventPage</Link>
+
+						<Link to="/signin" 
+							style={{textDecoration: 'none' }} 
+							className="Link nav-link h4" id="logout" 
+							onClick={ this.handleLogout }>Sign Out</Link>
+					</div>
+					{ this.props.children }
+				</div>
+			)
+			:
+		(
+			<div>
+				<div className="navbar navbar-expand-lg navbar-dark bg-dark" >
+					<Link to="/" 
+						style={{textDecoration: 'none' }} 
+						className="nav-brand" 
+						id="title">Greenfield</Link>
+					<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign In</Link>
+					<Link to="/signup" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign Up</Link>
+				</div>
+				{ this.props.children }
+			</div>	
+		)
 		return (
+			nav
+		)
+	}
+}
+
+export default withRouter(Navbar); 
+
+
+
+/*
 			<div>
 				<div className="navbar navbar-expand-lg navbar-dark bg-dark" >
 				<Link to="/" style={{textDecoration: 'none' }} className="nav-brand" id="title">Greenfield</Link>
 				
 				<Link to='/userpage' style={{textDecoration: 'none' }} className="Link nav-link h4">User Profile</Link>
 
-				<Link to="/signup" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign Up</Link>
-			
-				<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign In</Link>
+				{
+					this.props.signedIn ? null :
+					<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign In</Link>
+				}
+				{
+					this.props.signedIn ? null :
+					<Link to="/signup" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign Up</Link>
+				}
 				
 				<Link to="/create" style={{textDecoration: 'none' }} className="Link nav-link h4">Create</Link>
 
+				<Link to="/eventpage" style={{textDecoration: 'none' }} className="Link nav-link h4">EventPage</Link>
+
 				<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4" id="logout" onClick={ this.handleLogout }>Sign Out</Link>
 				
-				<Link to="/eventpage" style={{textDecoration: 'none' }} className="Link nav-link h4">EventPage</Link>
 				</div>
 				{ this.props.children }
 			</div>
-		)
-	}
-}
+*/
 
-export default withRouter(Navbar); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

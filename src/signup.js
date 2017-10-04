@@ -38,7 +38,6 @@ class SignUp extends React.Component {
 	render(){
 		return (
 			<div>
-				<Navbar />
 				<div className="signInForm">
 				<form className="">
 					<h2>Sign Up</h2>
