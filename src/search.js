@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from './navbar.js';
 var $ = require("jquery");
-import MovieQueueList from './movie/movieQueueList';
+import MovieQueueList from './movie/movieQueueList.js';
+
 var axios = require('axios');
 import Typeahead from 'typeahead.js';
 import Bloodhound from 'typeahead.js';

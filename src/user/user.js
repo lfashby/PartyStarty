@@ -5,9 +5,9 @@ class User extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
-      invited: 
-      going: 
-      hosting: 
+      invited: [],
+      going: [],
+      hosting: []
     }
   }
 
@@ -17,10 +17,11 @@ class User extends React.Component {
       url: `/getEvents`
     })
     .then(result => {
+      console.log('user server.js ', result);
       this.setState({
-        invited: result.invites,
-        going: result.goings,
-        hosting: result.hostings
+        invited: result.invites || [],
+        going: result.goings || [],
+        hosting: result.hostings || []
       })
     })
     .catch(err => {
@@ -30,12 +31,16 @@ class User extends React.Component {
   }
 
   render () {
-    function mapOut(type) {
+    const mapOut = (type) => {
       return (
       <div>
         {this.state[type].map((event,i) => {
           return (
-            <div key={i}> event.eventTitle </div>
+            <Link to='eventpage'>
+              <div key={i}
+              onClick={this.props.setLookAtEvent}
+              value={event.eventTitle}> event.eventTitle </div>
+            </Link>
           )
         })}
       </div>)
