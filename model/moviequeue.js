@@ -5,8 +5,9 @@ var MovieQueueSchema = new mongoose.Schema({
   poster: String,
   overview: String,
   eventId: String,
-  votes: Array,
-  totalVotes: Number 
+  votes: Number,
+  totalUserVotes: Number,
+  votesByUser: Array 
 });
 
 module.exports = mongoose.model('Movie', MovieQueueSchema);
