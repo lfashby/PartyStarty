@@ -19,7 +19,9 @@ class App extends React.Component {
     }
   }
 
-  setLookingAtEvent (event) {
+  setLookingAtEvent (e) {
+    e.preventDefault();
+    var event = e.target.value;
     this.setState({
       lookingAtEvent: event
     })
@@ -43,7 +45,10 @@ class App extends React.Component {
               )
             )}/>
             <Route path="/home" component={Home}/>
-            <Route path='/userpage' component={User}/>
+            <Route path='/userpage' render={() => {
+                return <User setLookingAtEvent={this.setLookingAtEvent}/>
+              }
+            }/>
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/create" component={Create}/>

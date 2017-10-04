@@ -17,11 +17,11 @@ class User extends React.Component {
       url: `/getEvents`
     })
     .then(result => {
-      console.log('result of user.js ', result);
+      console.log('user server.js ', result);
       this.setState({
-        invited: result.invites,
-        going: result.goings,
-        hosting: result.hostings
+        invited: result.invites || [],
+        going: result.goings || [],
+        hosting: result.hostings || []
       })
     })
     .catch(err => {
@@ -36,7 +36,11 @@ class User extends React.Component {
       <div>
         {this.state[type].map((event,i) => {
           return (
-            <div key={i}> event.eventTitle </div>
+            <Link to='eventpage'>
+              <div key={i}
+              onClick={this.props.setLookAtEvent}
+              value={event.eventTitle}> event.eventTitle </div>
+            </Link>
           )
         })}
       </div>)
