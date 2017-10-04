@@ -127,7 +127,7 @@ class Search extends React.Component {
 						{this.state.movies.length <= 2 ? (
 							<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary w-50 center"> Add A Film </p>
 						) : (
-							<p onClick={() => this.props.handleFinalized()} className="btn btn-secondary w-50 center"> Submit Films </p>
+							<p onClick={() => this.props.handleFinalized(this.state.movies)} className="btn btn-secondary w-50 center"> Submit Films </p>
 						)}
 					</div>	
 					</div>
