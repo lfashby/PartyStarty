@@ -10,6 +10,8 @@ const path = require('path');
 const webpackConfig = require('./webpack.config.js');
 const requestHandler = require('./requestHandler.js');
 const util = require('./lib/utility');
+const morgan = require('morgan');
+
 
 const app = express();
 
@@ -19,6 +21,7 @@ var io = require('socket.io')(http);
 
 const compiler = webpack(webpackConfig);
 
+app.use(morgan('tiny'));
 app.use(express.static(__dirname + '/www'));
 app.use(webpackDevMiddleware(compiler, {
   hot: true,

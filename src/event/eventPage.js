@@ -37,16 +37,16 @@ class EventPage extends React.Component {
 		const eventFinalized = this.state.eventFinalized;
 		
 		if (!eventFinalized) {
-			return <
-				EventVoter 
+			return (
+				<EventVoter 
 					threeMovies={this.state.threeMovies}
-			/>
+			/>)
 		} else if (eventFinalized) {
-			return <
-				EventWinnerDisplay
+			return (
+			<EventWinnerDisplay
 					event={this.state.event}
 					threeMovies={this.state.threeMovies}
-			/>
+			/>)
 		}
 	}
 

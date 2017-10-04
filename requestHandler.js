@@ -86,8 +86,9 @@ module.exports = {
                   acc.push(invite);
                 }
                 return acc;
-              });
+              },[]);
               res.send({
+                boogy: 'boogy',
                 invites,
                 goings,
                 hostings

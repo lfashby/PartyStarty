@@ -5,6 +5,7 @@ import SignUp from './signup';
 import Search from './search';
 import Create from './eventCreator/create';
 import Home from './home';
+import User from './user/user.js';
 import EventPage from './event/eventPage.js';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
 import {BrowserRouter, Route, Switch, browserHistory, Redirect} from 'react-router-dom';
@@ -14,9 +15,16 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      
+      lookingAtEvent: ``
     }
   }
+
+  setLookingAtEvent (event) {
+    this.setState({
+      lookingAtEvent: event
+    })
+  }
+
   render(){
     return (
       <BrowserRouter basename='/#' >
@@ -35,11 +43,14 @@ class App extends React.Component {
               )
             )}/>
             <Route path="/home" component={Home}/>
+            <Route path='/userpage' component={User}/>
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/create" component={Create}/>
             <Route path="/search" component={Search} />
-            <Route path="/eventpage" component={EventPage} />
+            <Route path="/eventpage" render={() => {
+              return <EventPage event={this.state.lookingAtEvent}/>
+            }} />
             <Route path="*" component={Home} />
         </Switch>
       </BrowserRouter>
