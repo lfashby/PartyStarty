@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Link , Redirect} from 'react-router-dom';
+import {Link , Redirect, withRouter} from 'react-router-dom';
 import Navbar from './navbar'
 var $ = require('jquery');
 var axios = require('axios');
@@ -11,29 +11,22 @@ class SignIn extends React.Component {
 		this.state = {
 			username: "",
 			password: "",
-			auth: false
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleUserInput = this.handleUserInput.bind(this);
 		this.handlePasswordInput = this.handlePasswordInput.bind(this);
 	}
-	
+
 	handleSubmit(event){
-		var that = this;
 		console.log(this.state.username, this.state.password);
 		axios.post('/signin', {username: this.state.username, password: this.state.password})
 		.then((response) => {
-			return response;
-		})
-		.then((response) => {
 			console.log("res data ", response.data);
-				console.log("auth: ", this.state.auth);
-			if(response.data === 'error'){	
-				window.isAuth = false; 
-			} else {
-				window.isAuth = true;
+			console.log("auth: ", this.state.auth);
+			if(!(response.data === 'error')) {	
+				this.props.login(this.state.username, this.state.password);
+				this.props.history.push('/');
 			}
-			console.log('isaAuth in promise',isAuth);
 		})
 		.catch((error) => {
 			console.log(error);
@@ -69,4 +62,4 @@ class SignIn extends React.Component {
 	}
 }
 
-export default SignIn; 
+export default withRouter(SignIn); 
