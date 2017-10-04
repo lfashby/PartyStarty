@@ -148,5 +148,5 @@ class Create extends React.Component {
     )
 	}
 }
-// 	<Link to="/" className="btn btn-secondary btn-lg textarea">Create Event</Link>
+
 export default Create;

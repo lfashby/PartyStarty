@@ -12,6 +12,7 @@ const Invite = (props) => (
         <input value={props.friendValue} onChange={props.handleFriendChange} className="form-control" type="text" placeholder="Enter username" />
         <input className="btn btn-secondary btn-lg textarea" type="submit" value="Add user" />
       </form>
+      
       <ul>
         {props.friends.map((friend, i) => {
           return <InviteEntry friend={friend} key={i} />
@@ -22,3 +23,7 @@ const Invite = (props) => (
 );
 
 export default Invite;
+
+
+//<Link to="/" className="btn btn-secondary btn-lg textarea">Create Event</Link>
+// Set a conditional render from parent comp
