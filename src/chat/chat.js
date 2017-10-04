@@ -17,7 +17,7 @@ class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: [ß]
+      messages: []
     };
     listenToMessages(this.props.eventId, (msg) => {
       console.log('recieved message: ', msg);
