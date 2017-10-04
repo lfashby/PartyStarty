@@ -54,4 +54,8 @@ class EventPage extends React.Component {
 
 //render event voting system if event.finalized = false;
 //render moviedecided information if event.finalized = true;
+<<<<<<< HEAD
 export default EventPage;
+=======
+export default Event;
+>>>>>>> error resolved
