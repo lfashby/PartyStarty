@@ -136,7 +136,7 @@ class Create extends React.Component {
       friendValue={this.state.friendValue}
       handleFriendChange={this.handleFriendChange}
       friends={this.state.friends}
-      /> // And then send their personal information to the database
+      /> 
     }
   }
 

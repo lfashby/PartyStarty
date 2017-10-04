@@ -29,6 +29,3 @@ const EntryDetails = (props) => (
 )
 
 export default EntryDetails;
-
-
-// {this.renderStuff()}
