@@ -86,7 +86,7 @@ module.exports = {
                   acc.push(invite);
                 }
                 return acc;
-              });
+              }, []);
               res.send({
                 invites,
                 goings,
@@ -157,6 +157,15 @@ module.exports = {
                   invitedUserResponded: false,
                   invitedUserGoing: null
                 });
+              });
+              Invite.create({
+                invitedUserName: event.eventHostUserName,
+                eventId: event._id,
+                eventTitle: event.eventTitle,
+                eventHostUserName: event.eventHostUserName,
+                eventMoviePictureUrl: event.eventMoviePictureUrl,
+                invitedUserResponded: false,
+                invitedUserGoing: null
               });
             }
           });
