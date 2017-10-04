@@ -15,7 +15,8 @@ class Create extends React.Component {
 			date: "",
 			time: "",
       description: "",
-      filmsAdded: false
+      filmsAdded: false,
+      filmsFinalized: false
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleTitle = this.handleTitle.bind(this);
@@ -24,6 +25,7 @@ class Create extends React.Component {
 		this.handleTime = this.handleTime.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
     this.addFilmsClick = this.addFilmsClick.bind(this);
+    this.handleFinalizedFilms = this.handleFinalizedFilms.bind(this);
 	}
 
 	handleSubmit(e){
@@ -66,6 +68,20 @@ class Create extends React.Component {
     this.setState({filmsAdded: true})
   }
 
+  handleFinalizedFilms() {
+    this.setState({filmsFinalized: true});
+  }
+
+  renderStuff() { // CHANGE NAME
+    if (!this.state.filmsAdded) {
+      return <button onClick={this.addFilmsClick} className="btn btn-secondary btn-lg textarea">Add Films</button>;
+    } else if (!this.state.filmsFinalized) {
+      return <Search handleFinalized={this.handleFinalizedFilms} />;
+    } else {
+      return <p>THIS IS THE STUFF</p>
+      // This is where you will invite your friends
+    }
+  }
 
 	render(){
 		return (
@@ -89,17 +105,12 @@ class Create extends React.Component {
 					<label>Description</label>
 					<input onChange={this.handleDescription} className="form-control" type="text" placeholder="Description" />
 					<br></br>
+          {this.renderStuff()}
         </form>
-       {!this.state.filmsAdded ? (
-          <button onClick={this.addFilmsClick} className="btn btn-secondary btn-lg textarea">Add Films</button>
-       ) : (
-		  <Search />
-       )}
-        
 				</div>
 			</div>
 		)
 	}
 }
 // 	<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg textarea">Create Event</Link>
-export default Create; 
+export default Create;

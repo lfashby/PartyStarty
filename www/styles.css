@@ -75,7 +75,7 @@ justify-content: space-around;
 }
 
 .qEntry{
-  display:flex;
+  display: inline-block;
   justify-content: center;
 }
 .center {
@@ -132,6 +132,12 @@ justify-content: space-around;
   /*color: grey;*/
   display: flex;
   justify-content: center;
+}
+
+/* TEMPORARY */
+.card-img-list { 
+  height: 250px;
+  width: 150px
 }
 
 .center {
