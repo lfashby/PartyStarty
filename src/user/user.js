@@ -31,7 +31,8 @@ class User extends React.Component {
     .then(result => {
       var props = [`invited`,`going`,`hosting`];
       var values = [this.state.invited,this.state.going,this.state.hosting];
-      this.props.setProperty(props, values);
+      console.log(this.props)
+      this.props.setInviteGoingHosting(props, values);
     })
     .catch(err => {
       console.log('line 26 user.js ', err);
@@ -44,22 +45,24 @@ class User extends React.Component {
       <div>
         <Navbar />
         <div className='userHead'> {this.state.username}'s Profile </div>
-        <div className='invited'>
-          <Link to='invited'>
-            <div>Invited Events</div>
-          </Link>
-        </div>
+        <div className='eventsContainer'>
+          <div className='invited'>
+            <Link to='invited' className='row'>
+              <button className='eventButtons'>See Invited Events</button>
+            </Link>
+          </div>
 
-        <div className='going'>
-          <Link to='going'>
-            <div>Going To Events</div>
-          </Link>
-        </div>
+          <div className='going'>
+            <Link to='going' className='row'>
+              <button className='eventButtons'>See Events I'm Going To</button>
+            </Link>
+          </div>
 
-        <div className='hosting'>
-          <Link to='hosting'>
-            <div>Hosting Events</div>
-          </Link>
+          <div className='hosting'>
+            <Link to='hosting' className='row'>
+              <button className='eventButtons'>See Events I'm Hosting</button>
+            </Link>
+          </div>
         </div>
       </div>
     )

@@ -153,6 +153,37 @@ justify-content: space-around;
   font-size: 250%;
   text-align: center;
 }
+
+.eventButtons {
+  font-size: 200%;
+  text-align: center;
+  display: block;
+}
+
+.row {
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+
+.eventsContainer {
+  height: 80%;
+}
+
+.invited {
+  margin-top: 7%;
+  margin-bottom: 7%;
+}
+
+.going {
+  margin-top: 7%;
+  margin-bottom: 7%;
+}
+
+.hosting {
+  margin-top: 7%;
+  margin-bottom: 10%;
+}
 /*.navLinks {
   display: flex;
   justify-content: space-between;

@@ -80,7 +80,7 @@ class App extends React.Component {
 
             <Route path='/userpage' render={() => {
                 return <User setLookingAtEvent={this.setLookingAtEvent}
-                setProperty={this.setProperty}/>
+                setInviteGoingHosting={this.setInviteGoingHosting}/>
               }
             }/>
             <Route path='/invited' render={ () => {
