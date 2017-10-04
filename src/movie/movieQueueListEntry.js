@@ -5,14 +5,19 @@ var axios = require('axios');
 
 
 // Shift to stateless
-class MovieQueueListEntry extends React.Component {
-	constructor(props){
-		super(props)
-		this.state = {
-		}
-		// this.handleUpvote = this.handleUpvote.bind(this);
-		// this.handleDownvote = this.handleDownvote.bind(this);
-	}
+const MovieQueueListEntry = (props) => (
+	<div className="qEntry">
+	  <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movie.poster}`} />
+	</div>
+)
+
+
+export default MovieQueueListEntry;
+
+
+// <SearchResultsDisplay currentMovie={this.state.currentMovie}/> NOT BEING USED
+
+//OLD UP AND DOWNVOTE CODE
 	// handleUpvote(title){
 	// 	console.log('upvoted');
 	// 	console.log(title);
@@ -34,20 +39,6 @@ class MovieQueueListEntry extends React.Component {
 	// 		console.log(error);
 	// 	})
 	// }
-	// <SearchResultsDisplay currentMovie={this.state.currentMovie}/> NOT BEING USED
-	render(){
-		return (
-			<div className="qEntry">
-				{/* <ul  className="list-group">	 */}
-					{/* <li className="list-group-item">{this.props.movie.title}</li> */}
-					<img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${this.props.movie.poster}`} />
-				{/* </ul> */}
-			</div>
-		)
-	}
-}
-
-export default MovieQueueListEntry;
 
 
 // <li className="btn btn-secondary btn-sm list-group-item movie-buttons" onClick={this.handleUpvote}>UPVOTE {this.props.movie.upvotes}</li>

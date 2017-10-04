@@ -99,26 +99,30 @@ class Create extends React.Component {
 
   handleFriends(e) {
     e.preventDefault();
-    // Send friendValue to Collin
     axios.post('/invite', {
       invitedUserName: this.state.friendValue,
       eventId: this.state.eventId,
       eventTitle: this.state.title
-      // Host username picked up on other side
     })
     .then((response) => {
       console.log('Invite sent to db successfully', response);
+      if (response === 'error') {
+        alert('That username does not exist!');
+        this.setState({friendValue: ''});
+      } else {
+        this.setState({
+          friends: [...this.state.friends, this.state.friendValue],
+          friendValue: ''
+        });
+      }
     })
     .catch((error) => {
       console.log('Error sending invite', error)
     })
-    this.setState({
-      friends: [...this.state.friends, this.state.friendValue],
-      friendValue: ''
-    })
+
   }
 
-  renderStuff() { // CHANGE NAME
+  renderViews() { // CHANGE NAME
     if (!this.state.filmsAdded) {
       return <EntryDetails 
       handleTitle={this.handleTitle}
@@ -151,7 +155,7 @@ class Create extends React.Component {
 	render(){
 		return (
       <div>
-        {this.renderStuff()}
+        {this.renderViews()}
       </div>
     )
 	}
