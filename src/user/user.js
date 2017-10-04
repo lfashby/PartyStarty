@@ -48,19 +48,19 @@ class User extends React.Component {
         <div className='eventsContainer'>
           <div className='invited'>
             <Link to='invited' className='row'>
-              <button className='eventButtons'>See Invited Events</button>
+              <button className='eventButtons invitedbutton'>See Invited Events</button>
             </Link>
           </div>
 
           <div className='going'>
             <Link to='going' className='row'>
-              <button className='eventButtons'>See Events I'm Going To</button>
+              <button className='eventButtons goingbutton'>See Events I'm Going To</button>
             </Link>
           </div>
 
           <div className='hosting'>
             <Link to='hosting' className='row'>
-              <button className='eventButtons'>See Events I'm Hosting</button>
+              <button className='eventButtons hostingbutton'>See Events I'm Hosting</button>
             </Link>
           </div>
         </div>
