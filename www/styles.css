@@ -164,6 +164,7 @@ justify-content: space-around;
   width:100%;
   display: flex;
   justify-content: center;
+  text-decoration: none;
 }
 
 .eventsContainer {
@@ -171,7 +172,7 @@ justify-content: space-around;
 }
 
 .invited {
-  margin-top: 7%;
+  margin-top: 6%;
   margin-bottom: 7%;
 }
 
@@ -185,6 +186,17 @@ justify-content: space-around;
   margin-bottom: 10%;
 }
 
+.invitedButton {
+  background-color: #dfe3ee;
+}
+
+.goingButton {
+  background-color: #8b9dc3;
+}
+
+.hostingButton {
+  background-color: #3b5998;
+}
 /*.navLinks {
   display: flex;
   justify-content: space-between;

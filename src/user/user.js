@@ -47,20 +47,20 @@ class User extends React.Component {
         <div className='userHead'> {this.state.username}'s Profile </div>
         <div className='eventsContainer'>
           <div className='invited'>
-            <Link to='invited' className='row'>
-              <button className='eventButtons invitedbutton'>See Invited Events</button>
+            <Link to='invited' className='row' style={{ textDecoration: 'none' }}>
+              <button className='eventButtons invitedButton'>See Invited Events</button>
             </Link>
           </div>
 
           <div className='going'>
-            <Link to='going' className='row'>
-              <button className='eventButtons goingbutton'>See Events I'm Going To</button>
+            <Link to='going' className='row' style={{ textDecoration: 'none' }}>
+              <button className='eventButtons goingButton'>See Events I'm Going To</button>
             </Link>
           </div>
 
           <div className='hosting'>
-            <Link to='hosting' className='row'>
-              <button className='eventButtons hostingbutton'>See Events I'm Hosting</button>
+            <Link to='hosting' className='row' style={{ textDecoration: 'none' }}>
+              <button className='eventButtons hostingButton'>See Events I'm Hosting</button>
             </Link>
           </div>
         </div>
