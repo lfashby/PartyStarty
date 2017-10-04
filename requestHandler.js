@@ -155,10 +155,10 @@ module.exports = {
                 invitedUserName: event.eventHostUserName,
                 eventId: event._id,
                 eventTitle: event.eventTitle,
-                eventHostUserName: event.eventHostUserName,
+                eventHostUserName: event.eventHostName,
                 eventMoviePictureUrl: event.eventMoviePictureUrl,
-                invitedUserResponded: false,
-                invitedUserGoing: null
+                invitedUserResponded: true,
+                invitedUserGoing: true
               }, function(err, invite) {
                 if(err) {
                   console.log('err creating event host invite', err);
@@ -251,7 +251,31 @@ module.exports = {
                   }
                 });
               }
-            }) 
+            }); 
+        },
+
+        updateMovies: function(req, res) {
+          let movies = req.body.movies;
+
+          movies.forEach(function(movieOption) {
+            Movie.findOne({ _id: movie.movieId })
+              .exec(function(err, movie) {
+                if (err) {
+                  console.log('Error updating movie votes: ', err);
+                  res.send('Error updating movie votes: ', err);
+                } else {
+                  // remove current user votes from array
+                  let newVotesByUser = movie.votesByUser.filter(obj => obj.username !== movieOption.username);
+                  newVotesByUser.push({
+                    username: movieOption.username,
+                    votes: movieOption.votes
+                  });
+                  movie.votesByUer = newVotesByUser;
+                  movie.totalUserVotes = movie.votesByUser.reduce((acc, obj) => obj.votes + acc, 0);
+                  movie.save();
+                }              
+              });
+          });
         }
       };
       
