@@ -12,7 +12,7 @@ class Hosting extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className='userEvents'>Invited To Following Events</div>
+        <div className='userEvents'>Hosting Following Events</div>
         {
           this.props.mapOut(`hosting`)
         }

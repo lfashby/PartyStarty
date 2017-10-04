@@ -7,8 +7,8 @@ import Create from './eventCreator/create';
 import Home from './home';
 import User from './user/user.js';
 import Invited from './user/Invited.js';
-import going from './user/Going.js';
-import hosting from './user/Hosting.js';
+import Going from './user/Going.js';
+import Hosting from './user/Hosting.js';
 import EventPage from './event/eventPage.js';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
 import {BrowserRouter, Route, Switch, browserHistory, Redirect} from 'react-router-dom';

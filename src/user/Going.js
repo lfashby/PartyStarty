@@ -12,7 +12,7 @@ class Going extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className='userEvents'>Invited To Following Events</div>
+        <div className='userEvents'>Going To Following Events</div>
         {
           this.props.mapOut(`going`)
         }

@@ -7,11 +7,7 @@ class User extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
-<<<<<<< HEAD
-      username: `error user`,
-=======
       username: `error`,
->>>>>>> userpage
       invited: [],
       going: [],
       hosting: []
