@@ -81,7 +81,8 @@ class App extends React.Component {
           <Link to='eventpage' key={i}>
             <div key={i}
             onClick={this.setLookAtEvent}
-            value={event.eventTitle}> event.eventTitle </div>
+            value={event.eventTitle}
+            style={{textAlign: `center`}}> {event.eventTitle} </div>
           </Link>
         )
       })}
