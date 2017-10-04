@@ -9,7 +9,8 @@ var EventSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  eventTime: Date,
+  eventDate: Date,
+  eventTime: String,
   eventDesc: String,
   eventFinalized: Boolean,
   eventHostName: String,

@@ -88,7 +88,7 @@ module.exports = {
                 return acc;
               }, []);
               res.send({
-                boogy: 'boogy',
+                username,
                 invites,
                 goings,
                 hostings
@@ -141,6 +141,7 @@ module.exports = {
     Event.create({
             eventTitle,
             eventLocation,
+            eventDate,
             eventTime,
             eventDesc,
             eventHostName,
@@ -149,29 +150,32 @@ module.exports = {
           }, function(err, event) {
             if (err) {
               console.log('error creating an event: ', err);
+            } else {
+              // console.log(event);
+              res.send(event);
             }
-            else {
-              invitedUserNames.forEach((invitedUserName) => {
-                Invite.create({
-                  invitedUserName,
-                  eventId: event._id,
-                  eventTitle: event.eventTitle,
-                  eventHostUserName: event.eventHostUserName,
-                  eventMoviePictureUrl: event.eventMoviePictureUrl,
-                  invitedUserResponded: false,
-                  invitedUserGoing: null
-                });
-              });
-              Invite.create({
-                invitedUserName: event.eventHostUserName,
-                eventId: event._id,
-                eventTitle: event.eventTitle,
-                eventHostUserName: event.eventHostUserName,
-                eventMoviePictureUrl: event.eventMoviePictureUrl,
-                invitedUserResponded: false,
-                invitedUserGoing: null
-              });
-            }
+            // else {
+            //   invitedUserNames.forEach((invitedUserName) => {
+            //     Invite.create({
+            //       invitedUserName,
+            //       eventId: event._id,
+            //       eventTitle: event.eventTitle,
+            //       eventHostUserName: event.eventHostUserName,
+            //       eventMoviePictureUrl: event.eventMoviePictureUrl,
+            //       invitedUserResponded: false,
+            //       invitedUserGoing: null
+            //     });
+            //   });
+            //   Invite.create({
+            //     invitedUserName: event.eventHostUserName,
+            //     eventId: event._id,
+            //     eventTitle: event.eventTitle,
+            //     eventHostUserName: event.eventHostUserName,
+            //     eventMoviePictureUrl: event.eventMoviePictureUrl,
+            //     invitedUserResponded: false,
+            //     invitedUserGoing: null
+            //   });
+            // }
           });
   },
   // Add user to event
