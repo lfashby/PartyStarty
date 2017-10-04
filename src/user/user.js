@@ -1,10 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import Navbar from '../navbar.js';
+import { Link } from 'react-router-dom';
 
 class User extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
+      username: `error`,
       invited: [],
       going: [],
       hosting: []
@@ -19,10 +22,17 @@ class User extends React.Component {
     .then(result => {
       console.log('user server.js ', result);
       this.setState({
-        invited: result.invites || [],
-        going: result.goings || [],
-        hosting: result.hostings || []
+        username: result.data.username || `error user`,
+        invited: result.data.invites || [],
+        going: result.data.goings || [],
+        hosting: result.data.hostings || []
       })
+    })
+    .then(result => {
+      var props = [`invited`,`going`,`hosting`];
+      var values = [this.state.invited,this.state.going,this.state.hosting];
+      console.log(this.props)
+      this.props.setInviteGoingHosting(props, values);
     })
     .catch(err => {
       console.log('line 26 user.js ', err);
@@ -31,37 +41,28 @@ class User extends React.Component {
   }
 
   render () {
-    const mapOut = (type) => {
-      return (
-      <div>
-        {this.state[type].map((event,i) => {
-          return (
-            <Link to='eventpage'>
-              <div key={i}
-              onClick={this.props.setLookAtEvent}
-              value={event.eventTitle}> event.eventTitle </div>
-            </Link>
-          )
-        })}
-      </div>)
-    }
-
-
     return (
       <div>
-        <div className='invited'>
-          <div>Invited Events</div>
-          {mapOut('invited')}
-        </div>
+        <Navbar />
+        <div className='userHead'> {this.state.username}'s Profile </div>
+        <div className='eventsContainer'>
+          <div className='invited'>
+            <Link to='invited' className='row'>
+              <button className='eventButtons'>See Invited Events</button>
+            </Link>
+          </div>
 
-        <div className='going'>
-          <div>Going To Events</div>
-          {mapOut('going')}
-        </div>
+          <div className='going'>
+            <Link to='going' className='row'>
+              <button className='eventButtons'>See Events I'm Going To</button>
+            </Link>
+          </div>
 
-        <div className='hosting'>
-          <div>Hosting Events</div>
-          {mapOut('hosting')}
+          <div className='hosting'>
+            <Link to='hosting' className='row'>
+              <button className='eventButtons'>See Events I'm Hosting</button>
+            </Link>
+          </div>
         </div>
       </div>
     )
