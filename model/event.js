@@ -14,7 +14,8 @@ var EventSchema = new mongoose.Schema({
   eventDesc: String,
   eventFinalized: Boolean,
   eventHostName: String,
-  eventMoviePicture: String 
+  eventMoviePicture: String,
+  eventPublic: Boolean
 });
 
 module.exports = mongoose.model('Event', EventSchema);
