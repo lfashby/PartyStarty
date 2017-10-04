@@ -216,9 +216,7 @@ module.exports = {
               if(err) {
                 console.log('error making movie: ', err);
                 res.send('Error making movie: ', err);
-              } else {
-                console.log('Created film', movie);
-              }
+              } 
             });
           });
         },
@@ -232,7 +230,7 @@ module.exports = {
           let eventMoviePictureUrl = '';
           User.findOne({ username: invitedUserName })
             .exec(function(err, user) {
-              if(err) {
+              if(!user) {
                 console.log('Error finding user for creating invite: ', err);
                 res.send('error');
               } else {
@@ -244,7 +242,7 @@ module.exports = {
                   eventMoviePictureUrl,
                   invitedUserResponded: false,
                   invitedUserGoing: null
-                }).exec(function(err, invite) {
+                },function(err, invite) {
                   if (err) {
                     console.log('Error creating invite: ', err);
                     res.send('error');
