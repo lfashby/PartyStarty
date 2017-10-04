@@ -10,7 +10,6 @@ import Navbar from './navbar.js';
 import Invited from './user/Invited.js';
 import Going from './user/Going.js';
 import Hosting from './user/Hosting.js';
-import Navbar from './navbar.js';
 import EventPage from './event/eventPage.js';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
 import {BrowserRouter, Route, Switch, browserHistory, Redirect, withRouter} from 'react-router-dom';
@@ -64,13 +63,14 @@ class App extends React.Component {
     this.setState({
       isAuth: false
     });
+  }
 
-  setInviteGoingHosting (props, values) {
+  setInviteGoingHosting(props, values) {
     this.setState({
       [props[0]]: values[0],
       [props[1]]: values[1],
       [props[2]]: values[2]
-    })
+    });
   }
 
   mapOut (type) {
