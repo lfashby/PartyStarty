@@ -3,7 +3,6 @@ import Navbar from '../navbar';
 
 const EntryDetails = (props) => (
 	<div>
-    <Navbar />
 	  <div className="createpage">
 	  <h2>Create Event</h2>
         <form>
@@ -29,6 +28,3 @@ const EntryDetails = (props) => (
 )
 
 export default EntryDetails;
-
-
-// {this.renderStuff()}

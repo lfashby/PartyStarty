@@ -33,6 +33,7 @@ class Create extends React.Component {
     this.handleFinalizedFilms = this.handleFinalizedFilms.bind(this);
     this.handleFriends = this.handleFriends.bind(this);
     this.handleFriendChange = this.handleFriendChange.bind(this);
+    this.renderSubmit = this.renderSubmit.bind(this);
 	}
 
 	handleTitle(e){
@@ -80,7 +81,7 @@ class Create extends React.Component {
 
   handleFinalizedFilms(movies) {
     this.setState({filmsFinalized: true});
-    console.log(movies); // Send movies to colin
+    // console.log(movies); 
 		axios.post('/addMovies', {
       movies: movies,
       eventId: this.state.eventId
@@ -136,7 +137,15 @@ class Create extends React.Component {
       friendValue={this.state.friendValue}
       handleFriendChange={this.handleFriendChange}
       friends={this.state.friends}
-      /> // And then send their personal information to the database
+      renderSubmit={this.renderSubmit}
+
+      /> 
+    }
+  }
+
+  renderSubmit() {
+    if (this.state.friends.length !== 0) {
+      return <Link to="/" className="btnSub btn-secondary btn-lg textarea">Finish Creating Event</Link> // Add some styles to this
     }
   }
 
@@ -148,5 +157,5 @@ class Create extends React.Component {
     )
 	}
 }
-// 	<Link to="/" className="btn btn-secondary btn-lg textarea">Create Event</Link>
+
 export default Create;
