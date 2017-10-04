@@ -58,6 +58,7 @@ class EventPage extends React.Component {
 		this.handleSecondRating=this.handleSecondRating.bind(this);
 		this.handleThirdRating=this.handleThirdRating.bind(this);
 		this.submitRatings=this.submitRatings.bind(this);
+		this.getEvent=this.getEvent.bind(this);
   };
 
 	handleFirstRating(e){
@@ -91,30 +92,33 @@ class EventPage extends React.Component {
   }
 
 	getEvent(eventId) {
-		axios.get('/events', {
+		console.log('eventid', eventId);
+		axios.get('/event', {
 			params: {
-				eventId: eventId 
+				event_id: eventId 
 			}
 		})
 			.then(res => {
+				console.log(res);
 				this.setState({
 					threeMovies: res.data.movies,
 					event: res.data.event
 				})
 			})
+			// .then(res => {
+			// 	console.log(this.state);
+			// })
 			.catch(err => {
-				res.send(err);
+				console.log(err);
 			})
 	}
 
   componentDidMount() {
-		//var eventId = this.props.event;
-		//console.log(this.props);
-		//this.getEvent(eventId);
+		var eventId = this.props.event;
+		this.getEvent(eventId);
   }
 
 	render(){
-		console.log(this.props);
 		const eventFinalized = this.state.eventFinalized;
 		let topBox = null;
 		if (!eventFinalized) {
