@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom';
 import Search from './search';
 import SignIn from './signin';
 import SignUp from './signup';
-import Create from './create';
+import Create from './eventCreator/create';
+import EventPage from './event/eventPage.js';
 var axios = require('axios');
 
 class Navbar extends React.Component {
@@ -43,6 +44,7 @@ class Navbar extends React.Component {
 
 				<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4" id="logout" onClick={this.handleSignOut} >Sign Out</Link>
 				
+				<Link to="/eventpage" style={{textDecoration: 'none' }} className="Link nav-link h4">EventPage</Link>
 				</div>
 			</div>
 		)

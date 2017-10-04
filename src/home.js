@@ -4,7 +4,7 @@ import {Link, Redirect} from 'react-router-dom';
 import Search from './search';
 import SignIn from './signin';
 import SignUp from './signup';
-import Create from './create';
+import Create from './eventCreator/create';
 import Navbar from './navbar';
 import EventList from './event/eventList.js';
 import Event from './event/event.js'

@@ -18,6 +18,7 @@ class Search extends React.Component {
 		this.handleSearch = this.handleSearch.bind(this);
 		this.selectMovie = this.selectMovie.bind(this);
 		this.handleAddMovieToQueue = this.handleAddMovieToQueue.bind(this);
+		// this.submitQueue = this.submitQueue.bind(this);
 	}
 
 	// Handles changing inputs in search form
@@ -38,6 +39,8 @@ class Search extends React.Component {
 
 	// Adds movie to queue 
 	handleAddMovieToQueue() {
+		// As long as less than 3
+		this.setState({movies: [...this.state.movies, this.state.currentMovie]});
 		axios.post("/addMovie",{currentMovie: this.state.currentMovie})
 		.then(response => {
 			console.log(response);
@@ -45,8 +48,15 @@ class Search extends React.Component {
 		.catch(error => {
 			console.log(error);
 		})
-    this.setState({movies: [...this.state.movies, this.state.currentMovie]});
-  };
+	};
+	
+	// submitQueue() {
+	// 	this.props.handleFinalized();
+	// 	// console.log(this.props.filmsFinalized);
+
+		
+	// 	// Send all films to colin - this.state.movies
+	// }
 
 	componentDidMount(){
 	//BLOOD HOUND
@@ -101,7 +111,7 @@ class Search extends React.Component {
 		return (
 			<div className="container searchComp">
 			<div className="row">
-				<div className="col-10">
+				<div className="col-6">
 						<input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm form-control" type="text" placeholder="Search for movies..." />
 					<div className="card w-75">
 					<div className="card-header">
@@ -115,11 +125,14 @@ class Search extends React.Component {
 								<p>Average Score {this.state.currentMovie.votes}</p>
 							</div>	
 						</div>
-						<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary w-50 center"> ADD TO QUEUE </p>
-						<br></br>
+						{this.state.movies.length <= 2 ? (
+							<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary w-50 center"> Add A Film </p>
+						) : (
+							<p onClick={() => this.props.handleFinalized()} className="btn btn-secondary w-50 center"> Submit Films </p>
+						)}
 					</div>	
 					</div>
-				<div className="col-2">
+				<div className="col-6">
 					<MovieQueueList movies={this.state.movies}/>
 				</div>
 				</div>

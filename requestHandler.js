@@ -7,6 +7,7 @@ var db = require('./db.js');
 var Event = require('./model/event.js');
 var Movie = require('./model/moviequeue.js');
 var User = require('./model/user.js');
+var Invite = require('./model/invite.js');
 var util = require('./lib/utility');
 
 module.exports = {
@@ -36,6 +37,9 @@ module.exports = {
     var username = req.body.username;
     var password = req.body.password;
 
+    // need to add this to the sign up form TODO
+    var phoneNumber = req.body.phoneNumber;
+
     User.findOne({username: username})
       .exec(function(err, user) {
         if(!user) {
@@ -43,8 +47,9 @@ module.exports = {
             throw err;
           } else {
             User.create({
-              username: username,
-              password: password
+              username,
+              password,
+              phoneNumber
             }, function(err, user) {
                 util.createSession(req, res, user);
             });
@@ -59,24 +64,55 @@ module.exports = {
   getEvents: function(req, res, next) {
     var username = req.session.user.username;
 
-    User.findOne({ username: username })
-    .exec(function(err, user) {
-      if (!user) {
-        res.send('User not found');
+    Invite.find({ invitedUserName: username })
+      .exec(function(err, invites) {
+      if (err) {
+        var errorMsg = `error getting user events: ${err}`;  
+        console.log(errorMsg);
+        res.send(errorMsg);
       } else {
-        res.status(200).send(user.events);
+        Invite.find({ eventHostUserName: username })
+          .exec(function(err, hostings) {
+            if (err) {
+              var errorMsg = `error getting user events: ${err}`;  
+              console.log(errorMsg);
+              res.send(errorMsg);
+            } else {
+              let goings = [];
+              invites = invites.reduce((acc, invite) => {
+                if (invite.invitedUserGoing) {
+                  goings.push(invite);
+                } else {
+                  acc.push(invite);
+                }
+                return acc;
+              });
+              res.send({
+                invites,
+                goings,
+                hostings
+              });
+            }
+          });
       }
     });
   },
 
   // Retrieve event details
   getEventDetail: function(req, res, next) {
-    var eventTitle = req.body.event;
-    Event.findOne({eventTitle: eventTitle})
+    // var eventTitle = req.body.event;
+    var eventId = req.params.event_id;
+    Event.findOne({_id: eventId})
       .exec(function(err, event) {
         if (event) {
           console.log('got the event', event);
-          res.status(200).send(event);
+          Movie.find({ eventId })
+            .exec(function(err, movies) {
+              res.send({
+                event: event,
+                movies: movies
+              });
+            });
         } else {
           res.end('Event does not exist');
         }
@@ -90,25 +126,40 @@ module.exports = {
     var eventDesc = req.body.description;
     var eventUser = req.session.user.username;
 
-    Event.create({
-            eventTitle: eventTitle,
-            eventLocation: eventLocation,
-            eventTime: eventDate,
-            eventDesc: eventDesc,
-            eventUsers: [eventUser]
-          }, function(err, event) {
-            console.log(event);
-          });
+    // new needed information TODO
+    var eventHostName = req.body.hostName;
+    // TODO an array of user names or ids
+    var invitedUserNames = req.body.invitedUserNames;
+    // initialized to null, change when the event is finalized
+    var eventMoviePictureUrl = null;
+    var eventFinalized = null;
 
-    User.findOne({username: eventUser})
-      .exec(function(err, user) {
-        if(user) {
-          user.events.push(eventTitle);
-          user.save();
-        } else {
-          console.log('user does not exisit');
-        }
-      });
+    Event.create({
+            eventTitle,
+            eventLocation,
+            eventTime,
+            eventDesc,
+            eventHostUserName,
+            eventMoviePictureUrl,
+            eventFinalized
+          }, function(err, event) {
+            if (err) {
+              console.log('error creating an event: ', err);
+            }
+            else {
+              invitedUserNames.forEach((invitedUserName) => {
+                Invite.create({
+                  invitedUserName,
+                  eventId: event._id,
+                  eventTitle: event.eventTitle,
+                  eventHostUserName: event.eventHostUserName,
+                  eventMoviePictureUrl: event.eventMoviePictureUrl,
+                  invitedUserResponded: false,
+                  invitedUserGoing: null
+                });
+              });
+            }
+          });
   },
   // Add user to event
   updateEvent: function(req, res, next) {
@@ -168,47 +219,5 @@ module.exports = {
                 });
           }
         });
-  },
-  // upvote movie
-  upvote: function(req, res) {
-    var title = req.body.title;
-    // var event = req.body.event;
-    Movie.findOne({title: title}).exec(function(err, movie) {
-      if(movie) {
-        console.log('upvote movie found');
-        movie.upvotes++;
-        movie.save(function(err, entry) {
-          if(err) {
-            console.log(movie);
-            console.log(err);
-            res.send(500, err);
-          } else {
-            console.log('update successful');
-            res.send(201, movie.upvotes);
-          }
-        })
-      } else{
-        console.log('Movie not found, please vote for other movie');
-      }
-    });
-  },
-  // downvote movie
-  downvote: function (req, res) {
-    var title = req.body.title;
-    // var event = req.body.event;
-    Movie.findOne({title: title}).exec(function (err, movie) {
-      if(movie) {
-        movie.downvotes++;
-        movie.save(function(err, entry) {
-          if(err) {
-            res.send(500, err);
-          }
-        })
-      } else{
-        console.log('Movie not found, please vote for other movie');
-      }
-    });
   }
-
-
 };

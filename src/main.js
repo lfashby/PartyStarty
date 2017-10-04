@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import SignIn from './signin';
 import SignUp from './signup';
 import Search from './search';
-import Create from './create';
-import Home from './home'
+import Create from './eventCreator/create';
+import Home from './home';
+import EventPage from './event/eventPage.js';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
 import {BrowserRouter, Route, Switch, browserHistory, Redirect} from 'react-router-dom';
 
@@ -13,42 +14,36 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      lookingAtEvent: '',
+      
     }
-    this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
   }
-
-  setLookingAtEvent (event) {
-    this.setState({
-      lookingAtEvent: event
-    })
-  }
-
   render(){
     return (
-    <BrowserRouter basename='/#' >
-      <Switch>
-          <Route exact path="/" render={() => (
-            isAuth ? (
-              <Redirect to="/home"/>
-            ) : (
-              <Redirect to="/signin"/>
-            )
-          )}/>
-          <Route exact path="/home" render={() => (
-            isAuth ? 
-              <Home /> : (
-              <Redirect to="/signin"/>
-            )
-          )}/>
-          <Route path="/home" component={Home}/>
-          <Route path="/signin" component={SignIn} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/create" component={Create}/>
-          <Route path="/search" component={Search} />
-          <Route path="*" component={Home} />
-      </Switch>
-    </BrowserRouter>)
+      <BrowserRouter basename='/#' >
+        <Switch>
+            <Route exact path="/" render={() => (
+              isAuth ? (
+                <Redirect to="/home"/>
+              ) : (
+                <Redirect to="/signin"/>
+              )
+            )}/>
+            <Route exact path="/home" render={() => (
+              isAuth ? 
+                <Home /> : (
+                <Redirect to="/signin"/>
+              )
+            )}/>
+            <Route path="/home" component={Home}/>
+            <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/create" component={Create}/>
+            <Route path="/search" component={Search} />
+            <Route path="/eventpage" component={EventPage} />
+            <Route path="*" component={Home} />
+        </Switch>
+      </BrowserRouter>
+    )
   }
 }
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Search from './search';
-import Navbar from './navbar';
+import Search from '../search';
+import Navbar from '../navbar';
 import {Link} from 'react-router-dom';
-import Home from './home'
+import Home from '../home'
 var axios = require('axios');
 
 class Create extends React.Component {
@@ -14,14 +14,18 @@ class Create extends React.Component {
 			location: "",
 			date: "",
 			time: "",
-			description: ""
+      description: "",
+      filmsAdded: false,
+      filmsFinalized: false
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleTitle = this.handleTitle.bind(this);
 		this.handleLocation = this.handleLocation.bind(this);
 		this.handleDate = this.handleDate.bind(this);
 		this.handleTime = this.handleTime.bind(this);
-		this.handleDescription = this.handleDescription.bind(this);
+    this.handleDescription = this.handleDescription.bind(this);
+    this.addFilmsClick = this.addFilmsClick.bind(this);
+    this.handleFinalizedFilms = this.handleFinalizedFilms.bind(this);
 	}
 
 	handleSubmit(e){
@@ -58,8 +62,26 @@ class Create extends React.Component {
 
 	handleDescription(e){
 		this.setState({description: e.target.value});
-	}
+  }
+  
+  addFilmsClick() {
+    this.setState({filmsAdded: true})
+  }
 
+  handleFinalizedFilms() {
+    this.setState({filmsFinalized: true});
+  }
+
+  renderStuff() { // CHANGE NAME
+    if (!this.state.filmsAdded) {
+      return <button onClick={this.addFilmsClick} className="btn btn-secondary btn-lg textarea">Add Films</button>;
+    } else if (!this.state.filmsFinalized) {
+      return <Search handleFinalized={this.handleFinalizedFilms} />;
+    } else {
+      return <p>THIS IS THE STUFF</p>
+      // This is where you will invite your friends
+    }
+  }
 
 	render(){
 		return (
@@ -67,7 +89,7 @@ class Create extends React.Component {
 				<Navbar />
 				<div className="createpage">
 					<h2>Create Event</h2>
-				<form >
+				<form>
 					<label>Title</label>
 					<input onChange={this.handleTitle} className="form-control" type="text" placeholder="Title" />
 					<br></br>
@@ -83,18 +105,12 @@ class Create extends React.Component {
 					<label>Description</label>
 					<input onChange={this.handleDescription} className="form-control" type="text" placeholder="Description" />
 					<br></br>
-					<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg textarea">Create Event</Link>
-				</form>
-
-
-
-
-
-
+          {this.renderStuff()}
+        </form>
 				</div>
 			</div>
 		)
 	}
 }
-
-export default Create; 
+// 	<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg textarea">Create Event</Link>
+export default Create;
