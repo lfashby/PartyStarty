@@ -111,7 +111,6 @@ class Search extends React.Component {
 	render(){
 		return (
 			<div>
-			  <Navbar />
 				<div className="container searchComp">
 				<h2>Add three films</h2>
 				<div className="row">

@@ -107,6 +107,14 @@ justify-content: space-around;
 
 .btn {
   border: 1px grey solid;
+  
+}
+
+.btnSub {
+  float: right;
+}
+.subH {
+  float: left;
 }
 
 .userInput, .passInput {

@@ -33,6 +33,7 @@ class Create extends React.Component {
     this.handleFinalizedFilms = this.handleFinalizedFilms.bind(this);
     this.handleFriends = this.handleFriends.bind(this);
     this.handleFriendChange = this.handleFriendChange.bind(this);
+    this.renderSubmit = this.renderSubmit.bind(this);
 	}
 
 	handleTitle(e){
@@ -136,7 +137,16 @@ class Create extends React.Component {
       friendValue={this.state.friendValue}
       handleFriendChange={this.handleFriendChange}
       friends={this.state.friends}
+      renderSubmit={this.renderSubmit}
+
       /> 
+    }
+  }
+
+  renderSubmit() {
+    if (this.state.friends.length !== 0) {
+      return <Link to="/" className="btnSub
+       btn-secondary btn-lg textarea">Finish Creating Event</Link> // Add some styles to this
     }
   }
 
