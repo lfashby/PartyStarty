@@ -73,11 +73,12 @@ class Create extends React.Component {
 
   addFilmsClick() {
     this.setState({filmsAdded: true})
+    // Send entry details to colin
   }
 
   handleFinalizedFilms(movies) {
     this.setState({filmsFinalized: true});
-    console.log(movies); // Send this to colin
+    console.log(movies); // Send movies to colin
   }
 
   renderStuff() { // CHANGE NAME
@@ -93,8 +94,7 @@ class Create extends React.Component {
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;
     } else {
-      return <p>THIS IS THE STUFF</p>
-      // This is where you will invite your friends
+      return <p>ADD YOUR FRIENDS</p> // And then send their personal information to the database
     }
   }
 
