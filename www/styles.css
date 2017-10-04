@@ -148,6 +148,11 @@ justify-content: space-around;
   font-size: 250%;
   text-align: center;
 }
+
+.userEvents {
+  font-size: 250%;
+  text-align: center;
+}
 /*.navLinks {
   display: flex;
   justify-content: space-between;
