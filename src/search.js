@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Navbar from './navbar.js';
 var $ = require("jquery");
 import MovieQueueList from './movie/movieQueueList';
 var axios = require('axios');
@@ -108,32 +109,36 @@ class Search extends React.Component {
 	//RENDER
 	render(){
 		return (
-			<div className="container searchComp">
-			<div className="row">
-				<div className="col-6">
-						<input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm form-control" type="text" placeholder="Search for movies..." />
-					<div className="card w-75">
-					<div className="card-header">
-					    <h3 className="card-title">{this.state.currentMovie.title}</h3>
-					  </div>
-						<img className="card-img-top" src={`https://image.tmdb.org/t/p/w500${this.state.currentMovie.poster}`} />
-						<div className="card-body">
-							<div className="card-text">
-								<p>{this.state.currentMovie.overview}</p>
-								<p>Release Date {this.state.currentMovie.date}</p>
-								<p>Average Score {this.state.currentMovie.votes}</p>
-							</div>	
+			<div>
+			  <Navbar />
+				<div className="container searchComp">
+				<h2>Add three films</h2>
+				<div className="row">
+					<div className="col-6">
+							<input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm form-control" type="text" placeholder="Search for movies..." />
+						<div className="card w-75">
+						<div className="card-header">
+								<h3 className="card-title">{this.state.currentMovie.title}</h3>
+							</div>
+							<img className="card-img-top" src={`https://image.tmdb.org/t/p/w500${this.state.currentMovie.poster}`} />
+							<div className="card-body">
+								<div className="card-text">
+									<p>{this.state.currentMovie.overview}</p>
+									<p>Release Date {this.state.currentMovie.date}</p>
+									<p>Average Score {this.state.currentMovie.votes}</p>
+								</div>	
+							</div>
+							{this.state.movies.length <= 2 ? (
+								<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary w-50 center"> Add A Film </p>
+							) : (
+								<p onClick={() => this.props.handleFinalized(this.state.movies)} className="btn btn-secondary w-50 center"> Submit Films </p>
+							)}
+						</div>	
 						</div>
-						{this.state.movies.length <= 2 ? (
-							<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary w-50 center"> Add A Film </p>
-						) : (
-							<p onClick={() => this.props.handleFinalized()} className="btn btn-secondary w-50 center"> Submit Films </p>
-						)}
-					</div>	
+					<div className="col-6">
+						<MovieQueueList movies={this.state.movies}/>
 					</div>
-				<div className="col-6">
-					<MovieQueueList movies={this.state.movies}/>
-				</div>
+					</div>
 				</div>
 			</div>
 		)

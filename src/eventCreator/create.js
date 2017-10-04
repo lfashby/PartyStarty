@@ -4,6 +4,8 @@ import Search from '../search';
 import Navbar from '../navbar';
 import {Link} from 'react-router-dom';
 import Home from '../home'
+import EntryDetails from './entryDetails.js';
+
 var axios = require('axios');
 
 class Create extends React.Component {
@@ -15,6 +17,7 @@ class Create extends React.Component {
 			date: "",
 			time: "",
       description: "",
+      entryDataSubmitted: false,
       filmsAdded: false,
       filmsFinalized: false
 		}
@@ -64,52 +67,43 @@ class Create extends React.Component {
 		this.setState({description: e.target.value});
   }
   
-  addFilmsClick() {
-    this.setState({filmsAdded: true})
+  submitEntryData(){
+    this.setState({entryDataSubmitted: true})
   }
 
-  handleFinalizedFilms() {
+  addFilmsClick() {
+    this.setState({filmsAdded: true})
+    // Send entry details to colin
+  }
+
+  handleFinalizedFilms(movies) {
     this.setState({filmsFinalized: true});
+    console.log(movies); // Send movies to colin
   }
 
   renderStuff() { // CHANGE NAME
     if (!this.state.filmsAdded) {
-      return <button onClick={this.addFilmsClick} className="btn btn-secondary btn-lg textarea">Add Films</button>;
+      return <EntryDetails 
+      handleTitle={this.handleTitle}
+      handleLocation={this.handleLocation}
+      handleDate={this.handleDate}
+      handleTime={this.handleTime}
+      handleDescription={this.handleDescription}
+      addFilmsClick={this.addFilmsClick}
+      />
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;
     } else {
-      return <p>THIS IS THE STUFF</p>
-      // This is where you will invite your friends
+      return <p>ADD YOUR FRIENDS</p> // And then send their personal information to the database
     }
   }
 
 	render(){
 		return (
-			<div>
-				<Navbar />
-				<div className="createpage">
-					<h2>Create Event</h2>
-				<form>
-					<label>Title</label>
-					<input onChange={this.handleTitle} className="form-control" type="text" placeholder="Title" />
-					<br></br>
-					<label>Location</label>
-					<input onChange={this.handleLocation} className="form-control" type="text" placeholder="Location"/>
-					<br></br>
-					<label>Date</label>
-					<input onChange={this.handleDate} className="form-control" type="date" id="example"/>
-					<br></br>
-					<label>Time</label>
-					<input onChange={this.handleTime} className="form-control" type="time"/>
-					<br></br>
-					<label>Description</label>
-					<input onChange={this.handleDescription} className="form-control" type="text" placeholder="Description" />
-					<br></br>
-          {this.renderStuff()}
-        </form>
-				</div>
-			</div>
-		)
+      <div>
+        {this.renderStuff()}
+      </div>
+    )
 	}
 }
 // 	<Link to="/" onClick={this.handleSubmit} className="btn btn-secondary btn-lg textarea">Create Event</Link>
