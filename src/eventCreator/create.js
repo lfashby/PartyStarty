@@ -105,8 +105,7 @@ class Create extends React.Component {
       eventTitle: this.state.title
     })
     .then((response) => {
-      console.log('Invite sent to db successfully', response);
-      if (response === 'error') {
+      if (response.data === 'error') {
         alert('That username does not exist!');
         this.setState({friendValue: ''});
       } else {
