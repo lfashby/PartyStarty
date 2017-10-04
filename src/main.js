@@ -63,15 +63,7 @@ class App extends React.Component {
   }
 }
 
-window.isAuth = false;
-// function checkAuth() {
-//   console.log('checked Auth')
-//   return setTimeout(()=> isAuth, 1000);
-// }
-
-document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render(
-    (<App />),
-    document.getElementById('mount')
-  );
-});
+ReactDOM.render(
+  (<App />),
+  document.getElementById('mount')
+);
