@@ -22,7 +22,8 @@ class Create extends React.Component {
       filmsFinalized: false,
       eventId: '',
       friendValue: '',
-      friends: []
+      friends: [],
+      public: false
 		}
 		this.handleTitle = this.handleTitle.bind(this);
 		this.handleLocation = this.handleLocation.bind(this);
@@ -34,6 +35,7 @@ class Create extends React.Component {
     this.handleFriends = this.handleFriends.bind(this);
     this.handleFriendChange = this.handleFriendChange.bind(this);
     this.renderSubmit = this.renderSubmit.bind(this);
+    this.isPublic = this.isPublic.bind(this);
 	}
 
 	handleTitle(e){
@@ -68,7 +70,8 @@ class Create extends React.Component {
 			location: this.state.location,
 			date: this.state.date,
 			time: this.state.time,
-			description: this.state.description
+      description: this.state.description,
+      public: this.state.public
 		})
 		.then((response) => {
       // console.log('SUCCESS', response.data._id); // Awesome
@@ -121,6 +124,10 @@ class Create extends React.Component {
 
   }
 
+  isPublic() {
+    this.setState({public: !this.state.public}) // Will need an if
+  }
+
   renderViews() { // CHANGE NAME
     if (!this.state.filmsAdded) {
       return <EntryDetails 
@@ -130,6 +137,8 @@ class Create extends React.Component {
       handleTime={this.handleTime}
       handleDescription={this.handleDescription}
       addFilmsSubmit={this.addFilmsSubmit}
+      public={this.state.public}
+      isPublic={this.isPublic}
       />
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;
@@ -140,7 +149,6 @@ class Create extends React.Component {
       handleFriendChange={this.handleFriendChange}
       friends={this.state.friends}
       renderSubmit={this.renderSubmit}
-
       /> 
     }
   }

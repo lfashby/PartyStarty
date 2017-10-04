@@ -21,6 +21,9 @@ const EntryDetails = (props) => (
           <label>Description</label>
           <input onChange={props.handleDescription} className="form-control" type="text" placeholder="Description" />
           <br></br>
+          Is this event public?
+          <input type="checkbox" checked={props.public} onChange={props.isPublic} />
+          <br></br>
           <button onClick={props.addFilmsSubmit} className="btn btn-secondary btn-lg textarea">Add Films</button>
         </form>
 		</div>
