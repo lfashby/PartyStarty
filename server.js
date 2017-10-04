@@ -12,6 +12,11 @@ const requestHandler = require('./requestHandler.js');
 const util = require('./lib/utility');
 
 const app = express();
+
+// sockets for the chat app
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 const compiler = webpack(webpackConfig);
 
 app.use(express.static(__dirname + '/www'));
@@ -26,7 +31,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 app.use(partial());
 // Parse JSON (uniform resource locators)
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 // Parse forms (signup/login)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/src'));
@@ -37,10 +42,9 @@ app.use(session({
   saveUninitialized: true
 }));
 
-const server = app.listen(3000, function() {
-  const host = server.address().address;
-  const port = server.address().port;
-  console.log('Example app listening at http://%s:%s', host, port);
+// socket connections 
+io.on('connection', function(socket) {
+  console.log(`connection from socket: ${socket}`);
 });
 
 app.post('/signup', requestHandler.addUser);
@@ -53,13 +57,9 @@ app.post('/addMovie', util.checkUser, requestHandler.addMovie);
 
 app.get('/getEvents', util.checkUser, requestHandler.getEvents);
 
-app.get('/events/:event', util.checkUser, requestHandler.getEventDetail);
 
-app.post('/getEventDetail', util.checkUser, requestHandler.getEventDetail);
-
-app.post('/upvote', util.checkUser, requestHandler.upvote);
-
-app.post('/downvote', util.checkUser, requestHandler.downvote);
+app.get('/event/:event_id', requestHandler.getEventDetail);
+// app.get('/event/:event_id', util.checkUser, requestHandler.getEventDetail);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'src', 'home.js'));
@@ -69,4 +69,10 @@ app.get('/logout', function(req, res) {
   req.session.destroy(function() {
     res.send('logout');
   });
+});
+
+const port = process.env.PORT || 3000;
+
+http.listen(port, function() {
+  console.log(`server listening on port ${port}`);
 });
