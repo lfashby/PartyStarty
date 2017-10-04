@@ -36,9 +36,14 @@ class Navbar extends React.Component {
 				
 				<Link to='/userpage' style={{textDecoration: 'none' }} className="Link nav-link h4">User Profile</Link>
 
-				<Link to="/signup" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign Up</Link>
-			
-				<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign In</Link>
+				{
+					this.props.signedIn ? null :
+					<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign In</Link>
+				}
+				{
+					this.props.signedIn ? null :
+					<Link to="/signup" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign Up</Link>
+				}
 				
 				<Link to="/create" style={{textDecoration: 'none' }} className="Link nav-link h4">Create</Link>
 

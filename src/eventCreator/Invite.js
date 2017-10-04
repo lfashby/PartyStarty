@@ -4,7 +4,6 @@ import InviteEntry from './InviteEntry.js';
 
 const Invite = (props) => (
   <div>
-    <Navbar />
     <div className="createpage">
       <h2>Invite your friends</h2>
       <form onSubmit={props.handleFriends}>
