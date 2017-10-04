@@ -5,6 +5,7 @@ class User extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
+      username: `error user`,
       invited: [],
       going: [],
       hosting: []
@@ -19,6 +20,7 @@ class User extends React.Component {
     .then(result => {
       console.log('user server.js ', result);
       this.setState({
+        username: result.username || `error user`,
         invited: result.invites || [],
         going: result.goings || [],
         hosting: result.hostings || []
@@ -49,6 +51,7 @@ class User extends React.Component {
 
     return (
       <div>
+        <div className='userHead'> {this.state.username}'s Profile </div>
         <div className='invited'>
           <div>Invited Events</div>
           {mapOut('invited')}

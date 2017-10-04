@@ -88,7 +88,7 @@ module.exports = {
                 return acc;
               }, []);
               res.send({
-                boogy: 'boogy',
+                username,
                 invites,
                 goings,
                 hostings
