@@ -43,7 +43,6 @@ class User extends React.Component {
   render () {
     return (
       <div>
-        <Navbar />
         <div className='userHead'> {this.state.username}'s Profile </div>
         <div className='eventsContainer'>
           <div className='invited'>
