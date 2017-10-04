@@ -75,14 +75,17 @@ class App extends React.Component {
   mapOut (type) {
     console.log('working with data ', this.state[type])
     return (
-    <div>
+    <div className='mapOfEvents'>
       {this.state[type].map((event,i) => {
         return (
           <Link to='eventpage' key={i}>
-            <div key={i}
+            <button key={i}
+            type='button'
+            className='goToEvent'
             onClick={this.setLookAtEvent}
             value={event._id}
-            style={{textAlign: `center`}}> {event.eventTitle} </div>
+            > {event.eventTitle} </button>
+            <br/>
           </Link>
         )
       })}
