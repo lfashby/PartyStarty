@@ -25,7 +25,10 @@ class App extends React.Component {
       isAuth: false,
       invited: [],
       going: [],
-      hosting: []
+      hosting: [],
+      username: '',
+      password: '',
+      isAuth: false
     }
     this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
     this.login = this.login.bind(this);
@@ -35,6 +38,9 @@ class App extends React.Component {
     this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
     this.setInviteGoingHosting = this.setInviteGoingHosting.bind(this);
     this.mapOut = this.mapOut.bind(this);
+    this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   setLookingAtEvent (e) {
@@ -57,13 +63,14 @@ class App extends React.Component {
     this.setState({
       isAuth: false
     });
+  }
 
-  setInviteGoingHosting (props, values) {
+  setInviteGoingHosting(props, values) {
     this.setState({
       [props[0]]: values[0],
       [props[1]]: values[1],
       [props[2]]: values[2]
-    })
+    });
   }
 
   mapOut (type) {
@@ -80,6 +87,20 @@ class App extends React.Component {
       })}
     </div>)
 
+  }
+  
+  login(username, password) {
+    this.setState({
+      username,
+      password,
+      isAuth: true
+    });
+  }
+
+  logout() {
+    this.setState({
+      isAuth: false
+    });
   }
 
   render(){
