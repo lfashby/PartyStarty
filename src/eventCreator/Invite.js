@@ -22,7 +22,3 @@ const Invite = (props) => (
 );
 
 export default Invite;
-
-
-//<Link to="/" className="btn btn-secondary btn-lg textarea">Create Event</Link>
-// Set a conditional render from parent comp

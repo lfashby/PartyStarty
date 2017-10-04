@@ -45,7 +45,6 @@ class SignIn extends React.Component {
 		return (
 			
 			<div ref="myRef">
-				<Navbar />
 				<div  className="signInForm">
 				<form className="">
 					<h2>Sign In</h2>
