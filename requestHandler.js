@@ -203,7 +203,7 @@ module.exports = {
             let overview = movie.overview;
             let votes = movie.votes;
             let votesByUser = [];
-            let totalVotes = 0;
+            let totalUserVotes = 0;
             Movie.create({
               title,
               poster,
@@ -212,10 +212,12 @@ module.exports = {
               votes,
               totalUserVotes,
               votesByUser
-            }).exec(function(err, movie) {
+            },function(err, movie) {
               if(err) {
                 console.log('error making movie: ', err);
                 res.send('Error making movie: ', err);
+              } else {
+                console.log('Created film', movie);
               }
             });
           });
