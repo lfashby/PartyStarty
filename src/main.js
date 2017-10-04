@@ -152,6 +152,10 @@ class App extends React.Component {
             )} />
             <Route path="/home" component={Home}/>
 
+     
+            
+
+
             <Route path='/userpage' render={() => {
                 return <User setLookingAtEvent={this.setLookingAtEvent}
                 setInviteGoingHosting={this.setInviteGoingHosting}/>

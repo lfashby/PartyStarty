@@ -8,46 +8,32 @@ import Create from './eventCreator/create';
 import Navbar from './navbar';
 import EventList from './event/eventList.js';
 import Event from './event/event.js'
-
-var axios = require('axios');
+import axios from 'axios';
 
 class Home extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			events: [],
-			currentEvent: null,
-		}
-		this.componentWillMount = this.componentWillMount.bind(this);
-		this.handleClick = this.handleClick.bind(this);
+			publicEvents: [],
+    }
+    this.grabPublicEvents = this.grabPublicEvents.bind(this);
 	}
 
-	componentWillMount(){
-		axios.get('/getEvents')
-		.then(data => {
-			console.log('have data',data.data[0])
-			this.setState({
-				events: data.data
-			})
-			console.log(this.state.events)
-		})
-		.catch(error => {
-			console.log('ERROR retrieving events')
-		})
-	}
+  componentDidMount() {
+    this.grabPublicEvents();
+  }
 
-	handleClick(event) {
-			console.log('home', event);
-			axios.post('/getEventDetail', {event: event})
-				.then(data => {
-					this.setState({
-						currentEvent: data.data
-					});
-				})
-				.catch(error => {
-					console.log('ERROR retrieving Current Event')
-				})
-			}
+  grabPublicEvents() {
+    axios.get('/publicEvents')
+    .then((response) => {
+      this.setState({publicEvents: response.data});
+    })
+    .catch((err) => {
+      console.log('Error grabbing public events', err);
+    })
+  }
+
+
 
 	render(){
 		return (
@@ -55,10 +41,10 @@ class Home extends React.Component {
 				<div className="container">
 					<div className="row">
 						<div className="EventList col-2"> 
-							<EventList events={this.state.events} click={this.handleClick}/>
+							<EventList publicEvents={this.state.publicEvents} />
 						</div>
 						<div className="col-10">
-							<Event event={this.state.currentEvent} />
+							{/* <Event event={this.state.currentEvent} /> */}
 						</div>
 					</div>
 				</div>
@@ -69,3 +55,37 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+
+// OLD HOME STUFF
+		// this.componentWillMount = this.componentWillMount.bind(this);
+		// this.handleClick = this.handleClick.bind(this);
+// componentWillMount(){
+// 	axios.get('/getEvents')
+// 	.then(data => {
+// 		console.log('have data',data.data[0])
+// 		this.setState({
+// 			events: data.data
+// 		})
+// 		console.log(this.state.events)
+// 	})
+// 	.catch(error => {
+// 		console.log('ERROR retrieving events')
+// 	})
+// }
+
+// handleClick(event) {
+// 		console.log('home', event);
+// 		axios.post('/getEventDetail', {event: event})
+// 			.then(data => {
+// 				this.setState({
+// 					currentEvent: data.data
+// 				});
+// 			})
+// 			.catch(error => {
+// 				console.log('ERROR retrieving Current Event')
+// 			})
+// 		}
+
+
+//________________-

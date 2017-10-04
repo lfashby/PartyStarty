@@ -6,7 +6,9 @@ const Invite = (props) => (
   <div>
     <div className="createpage">
         <h2 className="subH">Invite your friends</h2>
-        {props.renderSubmit()}
+        <form onSubmit={props.finalEntrySubmit}>
+          <input type="submit" className="btnSub btn-secondary btn-lg textarea" value="Finish Creating Event" />
+        </form>
         <form onSubmit={props.handleFriends}>
           <input value={props.friendValue} onChange={props.handleFriendChange} className="form-control" type="text" placeholder="Enter username" />
           <input className="btn btn-secondary btn-lg textarea" type="submit" value="Add user" />

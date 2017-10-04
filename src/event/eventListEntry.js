@@ -3,22 +3,47 @@ import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 var axios = require ('axios');
 
-class EventListEntry extends React.Component{
-  constructor(props) {
-  super(props);
-   this.test = this.test.bind(this) ;
-  }
-  test(){
-    this.props.click2(this.props.event);
-  }
-  render() {
-    return(
-      <div className ="video-list-entry">
-        <li className="list-group-item" onClick={this.test}>
-          {this.props.event}
-        </li>
-      </div>
-    )}
-}
+const EventListEntry = (props) => (
+  <div className ="video-list-entry">
+  <li className="list-group-item">
+    {props.event.eventTitle}
+    <br></br>
+    {props.event.eventDesc}
+  </li>
+</div>
+)
 
 export default EventListEntry;
+
+
+
+// eventDate
+// :
+// "2017-01-01T00:00:00.000Z"
+// eventDesc
+// :
+// "IT IS PUBLIC"
+// eventFinalized
+// :
+// null
+// eventHostName
+// :
+// "l"
+// eventLocation
+// :
+// "adlfjl"
+// eventPublic
+// :
+// true
+// eventTime
+// :
+// "01:00"
+// eventTitle
+// :
+// "ME DOG"
+// __v
+// :
+// 0
+// _id
+// :
+// "59d542b4a44fa27afb3fccc2"

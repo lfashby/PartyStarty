@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Search from '../search';
 import Navbar from '../navbar';
-import {Link} from 'react-router-dom';
+import {Switch, Link, Route, Redirect, withRouter} from 'react-router-dom';
 import Home from '../home'
 import EntryDetails from './EntryDetails.js';
 import Invite from './Invite.js'
@@ -34,7 +34,7 @@ class Create extends React.Component {
     this.handleFinalizedFilms = this.handleFinalizedFilms.bind(this);
     this.handleFriends = this.handleFriends.bind(this);
     this.handleFriendChange = this.handleFriendChange.bind(this);
-    this.renderSubmit = this.renderSubmit.bind(this);
+    this.finalEntrySubmit = this.finalEntrySubmit.bind(this);
     this.isPublic = this.isPublic.bind(this);
 	}
 
@@ -124,6 +124,19 @@ class Create extends React.Component {
 
   }
 
+  finalEntrySubmit(e) {
+    e.preventDefault();
+    if (this.state.friends.length === 0) {
+      if (confirm('Are you sure you don\'t want to add any friends?\n Click Ok to create the Event without adding friends.')) {
+        alert('Event created!');
+        this.props.history.push('/home');        
+      }
+    } else {
+      this.props.history.push('/home');
+    }
+  }
+
+
   isPublic() {
     this.setState({public: !this.state.public}) // Will need an if
   }
@@ -148,14 +161,8 @@ class Create extends React.Component {
       friendValue={this.state.friendValue}
       handleFriendChange={this.handleFriendChange}
       friends={this.state.friends}
-      renderSubmit={this.renderSubmit}
+      finalEntrySubmit={this.finalEntrySubmit}
       /> 
-    }
-  }
-
-  renderSubmit() {
-    if (this.state.friends.length !== 0) {
-      return <Link to="/" className="btnSub btn-secondary btn-lg textarea">Finish Creating Event</Link> // Add some styles to this
     }
   }
 
@@ -168,4 +175,4 @@ class Create extends React.Component {
 	}
 }
 
-export default Create;
+export default withRouter(Create);
