@@ -9,20 +9,43 @@ import EventPage from './event/eventPage.js';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
 import {BrowserRouter, Route, Switch, browserHistory, Redirect} from 'react-router-dom';
 // const history = createBrowserHistory();
-// class App extends React.Component {
-//   constructor(props){
-//     super(props)
-//     this.state = {
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      
+    }
+  }
+  render(){
+    return (
+      <BrowserRouter basename='/#' >
+        <Switch>
+            <Route exact path="/" render={() => (
+              isAuth ? (
+                <Redirect to="/home"/>
+              ) : (
+                <Redirect to="/signin"/>
+              )
+            )}/>
+            <Route exact path="/home" render={() => (
+              isAuth ? 
+                <Home /> : (
+                <Redirect to="/signin"/>
+              )
+            )}/>
+            <Route path="/home" component={Home}/>
+            <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/create" component={Create}/>
+            <Route path="/search" component={Search} />
+            <Route path="/eventpage" component={EventPage} />
+            <Route path="*" component={Home} />
+        </Switch>
+      </BrowserRouter>
+    )
+  }
+}
 
-//     }
-//   }
-//   render(){
-//     return (
-//         <div>
-//         </div>
-//     )
-//   }
-// }
 window.isAuth = false;
 // function checkAuth() {
 //   console.log('checked Auth')
@@ -30,31 +53,8 @@ window.isAuth = false;
 // }
 
 document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render((
-    <BrowserRouter basename='/#' >
-      <Switch>
-          <Route exact path="/" render={() => (
-            isAuth ? (
-              <Redirect to="/home"/>
-            ) : (
-              <Redirect to="/signin"/>
-            )
-          )}/>
-          <Route exact path="/home" render={() => (
-            isAuth ? 
-              <Home /> : (
-              <Redirect to="/signin"/>
-            )
-          )}/>
-          <Route path="/home" component={Home}/>
-          <Route path="/signin" component={SignIn} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/create" component={Create}/>
-          <Route path="/search" component={Search} />
-          <Route path="/eventpage" component={EventPage} />
-          <Route path="*" component={Home} />
-      </Switch>
-    </BrowserRouter>),
+  ReactDOM.render(
+    (<App />),
     document.getElementById('mount')
   );
 });
