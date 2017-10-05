@@ -129,6 +129,7 @@ class Create extends React.Component {
           friends: [...this.state.friends, this.state.friendValue],
           friendValue: ''
         });
+        console.log(this.state);
       }
     })
     .catch((error) => {
@@ -153,6 +154,7 @@ class Create extends React.Component {
   isPublic() {
     this.setState({public: !this.state.public})
   }
+
   isPublicRender() {
     if (this.state.public) {
       return <p>This event is now public! Beware of strangers!</p>
