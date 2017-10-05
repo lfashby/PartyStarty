@@ -19,16 +19,21 @@ class MessageCreator extends Component {
     return (
       <div>
         <h3>Send your message here!</h3>
+        <form>
         <input 
           type="text" 
           value={ this.state.message } 
           onChange={ this.handleInputChange }
         />
         <button onClick={
-          (e) => this.props.sendMessage(this.state.message) 
+          (e) => { 
+              e.preventDefault();
+              this.props.sendMessage(this.state.message);
+            }
         }>
           Send message!
         </button>
+        </form>
       </div>
     )
   }
