@@ -110,7 +110,7 @@ class EventPage extends React.Component {
 		return (
 			<div>
 				{topBox}
-				<Chat eventId={ this.props.eventId }/>
+				<Chat eventId={ this.props.event }/>
 			</div>
 		)
 	}
