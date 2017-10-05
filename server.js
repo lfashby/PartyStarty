@@ -45,6 +45,10 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// This will create a set interval, checking how often you pass in in milliseconds (defaults to 600000)
+// for events about to start, if one is about to start, it will send out a text reminder to that user
+util.regularlyCheckForUpcomingEvents(60000);
+
 // socket connections 
 io.on('connection', function(socket) {
   console.log(`connection from socket: ${socket}`);
@@ -68,7 +72,7 @@ io.on('connection', function(socket) {
 });
 
 // Get persisted Chat messages 
-app.get(['/chat/:eventId', '/chat'], requestHandler.getChatMessages);
+app.get(['/chat/:eventId', '/chat'], util.checkUser, requestHandler.getChatMessages);
 
 // User Account handling
 app.post('/signup', requestHandler.addUser);
