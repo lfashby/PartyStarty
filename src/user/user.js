@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Navbar from '../navbar.js';
+import EventList from '../event/eventList.js';
 import { Link } from 'react-router-dom';
 
 class User extends React.Component {
@@ -47,20 +48,26 @@ class User extends React.Component {
         <div className='eventsContainer'>
           <div className='invited'>
             <Link to='invited' className='row' style={{ textDecoration: 'none' }}>
-              <button className='eventButtons invitedButton'>See Invited Events</button>
+              <button className='eventButtons invitedButton'>See All Invited Events</button>
             </Link>
+            <br/>
+            <EventList publicEvents={this.state.invited}/>
           </div>
 
           <div className='going'>
             <Link to='going' className='row' style={{ textDecoration: 'none' }}>
-              <button className='eventButtons goingButton'>See Events I'm Going To</button>
+              <button className='eventButtons goingButton'>See All Events I'm Going To</button>
             </Link>
+            <br/>
+            <EventList publicEvents={this.state.going}/>
           </div>
 
           <div className='hosting'>
             <Link to='hosting' className='row' style={{ textDecoration: 'none' }}>
-              <button className='eventButtons hostingButton'>See Events I'm Hosting</button>
+              <button className='eventButtons hostingButton'>See All Events I'm Hosting</button>
             </Link>
+            <br/>
+            <EventList publicEvents={this.state.hosting}/>
           </div>
         </div>
       </div>

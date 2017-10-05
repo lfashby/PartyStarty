@@ -1,11 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import DisplayFood from './DisplayFood.js';
 
 class SearchFood extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
-      term: ``
+      term: ``,
+      recipeData: []
     }
     this.setTerm = this.setTerm.bind(this);
     this.submit = this.submit.bind(this);
@@ -48,6 +50,14 @@ class SearchFood extends React.Component {
           onClick={this.submit}>
           Send
         </button>
+        {
+          this.state.recipeData.length > 0 ? 
+          (<div>
+            <DisplayFood recipes={this.state.recipeData} />
+          </div>)
+          :
+          null
+        }
       </div>
     )
   }
