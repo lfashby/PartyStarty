@@ -48,6 +48,10 @@ app.use(session({
 // socket connections 
 io.on('connection', function(socket) {
   console.log(`connection from socket: ${socket}`);
+  socket.on('chat', function(msg) {
+    console.log(`Got message: ${JSON.stringify(msg)}`);
+    io.emit(msg.eventId, msg);
+  });
 });
 
 app.post('/signup', requestHandler.addUser);
