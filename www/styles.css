@@ -60,7 +60,7 @@ body {
 }
 
 .list-group-item:hover {
-  background-color: blue;
+  border-color: blue;
 }
 
 h2 {
@@ -169,8 +169,8 @@ justify-content: space-around;
 }
 
 .posters {
-  height: 300px;
-  width: 175px;
+  height: 250;
+  width: 150px;
 }
 
 .eventButtons {
@@ -239,7 +239,7 @@ justify-content: space-around;
 
 .video-list-entry {
   /* height: 400px; */
-  width: 570px;
+  width: 500px;
 }
 
 
