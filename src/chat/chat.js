@@ -49,7 +49,10 @@ class Chat extends Component {
     // get previous messages from the server for this event
     fetch(`/chat/${this.props.eventId}`)
       .then((data) => data.json())
-      .then((messages) => this.setState({messages}))
+      .then((messages) => {
+        messages.reverse();
+        this.setState({messages});
+      })
       .catch((err) => console.log(`Error getting messages from server ${err}`));
   }
 
