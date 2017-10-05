@@ -10,6 +10,7 @@ const EventList = (props) => (
         <EventListEntry 
         event={event} 
         key={i} 
+        setLookingAtEvent={props.setLookingAtEvent}
         />
       ))}
     </ul>
