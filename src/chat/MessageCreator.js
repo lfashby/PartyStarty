@@ -28,6 +28,7 @@ class MessageCreator extends Component {
           (e) => { 
               e.preventDefault();
               this.props.sendMessage(this.state.message);
+              this.setState({ message: '' });
             }
         }>
           Send message!
