@@ -47,7 +47,9 @@ class Chat extends Component {
 
   getMessages() {
     // get previous messages from the server for this event
-    fetch(`/chat/${this.props.eventId}`)
+    fetch(`/chat/${this.props.eventId}`, {
+      credentials: 'same-origin'
+    })
       .then((data) => data.json())
       .then((messages) => {
         messages.reverse();
