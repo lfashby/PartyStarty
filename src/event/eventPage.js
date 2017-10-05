@@ -29,17 +29,26 @@ class EventPage extends React.Component {
   };
 
 	handleFirstRating(e){
-		this.setState({firstRating: e.target.value});
+		var firstRating = Number(e.target.value);
+		this.setState({firstRating: firstRating});
 	}
 	handleSecondRating(e){
-		this.setState({secondRating: e.target.value});
+		var secondRating = Number(e.target.value);
+		this.setState({secondRating: secondRating});
 	}
 	handleThirdRating(e){
-		this.setState({thirdRating: e.target.value});
+		var thirdRating = Number(e.target.value);
+		this.setState({thirdRating: thirdRating});
 	}
 
 	submitRatings(e) {
 		e.preventDefault();
+		let total = this.state.firstRating + this.state.secondRating + this.state.thirdRating;
+		console.log(total);
+		if (total > 10) {
+			alert('Too Many Points. Distribute only 10 Points');
+			return; 
+		}
 		var firstMovie = {};
 		firstMovie.username = this.state.username;
 		firstMovie._id = this.state.threeMovies[0]._id;
