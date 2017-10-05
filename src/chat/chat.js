@@ -19,17 +19,17 @@ class Chat extends Component {
     this.state = {
       messages: []
     };
+    this.sendMessage = this.sendMessage.bind(this);
+    this.getMessages = this.getMessages.bind(this);
+  }
+
+  componentDidMount() {
     listenToMessages(this.props.eventId, (msg) => {
       console.log('recieved message: ', msg);
       this.setState({
         messages: [msg, ...this.state.messages]
       });
     });
-    this.sendMessage = this.sendMessage.bind(this);
-    this.getMessages = this.getMessages.bind(this);
-  }
-
-  componentDidMount() {
     this.getMessages();
   }
 
