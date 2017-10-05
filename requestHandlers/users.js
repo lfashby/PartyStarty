@@ -9,9 +9,7 @@ var util = require('../lib/utility');
 exports.addUser = function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
-
-  // need to add this to the sign up form TODO
-  var phoneNumber = req.body.phoneNumber;
+  var phoneNumber = req.body.phone;
 
   User.findOne({username: username})
     .exec(function(err, user) {

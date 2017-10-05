@@ -1,16 +1,16 @@
 import React from 'react';
+import Message from './Message';
 
 const MessagesDisplay = ({ messages }) => {
   return (
     <div>
-      <h3>See your messages here!</h3>
-      <ul>
-        { messages.map((msg, inx) => (
-            <li key={ msg + inx } >
-              { msg.text }
-            </li>
-          ))}
-      </ul>
+      { messages.map((msg, inx) => (
+          <Message
+            key={ msg + inx }
+            msg={ msg }
+            inx={ inx }
+          />
+        ))}
     </div>
   );
 }
