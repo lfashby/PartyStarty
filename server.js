@@ -12,7 +12,7 @@ const requestHandler = require('./requestHandler.js');
 const util = require('./lib/utility');
 const Message = require('./model/message.js');
 const morgan = require('morgan');
-const recipeRouter = require('./Routes/food.js');
+const recipeRouter = require('./Routes/recipe.js');
 const app = express();
 
 // sockets for the chat app
@@ -44,7 +44,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-
+app.use('/recipes', recipeRouter);
 // socket connections 
 io.on('connection', function(socket) {
   console.log(`connection from socket: ${socket}`);
