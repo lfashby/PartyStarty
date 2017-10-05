@@ -8,6 +8,7 @@ class SearchFood extends React.Component {
       term: ``
     }
     this.setTerm = this.setTerm.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   setTerm (e) {
@@ -25,6 +26,9 @@ class SearchFood extends React.Component {
       data: {
         q: this.state.term
       }
+    })
+    .then(result => {
+      
     })
   }
 
