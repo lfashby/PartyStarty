@@ -87,6 +87,14 @@ module.exports = {
                 }
                 return acc;
               }, []);
+              let seen = {};
+              hostings = hostings.filter((invite) => {
+                if (!seen[invite.eventId]) {
+                  seen[invite.eventId] = true;
+                  return true;
+                }
+                return false;
+              });
               res.send({
                 username,
                 invites,
