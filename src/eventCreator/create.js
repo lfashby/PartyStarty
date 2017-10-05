@@ -129,7 +129,6 @@ class Create extends React.Component {
           friends: [...this.state.friends, this.state.friendValue],
           friendValue: ''
         });
-        console.log(this.state);
       }
     })
     .catch((error) => {
@@ -184,6 +183,7 @@ class Create extends React.Component {
       friendValue={this.state.friendValue}
       handleFriendChange={this.handleFriendChange}
       friends={this.state.friends}
+      eventId={this.state.eventId}
       finalEntrySubmit={this.finalEntrySubmit}
       /> 
     }

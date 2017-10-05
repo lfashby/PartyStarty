@@ -15,7 +15,7 @@ const Invite = (props) => (
         </form>
       <ul>
         {props.friends.map((friend, i) => {
-          return <InviteEntry friend={friend} key={i} />
+          return <InviteEntry friend={friend} eventId={props.eventId} key={i} />
         })}
       </ul>
     </div>
