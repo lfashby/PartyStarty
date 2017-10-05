@@ -44,14 +44,13 @@ class User extends React.Component {
   render () {
     return (
       <div>
-        <div className='userHead'> {this.state.username}'s Profile </div>
+        <div className='userHead'> {this.props.username}'s Profile </div>
         <div className='eventsContainer'>
           <div className='invited'>
             <Link to='invited' className='row' style={{ textDecoration: 'none' }}>
               <button className='eventButtons invitedButton'>See All Invited Events</button>
             </Link>
             <br/>
-            <EventList publicEvents={this.state.invited}/>
           </div>
 
           <div className='going'>
@@ -59,7 +58,6 @@ class User extends React.Component {
               <button className='eventButtons goingButton'>See All Events I'm Going To</button>
             </Link>
             <br/>
-            <EventList publicEvents={this.state.going}/>
           </div>
 
           <div className='hosting'>
@@ -67,7 +65,6 @@ class User extends React.Component {
               <button className='eventButtons hostingButton'>See All Events I'm Hosting</button>
             </Link>
             <br/>
-            <EventList publicEvents={this.state.hosting}/>
           </div>
         </div>
       </div>
