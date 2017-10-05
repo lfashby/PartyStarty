@@ -38,3 +38,38 @@ exports.addInvite = function(req, res) {
       }
     }); 
 };
+
+exports.removeInvite = function(req, res) {
+<<<<<<< HEAD
+  // console.log(req.body.username);
+  console.log('removinerer', req)
+  Invite.remove({ 
+    username: req.body.username, 
+=======
+  Invite.remove({ 
+    invitedUserName: req.body.username, 
+>>>>>>> features
+    eventHostUserName: req.session.user.username,
+    eventId: req.body.eventId
+   }, function(err) {
+    if (err) {
+      res.send('Bad');
+    } else {
+      res.send('Good');
+    }
+  })
+  // res.send('You did it');
+}
+
+
+
+
+
+
+// "_id": {
+//   "$oid": "59d694039fb0d830e9226fd6"
+// },
+// "invitedUserName": "p",
+// "eventId": "59d693ff9fb0d830e9226fd1",
+// "eventTitle": "l",
+// "eventHostUserName": "l",
