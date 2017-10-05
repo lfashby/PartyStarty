@@ -123,7 +123,9 @@ class App extends React.Component {
             )}/>
             <Route exact path="/home" render={() => (
               this.state.isAuth ? (
-                <Home /> 
+                <Home 
+                setLookingAtEvent={this.setLookingAtEvent}
+                /> 
               ) : (
                 <Redirect to="/signin"/>
               )
@@ -167,7 +169,7 @@ class App extends React.Component {
             <Route path="/signin" render={() => (
               <SignIn login={ this.login } />
             )} />
-            <Route path="/home" component={Home}/>
+            {/* <Route path="/home" component={Home}/> */}
 
      
             
