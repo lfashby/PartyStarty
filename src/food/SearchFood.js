@@ -26,6 +26,10 @@ class SearchFood extends React.Component {
         q: this.state.term
       }
     })
+    .then(result => {
+      console.log(result);
+      
+    })
   }
 
   render () {
