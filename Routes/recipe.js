@@ -4,9 +4,15 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router(); 
 
-router.post('/recipes', (req, res) => {
+// router.use((req,res,next) => {
+//   console.log('request is ', req);
+//   next();
+// })
+
+router.post('/', (req, res) => {
   var q = req.body.q;
-  axios.get({
+  console.log('q',q);
+  axios({
     method: 'GET',
     url: `https://api.edamam.com/search`,
     params: {
@@ -16,8 +22,12 @@ router.post('/recipes', (req, res) => {
     }
   })
   .then(result => {
-    console.log('food result is ', result);
+    console.log('food result is ', result.data);
     res.send(result.data);
+  })
+  .catch(err => {
+    console.log('err ', err);
+    return;
   })
 });
 

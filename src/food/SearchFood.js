@@ -1,13 +1,16 @@
 import React from 'react';
 import axios from 'axios';
+import DisplayFood from './DisplayFood.js';
 
 class SearchFood extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
-      term: ``
+      term: ``,
+      recipeData: []
     }
     this.setTerm = this.setTerm.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   setTerm (e) {
@@ -18,13 +21,25 @@ class SearchFood extends React.Component {
   }
 
   submit (e) {
+    console.log('hi');
     e.preventDefault();
     axios({
       method: 'POST',
-      url: '/recipes',
+      url: `/recipes`,
       data: {
         q: this.state.term
       }
+    })
+    .then(result => {
+      var recipe = result.data.hits.map(recipe => recipe.recipe);
+      console.log(recipe);
+      this.setState({
+        recipeData: recipe
+      })      
+    })
+    .catch(err => {
+      console.log('SearchFood.js', err);
+      return;
     })
   }
 
@@ -38,6 +53,14 @@ class SearchFood extends React.Component {
           onClick={this.submit}>
           Send
         </button>
+        {
+          this.state.recipeData.length > 0 ? 
+          (<div>
+            <DisplayFood status={this.props.status} handleFoodPicked={this.props.handleFoodPicked || null} recipes={this.state.recipeData} />
+          </div>)
+          :
+          null
+        }
       </div>
     )
   }

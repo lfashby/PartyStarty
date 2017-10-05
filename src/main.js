@@ -11,6 +11,7 @@ import Invited from './user/Invited.js';
 import Going from './user/Going.js';
 import Hosting from './user/Hosting.js';
 import EventPage from './event/eventPage.js';
+import SearchFood from './food/SearchFood.js';
 import createBrowserHistory from '../node_modules/history/createBrowserHistory.js'
 import {BrowserRouter, Route, Switch, browserHistory, Redirect, withRouter, Link} from 'react-router-dom';
 
@@ -134,10 +135,23 @@ class App extends React.Component {
                 <Redirect to="/signin"/>
               )
             )}/>
+
+            <Route exact path="/SearchFoodBrowse" render={() => (
+              this.state.isAuth ? (
+                <SearchFood status={'browse'}/> 
+              ) : (
+                <Redirect to="/signin"/>
+              )
+            )}/>
+
             <Route path='/userpage' render={() => (
               this.state.isAuth ? (
                 <User setLookingAtEvent={this.setLookingAtEvent}
-                  setInviteGoingHosting={this.setInviteGoingHosting}/>
+                  setInviteGoingHosting={this.setInviteGoingHosting}
+                  invited={this.state.invited}
+                  going={this.state.going}
+                  hosting={this.state.hosting}
+                  username={this.state.username}/>
               ) : (
                 <Redirect to="/signin" />
               )
