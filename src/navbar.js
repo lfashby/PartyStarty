@@ -23,7 +23,7 @@ class Navbar extends React.Component {
 			this.props.history.push('/signin');
 		})
 		.catch(error => {
-			console.log(error);
+		  console.log(error);
 		}) 
 		console.log('clicked!');
 	}

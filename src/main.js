@@ -84,7 +84,7 @@ class App extends React.Component {
               type='button'
               className='goToEvent'
               onClick={this.setLookingAtEvent}
-              value={event._id}
+              value={event.eventId}
               > {event.eventTitle} </button>
               <br/>
             </Link>
