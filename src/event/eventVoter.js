@@ -2,11 +2,20 @@ import React from 'react';
 
 
 const EventVoter = (props) => (
-  <div >
+  <div>
     <form className='voterBox'>
       <div className='movieOption'>
         <div className="qEntry">
-	        {/* <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[0].poster}`} /> */}
+          
+	        {props.movies.length > 0 ? 
+          <div>
+          <text>{props.movies[0].title}</text>
+          <img 
+            className="card-img-list" 
+            src={`https://image.tmdb.org/t/p/w500${props.movies[0].poster}`} 
+          />
+          </div> : ''}
+
 	      </div>
         <select value={props.firstRating} onChange={props.handleFirstRating}>
           <option value="0">0</option>
@@ -24,7 +33,16 @@ const EventVoter = (props) => (
       </div>
       <div className='movieOption'>
         <div className="qEntry">
-	        {/* <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[1].poster}`} /> */}
+
+        {props.movies.length > 0 ? 
+          <div>
+          <text>{props.movies[1].title}</text>
+          <img 
+            className="card-img-list" 
+            src={`https://image.tmdb.org/t/p/w500${props.movies[1].poster}`} 
+          />
+          </div> : ''}
+
 	      </div>
         <select value={props.secondRating} onChange={props.handleSecondRating}>
           <option value="0">0</option>
@@ -42,7 +60,16 @@ const EventVoter = (props) => (
       </div>
       <div className='movieOption'>
         <div className="qEntry">
-	        {/* <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[2].poster}`} /> */}
+	        
+        {props.movies.length > 0 ? 
+          <div>
+          <text>{props.movies[2].title}</text>
+          <img 
+            className="card-img-list" 
+            src={`https://image.tmdb.org/t/p/w500${props.movies[2].poster}`} 
+          />
+          </div> : ''}
+
 	      </div>
         <select value={props.thirdRating} onChange={props.handleThirdRating}>
           <option value="0">0</option>

@@ -144,7 +144,10 @@ class App extends React.Component {
             )}/>
             <Route path="/eventpage" render={() => (
               this.state.isAuth ?
-              <EventPage event={this.state.lookingAtEvent}/> :
+              <EventPage 
+                event={this.state.lookingAtEvent}
+                username={this.state.username}
+              /> :
               <Redirect to="/signin" />
             )} />
             <Route path="/signin" render={() => (
