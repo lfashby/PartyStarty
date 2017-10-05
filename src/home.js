@@ -14,7 +14,7 @@ class Home extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			publicEvents: [],
+      publicEvents: [],
     }
     this.grabPublicEvents = this.grabPublicEvents.bind(this);
 	}
@@ -34,17 +34,17 @@ class Home extends React.Component {
   }
 
 
-
 	render(){
 		return (
 			<div>
 				<div className="container">
-					<div className="row">
-						<div className="EventList col-2"> 
-							<EventList publicEvents={this.state.publicEvents} />
-						</div>
-						<div className="col-10">
-							{/* <Event event={this.state.currentEvent} /> */}
+          <h2>Home</h2>
+					<div>
+            Public Events:
+						<div className="EventList"> 
+							<EventList 
+              publicEvents={this.state.publicEvents} 
+              />
 						</div>
 					</div>
 				</div>

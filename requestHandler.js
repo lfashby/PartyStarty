@@ -281,7 +281,8 @@ module.exports = {
         },
 
         getMovies: function(req, res) {
-          let eventId = req.body.eventId;
+          let eventId = req.query.eventId;
+          console.log(eventId)
 
           Event.findOne({ _id: eventId })
             .exec(function(err, event) {

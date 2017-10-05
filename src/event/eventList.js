@@ -7,7 +7,11 @@ const EventList = (props) => (
   <div>
     <ul className ="video-list list-group">
       {props.publicEvents.map((event,i) => (
-        <EventListEntry event={event} key={i} />
+        <EventListEntry 
+        event={event} 
+        key={i} 
+        index={i}
+        />
       ))}
     </ul>
 </div>
