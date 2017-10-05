@@ -50,6 +50,7 @@ class Home extends React.Component {
 						<div className="EventList"> 
 							<EventList 
               publicEvents={this.state.publicEvents} 
+              setLookingAtEvent={this.props.setLookingAtEvent}
               />
 						</div>
 					</div>

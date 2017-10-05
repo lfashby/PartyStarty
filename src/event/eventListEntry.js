@@ -12,6 +12,7 @@ class EventListEntry extends React.Component {
   }
 
 grabFilmPoster() {
+  console.log(this.props);
   if (!this.state.posters.length) {
     axios.get('/movies', { params: {eventId: this.props.event._id }})
     .then((results) => {
@@ -39,6 +40,11 @@ grabFilmPoster() {
             <img className="posters" src={`https://image.tmdb.org/t/p/w500${this.state.posters[0].poster}`} />
             <img className="posters" src={`https://image.tmdb.org/t/p/w500${this.state.posters[1].poster}`} />
             <img className="posters" src={`https://image.tmdb.org/t/p/w500${this.state.posters[2].poster}`} />
+            <Link to='/eventpage'>
+              <button onClick={this.props.setLookingAtEvent} value={this.props.event._id} type="button" className="btn">Checkout the Event</button>
+            </Link>
+
+      
           </div>
         ):( null )
         }

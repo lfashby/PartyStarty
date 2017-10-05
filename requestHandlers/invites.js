@@ -53,16 +53,3 @@ exports.removeInvite = function(req, res) {
   })
   // res.send('You did it');
 }
-
-
-
-
-
-
-// "_id": {
-//   "$oid": "59d694039fb0d830e9226fd6"
-// },
-// "invitedUserName": "p",
-// "eventId": "59d693ff9fb0d830e9226fd1",
-// "eventTitle": "l",
-// "eventHostUserName": "l",
