@@ -33,11 +33,11 @@ class Chat extends Component {
     this.getMessages();
   }
 
-  sendMessage(text, from='John Snow') {
+  sendMessage(text) {
     // emit socket event with the message data
     // handle saving that message to the database on
     // the server side
-    console.log(this.props);
+    let from = this.props.username || 'John Snow';
     emitMessage('chat', {
       text,
       from,
@@ -47,7 +47,9 @@ class Chat extends Component {
 
   getMessages() {
     // get previous messages from the server for this event
-    fetch(`/chat/${this.props.eventId}`)
+    fetch(`/chat/${this.props.eventId}`, {
+      credentials: 'same-origin'
+    })
       .then((data) => data.json())
       .then((messages) => {
         messages.reverse();
