@@ -66,7 +66,6 @@ class Create extends React.Component {
   // Send entry details to server.
   addFilmsSubmit(e) {
     e.preventDefault();
-    if (this.checkEntryDetails(this.state)) {  
       axios.post('/create', {
         title: this.state.title, 
         location: this.state.location,
@@ -82,33 +81,8 @@ class Create extends React.Component {
       .catch((error) => {
         console.log('ERROR', error);
       })
-    } 
   }
 
-  checkEntryDetails(field) {
-    var check = true;
-    if (field.title === '') {
-      alert('Please enter a title.');
-      return check = false;
-    }
-    if (field.location === '') {
-      alert('Please enter a location.');
-      return check = false;
-    }
-    if (field.date === '') {
-      alert('Please enter a date.');
-      return check = false;
-    }
-    if (field.time === '') {
-      alert('Please enter a time.');
-      return check = false;
-    }
-    if (field.description === '') {
-      alert('Please enter a description.');
-      return check = false;
-    }
-    return check;
-  }
 
   // See three selected films to server
   handleFinalizedFilms(movies) {
