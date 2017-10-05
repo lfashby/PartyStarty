@@ -12,6 +12,7 @@ class EventPage extends React.Component {
 	constructor(props){
     super(props);
     this.state = {
+			username: '',
 			hasVoted: false,
       event: {},
 			eventFinalized: false,
@@ -39,37 +40,47 @@ class EventPage extends React.Component {
 
 	submitRatings(e) {
 		e.preventDefault();
-		var firstMovie = this.state.threeMovies[0];
+		var firstMovie = {};
+		firstMovie.username = this.state.username;
+		firstMovie._id = this.state.threeMovies[0]._id;
 		firstMovie.votes = this.state.firstRating;
-		var secondMovie = this.state.threeMovies[1];
+		
+		var secondMovie = {};
+		secondMovie.username = this.state.username;
+		secondMovie._id = this.state.threeMovies[1]._id;
 		secondMovie.votes = this.state.secondRating;
-		var thirdMovie = this.state.threeMovies[2];
-		thirdMovie.votes = this.state.thirdRating;
+		
+		var thirdMovie = {};
+		thirdMovie.username = this.state.username;
+		thirdMovie._id = this.state.threeMovies[2]._id;
+		thirdMovie.votes = this.state.secondRating;
+		
 		var movies = [];
 		movies.push(firstMovie, secondMovie, thirdMovie);
-
-		axios.put('/movies', movies)
+		console.log(movies);
+		axios.put('/movies', {movies})
 		.then((response) => {
-			alert('vote sent');
+			console.log('voting worked');
 		})
 		.catch((error) => {
 			console.log('ERROR', error);
 		})
   }
 
-	getEvent(eventId) {
+	getEvent(eventId, username) {
 		// console.log('eventid', eventId);
 		axios.get('/event/' + eventId)
 			.then(res => {
 				// console.log('getevent is working', res);
 				this.setState({
+					username: username,
 					threeMovies: res.data.movies,
 					event: res.data.event
 				})
 			})
-			// .then(res => {
-			// 	console.log(this.state);
-			// })
+			.then(res => {
+				console.log('username after compdidmount', this.state.username);
+			})
 			.catch(err => {
 				console.log(err);
 			})
@@ -77,12 +88,13 @@ class EventPage extends React.Component {
 
   componentDidMount() {
 		var eventId = this.props.event;
+		var username = this.props.username;
 		console.log('this.props.event', this.props.event)
-		this.getEvent(eventId);
+		this.getEvent(eventId, username);
   }
 
 	render(){
-		console.log('in render', this.props.event);
+		console.log('in render', this.state.threeMovies);
 
 		const eventFinalized = this.state.eventFinalized;
 		let topBox = null;
@@ -110,7 +122,10 @@ class EventPage extends React.Component {
 		return (
 			<div>
 				{topBox}
-				<Chat eventId={ this.props.event }/>
+				<Chat 
+					eventId={ this.props.event }
+					username={ this.props.username}
+				/>
 			</div>
 		)
 	}
