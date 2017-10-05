@@ -19,16 +19,21 @@ class SearchFood extends React.Component {
   }
 
   submit (e) {
+    console.log('hi');
     e.preventDefault();
     axios({
       method: 'POST',
-      url: '/recipes',
+      url: `/recipes`,
       data: {
         q: this.state.term
       }
     })
     .then(result => {
       console.log(result);      
+    })
+    .catch(err => {
+      console.log('SearchFood.js', err);
+      return;
     })
   }
 

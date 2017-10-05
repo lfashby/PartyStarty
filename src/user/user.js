@@ -20,7 +20,7 @@ class User extends React.Component {
       url: `/getEvents`
     })
     .then(result => {
-      console.log('user server.js ', result);
+      //console.log('user server.js ', result);
       this.setState({
         username: result.data.username || `error user`,
         invited: result.data.invites || [],
@@ -31,7 +31,7 @@ class User extends React.Component {
     .then(result => {
       var props = [`invited`,`going`,`hosting`];
       var values = [this.state.invited,this.state.going,this.state.hosting];
-      console.log(this.props)
+      //console.log(this.props)
       this.props.setInviteGoingHosting(props, values);
     })
     .catch(err => {
