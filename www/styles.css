@@ -162,6 +162,11 @@ justify-content: space-around;
   text-align: center;
 }
 
+.posters {
+  height: 300px;
+  width: 175px;
+}
+
 .eventButtons {
   font-size: 200%;
   text-align: center;

@@ -41,6 +41,8 @@ class Home extends React.Component {
           <h2>Home</h2>
 					<div>
             Public Events:
+            <br></br>
+            Click on an event to learn more about it
 						<div className="EventList"> 
 							<EventList 
               publicEvents={this.state.publicEvents} 

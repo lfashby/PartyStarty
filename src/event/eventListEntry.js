@@ -31,7 +31,7 @@ grabFilmPoster(index) {
 
   render() {
     return (
-      <div className ="video-list-entry">
+      <div className="video-list-entry">
         <li onClick={() => this.grabFilmPoster(this.props.index)}className="list-group-item">
         {this.props.event.eventTitle}
         <br></br>
@@ -39,9 +39,9 @@ grabFilmPoster(index) {
         </li>
         { this.state.posters.length ? (
           <div>
-            <img src={`https://image.tmdb.org/t/p/w500${this.state.posters[0].poster}`} />
-            <img src={`https://image.tmdb.org/t/p/w500${this.state.posters[1].poster}`} />
-            <img src={`https://image.tmdb.org/t/p/w500${this.state.posters[2].poster}`} />
+            <img className="posters" src={`https://image.tmdb.org/t/p/w500${this.state.posters[0].poster}`} />
+            <img className="posters" src={`https://image.tmdb.org/t/p/w500${this.state.posters[1].poster}`} />
+            <img className="posters" src={`https://image.tmdb.org/t/p/w500${this.state.posters[2].poster}`} />
           </div>
         ):( null )
         }
