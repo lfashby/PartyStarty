@@ -68,7 +68,7 @@ io.on('connection', function(socket) {
 });
 
 // Get persisted Chat messages 
-app.get(['/chat/:eventId', '/chat'], util.checkUser, requestHandler.getChatMessages);
+app.get(['/chat/:eventId', '/chat'], requestHandler.getChatMessages);
 
 // User Account handling
 app.post('/signup', requestHandler.addUser);
