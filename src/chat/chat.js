@@ -33,11 +33,11 @@ class Chat extends Component {
     this.getMessages();
   }
 
-  sendMessage(text, from='John Snow') {
+  sendMessage(text) {
     // emit socket event with the message data
     // handle saving that message to the database on
     // the server side
-    console.log(this.props);
+    let from = this.props.username || 'John Snow';
     emitMessage('chat', {
       text,
       from,
