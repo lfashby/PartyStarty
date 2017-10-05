@@ -242,6 +242,11 @@ justify-content: space-around;
   width: 570px;
 }
 
+.individualRecipe {
+  display: inline-block;
+  margin: 0px 2px 0px 2px;
+  /* width: 40%; */
+}
 
 /*.navLinks {
   display: flex;

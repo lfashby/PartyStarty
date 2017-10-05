@@ -31,7 +31,11 @@ class SearchFood extends React.Component {
       }
     })
     .then(result => {
-      console.log(result);      
+      var recipe = result.data.hits.map(recipe => recipe.recipe);
+      console.log(recipe);
+      this.setState({
+        recipeData: recipe
+      })      
     })
     .catch(err => {
       console.log('SearchFood.js', err);
@@ -52,7 +56,7 @@ class SearchFood extends React.Component {
         {
           this.state.recipeData.length > 0 ? 
           (<div>
-            <DisplayFood recipes={this.state.recipeData} />
+            <DisplayFood status={this.props.status} handleFoodPicked={this.props.handleFoodPicked || null} recipes={this.state.recipeData} />
           </div>)
           :
           null

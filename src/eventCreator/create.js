@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import Search from '../search';
 import Navbar from '../navbar';
 import {Switch, Link, Route, Redirect, withRouter} from 'react-router-dom';
-import Home from '../home'
+import Home from '../home';
+import SearchFood from '../food/SearchFood.js';
 import EntryDetails from './EntryDetails.js';
 import Invite from './Invite.js'
 import axios from 'axios';
@@ -23,7 +24,8 @@ class Create extends React.Component {
       eventId: '',
       friendValue: '',
       friends: [],
-      public: false
+      public: false,
+      foodPicked: false
 		}
 		this.handleTitle = this.handleTitle.bind(this);
 		this.handleLocation = this.handleLocation.bind(this);
@@ -37,6 +39,7 @@ class Create extends React.Component {
     this.finalEntrySubmit = this.finalEntrySubmit.bind(this);
     this.isPublic = this.isPublic.bind(this);
     this.isPublicRender = this.isPublicRender.bind(this);
+    this.handleFoodPicked = this.handleFoodPicked.bind(this);
 	}
 
 	handleTitle(e){
@@ -57,6 +60,12 @@ class Create extends React.Component {
 
 	handleDescription(e){
 		this.setState({description: e.target.value});
+  }
+
+  handleFoodPicked(e) {
+    this.setState({
+      foodPicked: !this.state.foodPicked
+    })
   }
   
   submitEntryData(){
@@ -191,6 +200,8 @@ class Create extends React.Component {
       />
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;
+    } else if (this.state.filmsFinalized && !this.state.foodPicked) {
+      return <SearchFood status={'pick'} handleFoodPicked={this.handleFoodPicked} />
     } else {
       return <Invite 
       handleFriends={this.handleFriends}

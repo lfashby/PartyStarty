@@ -44,7 +44,7 @@ class User extends React.Component {
   render () {
     return (
       <div>
-        <div className='userHead'> {this.state.username}'s Profile </div>
+        <div className='userHead'> {this.props.username}'s Profile </div>
         <div className='eventsContainer'>
           <div className='invited'>
             <Link to='invited' className='row' style={{ textDecoration: 'none' }}>

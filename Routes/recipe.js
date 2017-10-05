@@ -22,8 +22,8 @@ router.post('/', (req, res) => {
     }
   })
   .then(result => {
-    console.log('food result is ', result);
-    res.send(result);
+    console.log('food result is ', result.data);
+    res.send(result.data);
   })
   .catch(err => {
     console.log('err ', err);

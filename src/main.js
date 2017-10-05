@@ -136,9 +136,9 @@ class App extends React.Component {
               )
             )}/>
 
-            <Route exact path="/SearchFood" render={() => (
+            <Route exact path="/SearchFoodBrowse" render={() => (
               this.state.isAuth ? (
-                <SearchFood /> 
+                <SearchFood status={'browse'}/> 
               ) : (
                 <Redirect to="/signin"/>
               )
@@ -150,7 +150,8 @@ class App extends React.Component {
                   setInviteGoingHosting={this.setInviteGoingHosting}
                   invited={this.state.invited}
                   going={this.state.going}
-                  hosting={this.state.hosting}/>
+                  hosting={this.state.hosting}
+                  username={this.state.username}/>
               ) : (
                 <Redirect to="/signin" />
               )
