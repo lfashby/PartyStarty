@@ -101,7 +101,6 @@ module.exports = {
 
   // Retrieve event details
   getEventDetail: function(req, res, next) {
-    // var eventTitle = req.body.event;
     var eventId = req.params.event_id;
     Event.findOne({_id: eventId})
       .exec(function(err, event) {
@@ -115,7 +114,7 @@ module.exports = {
               });
             });
         } else {
-          res.end('Event does not exist');
+          res.end('Event does not exist', err);
         }
       });
   },
