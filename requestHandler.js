@@ -87,6 +87,14 @@ module.exports = {
                 }
                 return acc;
               }, []);
+              let seen = {};
+              hostings = hostings.filter((invite) => {
+                if (!seen[invite.eventId]) {
+                  seen[invite.eventId] = true;
+                  return true;
+                }
+                return false;
+              });
               res.send({
                 username,
                 invites,
@@ -101,7 +109,6 @@ module.exports = {
 
   // Retrieve event details
   getEventDetail: function(req, res, next) {
-    // var eventTitle = req.body.event;
     var eventId = req.params.event_id;
     Event.findOne({_id: eventId})
       .exec(function(err, event) {
@@ -115,7 +122,7 @@ module.exports = {
               });
             });
         } else {
-          res.end('Event does not exist');
+          res.end('Event does not exist', err);
         }
       });
   },

@@ -28,7 +28,7 @@ class SearchFood extends React.Component {
       }
     })
     .then(result => {
-      
+      console.log(result);      
     })
   }
 
