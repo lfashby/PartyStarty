@@ -15,7 +15,7 @@ class EventPage extends React.Component {
 			username: '',
 			hasVoted: false,
       event: {},
-			eventFinalized: false,
+			eventFinalized: true,
 			threeMovies: [],
 			firstRating: 0,
       secondRating: 0,
@@ -88,7 +88,7 @@ class EventPage extends React.Component {
 				})
 			})
 			.then(res => {
-				console.log('username after compdidmount', this.state.username);
+				console.log('event after compdidmount', this.state.event);
 			})
 			.catch(err => {
 				console.log(err);
@@ -103,7 +103,7 @@ class EventPage extends React.Component {
   }
 
 	render(){
-		console.log('in render', this.state.threeMovies);
+		console.log('in render', this.state.event);
 
 		const eventFinalized = this.state.eventFinalized;
 		let topBox = null;

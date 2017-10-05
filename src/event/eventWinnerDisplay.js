@@ -3,7 +3,10 @@ import React from 'react';
 const EventWinnerDisplay = (props) => {
   return (
     <div>
-      Page shows
+      {props.event.eventTitle}
+      {props.event.eventLocation}
+      {props.event.eventDate}
+      {props.event.eventDesc}
     </div>
   )
 }
