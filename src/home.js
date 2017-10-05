@@ -38,7 +38,9 @@ class Home extends React.Component {
 	render(){
 		return (
 			<div>
-				<SearchFood/>
+        <Link to='/SearchFood'>
+          <button type='button'>Browse Food</button>
+        </Link>
 				<div className="container">
           <h2>Home</h2>
 					<div>
