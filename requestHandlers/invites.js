@@ -40,15 +40,8 @@ exports.addInvite = function(req, res) {
 };
 
 exports.removeInvite = function(req, res) {
-<<<<<<< HEAD
-  // console.log(req.body.username);
-  console.log('removinerer', req)
-  Invite.remove({ 
-    username: req.body.username, 
-=======
   Invite.remove({ 
     invitedUserName: req.body.username, 
->>>>>>> features
     eventHostUserName: req.session.user.username,
     eventId: req.body.eventId
    }, function(err) {
