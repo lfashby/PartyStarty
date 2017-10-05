@@ -12,7 +12,7 @@ const requestHandler = require('./requestHandler.js');
 const util = require('./lib/utility');
 const Message = require('./model/message.js');
 const morgan = require('morgan');
-const recipeRouter = require('./Routes/food.js');
+const recipeRouter = require('./Routes/recipe.js');
 const app = express();
 
 // sockets for the chat app
@@ -44,7 +44,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-
+app.use('/recipes', recipeRouter);
 // socket connections 
 io.on('connection', function(socket) {
   console.log(`connection from socket: ${socket}`);
@@ -89,11 +89,6 @@ app.get('/getEvents', util.checkUser, requestHandler.getEvents);
 app.get('/event/:event_id', requestHandler.getEventDetail);
 // app.get('/event/:event_id', util.checkUser, requestHandler.getEventDetail);
 
-// Movies
-app.post('/addMovies', util.checkUser, requestHandler.addMovies);
-app.put('/movies', util.checkUser, requestHandler.updateMovies);
-app.get('/movies', util.checkUser, requestHandler.getMovies);
-app.post('/recipes', recipeRouter);
 
 // Catch All
 app.get('*', (req, res) => {
