@@ -52,7 +52,7 @@ class SignUp extends React.Component {
 					<div className="form-group">
 						<input className="form-control userInput" onChange={this.handleUserInput} value={this.state.username} type="text" placeholder="Username" />
 						<input className="form-control passInput" onChange={this.handlePasswordInput} value={this.state.password} type="password" placeholder="Password" />
-						<input className="form-control passInput" onChange={this.handlePhoneInput} value={this.state.phone} type="tel" placeholder="Phone xxxxxxxxxx" pattern="^d{10}$" required/>
+						<input className="form-control passInput" onChange={this.handlePhoneInput} value={this.state.phone} type="tel" placeholder="Phone xxxxxxxxxx" pattern="^\d{10}$" required/>
 					</div>
 					<button className="btn btn-secondary">Sign Up</button>
 				</form>
