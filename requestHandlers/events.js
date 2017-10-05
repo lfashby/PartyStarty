@@ -47,6 +47,7 @@ exports.addEvent = function(req, res) {
   // initialized to null, change when the event is finalized
   var eventMoviePictureUrl = null;
   var eventFinalized = null;
+  var finalMovieId = '';
   
   Event.create({
     eventTitle,
@@ -57,7 +58,8 @@ exports.addEvent = function(req, res) {
     eventHostName,
     eventMoviePictureUrl,
     eventFinalized,
-    eventPublic
+    eventPublic,
+    finalMovieId
   }, function(err, event) {
     if (err) {
       console.log('error creating an event: ', err);
