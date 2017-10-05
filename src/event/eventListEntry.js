@@ -12,6 +12,7 @@ class EventListEntry extends React.Component {
   }
 
 grabFilmPoster(index) {
+  console.log(this.props.event);
   if (!this.state.posters.length) {
     axios.get('/movies', { params: {eventId: this.props.event._id }})
     .then((results) => {
@@ -39,6 +40,8 @@ grabFilmPoster(index) {
         </li>
         { this.state.posters.length ? (
           <div>
+            <p>Hosted by: {this.props.event.eventHostName}</p>
+            <p>Location: {this.props.event.eventLocation}</p>
             <img className="posters" src={`https://image.tmdb.org/t/p/w500${this.state.posters[0].poster}`} />
             <img className="posters" src={`https://image.tmdb.org/t/p/w500${this.state.posters[1].poster}`} />
             <img className="posters" src={`https://image.tmdb.org/t/p/w500${this.state.posters[2].poster}`} />
