@@ -11,7 +11,6 @@ const EventList = (props) => (
         event={event} 
         key={i} 
         index={i}
-        currentMoviePosters={props.currentMoviePosters}
         />
       ))}
     </ul>

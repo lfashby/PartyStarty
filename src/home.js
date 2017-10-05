@@ -15,11 +15,8 @@ class Home extends React.Component {
 		super(props)
 		this.state = {
       publicEvents: [],
-      currentMoviePosters: []
     }
     this.grabPublicEvents = this.grabPublicEvents.bind(this);
-    // this.grabFilmPoster = this.grabFilmPoster.bind(this);
-    // this.renderPosters = this.renderPosters.bind(this);
 	}
 
   componentDidMount() {
@@ -47,7 +44,6 @@ class Home extends React.Component {
 						<div className="EventList"> 
 							<EventList 
               publicEvents={this.state.publicEvents} 
-              currentMoviePosters={this.state.currentMoviePosters}
               />
 						</div>
 					</div>
