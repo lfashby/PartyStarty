@@ -28,11 +28,10 @@ grabFilmPoster() {
   render() {
     return (
       <div className="video-list-entry">
-        <li onClick={() => this.grabFilmPoster()}className="list-group-item">
+        <li onClick={() => this.grabFilmPoster()} className="list-group-item">
         {this.props.event.eventTitle}
         <br></br>
         Location: {this.props.event.eventLocation}
-        </li>
         { this.state.posters.length ? (
           <div>
             <p>Hosted by: {this.props.event.eventHostName}</p>
@@ -43,6 +42,7 @@ grabFilmPoster() {
           </div>
         ):( null )
         }
+        </li>
       </div>
     )
 
