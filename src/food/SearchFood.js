@@ -21,7 +21,7 @@ class SearchFood extends React.Component {
   }
 
   submit (e) {
-    console.log('hi');
+    //console.log('hi');
     e.preventDefault();
     axios({
       method: 'POST',
