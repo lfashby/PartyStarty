@@ -14,9 +14,12 @@ class Home extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			publicEvents: [],
+      publicEvents: [],
+      currentMoviePosters: []
     }
     this.grabPublicEvents = this.grabPublicEvents.bind(this);
+    // this.grabFilmPoster = this.grabFilmPoster.bind(this);
+    // this.renderPosters = this.renderPosters.bind(this);
 	}
 
   componentDidMount() {
@@ -34,17 +37,18 @@ class Home extends React.Component {
   }
 
 
-
 	render(){
 		return (
 			<div>
 				<div className="container">
-					<div className="row">
-						<div className="EventList col-2"> 
-							<EventList publicEvents={this.state.publicEvents} />
-						</div>
-						<div className="col-10">
-							{/* <Event event={this.state.currentEvent} /> */}
+          <h2>Home</h2>
+					<div>
+            Public Events:
+						<div className="EventList"> 
+							<EventList 
+              publicEvents={this.state.publicEvents} 
+              currentMoviePosters={this.state.currentMoviePosters}
+              />
 						</div>
 					</div>
 				</div>
