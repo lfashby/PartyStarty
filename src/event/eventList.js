@@ -10,7 +10,6 @@ const EventList = (props) => (
         <EventListEntry 
         event={event} 
         key={i} 
-        index={i}
         />
       ))}
     </ul>
