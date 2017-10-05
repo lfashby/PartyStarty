@@ -7,8 +7,9 @@ import SignUp from './signup';
 import Create from './eventCreator/create';
 import Navbar from './navbar';
 import EventList from './event/eventList.js';
-import Event from './event/event.js'
-import axios from 'axios';
+import Event from './event/event.js';
+import SearchFood from './food/SearchFood';
+var axios = require('axios');
 
 class Home extends React.Component {
 	constructor(props){
@@ -37,6 +38,7 @@ class Home extends React.Component {
 	render(){
 		return (
 			<div>
+				<SearchFood/>
 				<div className="container">
           <h2>Home</h2>
 					<div>
