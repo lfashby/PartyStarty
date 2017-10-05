@@ -63,23 +63,51 @@ class Create extends React.Component {
   }
 
   // Send entry details to server.
-  addFilmsSubmit() {
-    this.setState({filmsAdded: true});
-		axios.post('/create', {
-			title: this.state.title, 
-			location: this.state.location,
-			date: this.state.date,
-			time: this.state.time,
-      description: this.state.description,
-      public: this.state.public
-		})
-		.then((response) => {
-      // console.log('SUCCESS', response.data._id); // Awesome
-      this.setState({eventId: response.data._id});
-		})
-		.catch((error) => {
-			console.log('ERROR', error);
-		})
+  addFilmsSubmit(e) {
+    e.preventDefault();
+    if (this.checkEntryDetails(this.state)) {  
+      axios.post('/create', {
+        title: this.state.title, 
+        location: this.state.location,
+        date: this.state.date,
+        time: this.state.time,
+        description: this.state.description,
+        public: this.state.public
+      })
+      .then((response) => {
+        // console.log('SUCCESS', response.data._id); // Awesome
+        this.setState({eventId: response.data._id});
+        this.setState({filmsAdded: true});
+      })
+      .catch((error) => {
+        console.log('ERROR', error);
+      })
+    } 
+  }
+
+  checkEntryDetails(field) {
+    var check = true;
+    if (field.title === '') {
+      alert('Please enter a title.');
+      return check = false;
+    }
+    if (field.location === '') {
+      alert('Please enter a location.');
+      return check = false;
+    }
+    if (field.date === '') {
+      alert('Please enter a date.');
+      return check = false;
+    }
+    if (field.time === '') {
+      alert('Please enter a time.');
+      return check = false;
+    }
+    if (field.description === '') {
+      alert('Please enter a description.');
+      return check = false;
+    }
+    return check;
   }
 
   handleFinalizedFilms(movies) {
@@ -89,7 +117,7 @@ class Create extends React.Component {
       eventId: this.state.eventId
     })
     .then((response) => {
-      console.log('Films sent');
+      // console.log('Films sent');
     })
     .catch((error) => {
       console.log('Error sending films to db', error);
