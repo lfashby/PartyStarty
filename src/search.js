@@ -30,7 +30,6 @@ class Search extends React.Component {
 	// Handles picking a movie from suggestions
 	selectMovie(movie){
 		this.setState({currentMovie: movie});
-		console.log(this.state.currentMovie);
 	}
 
 	// Resets search form on click
@@ -41,6 +40,7 @@ class Search extends React.Component {
 	// Adds movie to queue 
 	handleAddMovieToQueue() {
 		// As long as less than 3
+		console.log(this.state.currentMovie);
 		this.setState({movies: [...this.state.movies, this.state.currentMovie]});
 		// axios.post("/addMovie",{currentMovie: this.state.currentMovie})
 		// .then(response => {
@@ -101,7 +101,7 @@ class Search extends React.Component {
 	.on('typeahead:selected', function(err, movie) {
 		if(err) console.log('ERROR RENDERING MOVIES')
     this.selectMovie(movie);
-  	console.log(movie.title);
+  	// console.log(movie.title);
 		$('.typeahead').typeahead('val', movie.title);
   }.bind(this));
 	

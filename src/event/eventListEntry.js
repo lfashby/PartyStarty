@@ -12,12 +12,10 @@ class EventListEntry extends React.Component {
   }
 
 grabFilmPoster() {
-  console.log(this.props.event);
   if (!this.state.posters.length) {
     axios.get('/movies', { params: {eventId: this.props.event._id }})
     .then((results) => {
       this.setState({posters: results.data.movies})
-      console.log(this.state);
     })
     .catch((error) => {
       console.log(error);
@@ -26,9 +24,6 @@ grabFilmPoster() {
     this.setState({posters: []});
   }
 }
-
-
-
 
   render() {
     return (

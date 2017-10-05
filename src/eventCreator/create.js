@@ -36,6 +36,7 @@ class Create extends React.Component {
     this.handleFriendChange = this.handleFriendChange.bind(this);
     this.finalEntrySubmit = this.finalEntrySubmit.bind(this);
     this.isPublic = this.isPublic.bind(this);
+    this.isPublicRender = this.isPublicRender.bind(this);
 	}
 
 	handleTitle(e){
@@ -75,7 +76,6 @@ class Create extends React.Component {
         public: this.state.public
       })
       .then((response) => {
-        // console.log('SUCCESS', response.data._id); // Awesome
         this.setState({eventId: response.data._id});
         this.setState({filmsAdded: true});
       })
@@ -110,6 +110,7 @@ class Create extends React.Component {
     return check;
   }
 
+  // See three selected films to server
   handleFinalizedFilms(movies) {
     this.setState({filmsFinalized: true});
 		axios.post('/addMovies', {
@@ -128,6 +129,7 @@ class Create extends React.Component {
     this.setState({friendValue: event.target.value});
   }
 
+  // Send friend username to database
   handleFriends(e) {
     e.preventDefault();
     axios.post('/invite', {
@@ -152,6 +154,7 @@ class Create extends React.Component {
 
   }
 
+  // Redirect when event creation finished
   finalEntrySubmit(e) {
     e.preventDefault();
     if (this.state.friends.length === 0) {
@@ -164,12 +167,16 @@ class Create extends React.Component {
     }
   }
 
-
   isPublic() {
-    this.setState({public: !this.state.public}) // Will need an if
+    this.setState({public: !this.state.public})
+  }
+  isPublicRender() {
+    if (this.state.public) {
+      return <p>This event is now public! Beware of strangers!</p>
+    }
   }
 
-  renderViews() { // CHANGE NAME
+  renderViews() { 
     if (!this.state.filmsAdded) {
       return <EntryDetails 
       handleTitle={this.handleTitle}
@@ -180,6 +187,7 @@ class Create extends React.Component {
       addFilmsSubmit={this.addFilmsSubmit}
       public={this.state.public}
       isPublic={this.isPublic}
+      isPublicRender={this.isPublicRender}
       />
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;

@@ -128,7 +128,6 @@ module.exports = {
   },
   // Create event
   addEvent: function(req, res) {
-    console.log('HELLLLO', req.body);
     
     var eventTitle = req.body.title;
     var eventLocation = req.body.location;
