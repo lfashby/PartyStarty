@@ -91,7 +91,8 @@ app.get('/event/:event_id', requestHandler.getEventDetail);
 
 // Movies
 app.post('/addMovies', util.checkUser, requestHandler.addMovies);
-app.put('/movies', util.checkUser, requestHandler.updateMovies);
+app.put('/movies', requestHandler.updateMovies);
+// app.put('/movies', util.checkUser, requestHandler.updateMovies);
 app.get('/movies', util.checkUser, requestHandler.getMovies);
 app.post('/recipes', recipeRouter);
 

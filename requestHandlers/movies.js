@@ -43,9 +43,8 @@ exports.getMovies = function(req, res) {
 
 exports.updateMovies = function(req, res) {
   let movies = req.body.movies;
-
   movies.forEach(function(movieOption) {
-    Movie.findOne({ _id: movie.movieId })
+    Movie.findOne({ _id: movieOption._id })
       .exec(function(err, movie) {
         if (err) {
           console.log('Error updating movie votes: ', err);
@@ -57,9 +56,10 @@ exports.updateMovies = function(req, res) {
             username: movieOption.username,
             votes: movieOption.votes
           });
-          movie.votesByUer = newVotesByUser;
+          movie.votesByUser = newVotesByUser;
           movie.totalUserVotes = movie.votesByUser.reduce((acc, obj) => obj.votes + acc, 0);
           movie.save();
+          res.end();
         }              
       });
   });
