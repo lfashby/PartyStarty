@@ -26,6 +26,11 @@ class Chat extends Component {
       });
     });
     this.sendMessage = this.sendMessage.bind(this);
+    this.getMessages = this.getMessages.bind(this);
+  }
+
+  componentDidMount() {
+    this.getMessages();
   }
 
   sendMessage(text, from='John Snow') {
@@ -38,6 +43,14 @@ class Chat extends Component {
       from,
       eventId: this.props.eventId
     });
+  }
+
+  getMessages() {
+    // get previous messages from the server for this event
+    fetch(`/chat/${this.props.eventId}`)
+      .then((data) => data.json())
+      .then((messages) => this.setState({messages}))
+      .catch((err) => console.log(`Error getting messages from server ${err}`));
   }
 
   render() {

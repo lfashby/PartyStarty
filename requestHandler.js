@@ -8,6 +8,7 @@ var Event = require('./model/event.js');
 var Movie = require('./model/moviequeue.js');
 var User = require('./model/user.js');
 var Invite = require('./model/invite.js');
+var Message = require('./model/message.js');
 var util = require('./lib/utility');
 
 module.exports = {
@@ -113,7 +114,6 @@ module.exports = {
     Event.findOne({_id: eventId})
       .exec(function(err, event) {
         if (event) {
-          console.log('got the event', event);
           Movie.find({ eventId })
             .exec(function(err, movies) {
               res.send({
@@ -299,7 +299,7 @@ module.exports = {
                 Movie.find({ eventId })
                   .exec(function(err, movies) {
                     if(err) {
-                      console.log('error getting movies to send back for event: ', err);
+                      console.log('Error getting movies to send back for event: ', err);
                       res.send('error getting movies to send back for event: ', err);
                     } else {
                       Invite.find({ eventId })
@@ -329,6 +329,21 @@ module.exports = {
                 res.send('Error getting public events: ', err);
               } else {
                 res.send(publicEvents);
+              }
+            });
+        },
+
+        getChatMessages: function(req, res) {
+          let eventId = req.params.eventId || '';
+
+          // Message.find({})
+          Message.find({ eventId })
+            .exec(function(err, messages) {
+              if(err) {
+                console.log('Error getting chat messages: ', err);
+                res.send('Error getting chat messages: ', err);
+              } else {
+                res.send(messages);
               }
             });
         }
