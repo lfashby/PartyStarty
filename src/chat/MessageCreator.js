@@ -18,7 +18,6 @@ class MessageCreator extends Component {
   render() {
     return (
       <div>
-        <h3>Send your message here!</h3>
         <form>
         <input 
           type="text" 
