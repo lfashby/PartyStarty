@@ -29,7 +29,7 @@ module.exports = {
 
   // INVITE handlers
   addInvite: invites.addInvite,
-
+  removeInvite: invites.removeInvite,
   // CHAT handlers
   getChatMessages: chat.getChatMessages
 };

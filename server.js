@@ -81,6 +81,7 @@ app.get('/logout', function(req, res) {
 
 // Invites
 app.post('/invite', util.checkUser, requestHandler.addInvite);
+app.delete('/invite', util.checkUser, requestHandler.removeInvite);
 
 // Events 
 app.post('/create', util.checkUser, requestHandler.addEvent);
