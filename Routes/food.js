@@ -12,8 +12,12 @@ router.post('/recipes', (req, res) => {
     params: {
       q: q,
       app_id: recipeid,
-      app_key: recipeid
+      app_key: recipekey
     }
+  })
+  .then(result => {
+    console.log('food result is ', result);
+    res.send(result.data);
   })
 });
 
