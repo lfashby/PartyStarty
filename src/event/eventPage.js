@@ -15,41 +15,7 @@ class EventPage extends React.Component {
 			hasVoted: false,
       event: {},
 			eventFinalized: false,
-			threeMovies: [
-        {
-					"_id": "59d52fc9808c0f723595a0fd",
-					"title": "The Revenant",
-					"poster": "/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg",
-					"overview": "In the 1820s, a frontiersman, Hugh Glass, sets out on a path of vengeance against those who left him for dead after a bear mauling.",
-					"eventId": "59d52fa7808c0f723595a0fb",
-					"votes": 7.3,
-					"totalUserVotes": 0,
-					"__v": 0,
-					"votesByUser": []
-        },
-        {
-					"_id": "59d52fc9808c0f723595a0fe",
-					"title": "Blair Witch",
-					"poster": "/kqmGs9q5WZkxKub60K6pU37GdvU.jpg",
-					"overview": "Students on a camping trip discover something sinister is lurking beyond the trees.",
-					"eventId": "59d52fa7808c0f723595a0fb",
-					"votes": 4.9,
-					"totalUserVotes": 0,
-					"__v": 0,
-					"votesByUser": []
-        },
-        {
-					"_id": "59d52fc9808c0f723595a0ff",
-					"title": "Elf",
-					"poster": "/9jChHqqcpe0zHNTqkNqWZkwkgil.jpg",
-					"overview": "When young Buddy falls into Santa's gift sack on Christmas Eve, he's transported back to the North Pole and raised as a toy-making elf by Santa's helpers. But as he grows into adulthood, he can't shake the nagging feeling that he doesn't belong. Buddy vows to visit Manhattan and find his real dad, a workaholic publisher.",
-					"eventId": "59d52fa7808c0f723595a0fb",
-					"votes": 6.4,
-					"totalUserVotes": 0,
-					"__v": 0,
-					"votesByUser": []
-        }
-			],
+			threeMovies: [],
 			firstRating: 0,
       secondRating: 0,
       thirdRating: 0
@@ -92,14 +58,10 @@ class EventPage extends React.Component {
   }
 
 	getEvent(eventId) {
-		console.log('eventid', eventId);
-		axios.get('/event', {
-			params: {
-				event_id: eventId 
-			}
-		})
+		// console.log('eventid', eventId);
+		axios.get('/event/' + eventId)
 			.then(res => {
-				console.log(res);
+				// console.log('getevent is working', res);
 				this.setState({
 					threeMovies: res.data.movies,
 					event: res.data.event
@@ -115,10 +77,13 @@ class EventPage extends React.Component {
 
   componentDidMount() {
 		var eventId = this.props.event;
+		console.log('this.props.event', this.props.event)
 		this.getEvent(eventId);
   }
 
 	render(){
+		console.log('in render', this.props.event);
+
 		const eventFinalized = this.state.eventFinalized;
 		let topBox = null;
 		if (!eventFinalized) {
@@ -145,7 +110,7 @@ class EventPage extends React.Component {
 		return (
 			<div>
 				{topBox}
-				<Chat eventId={ this.props.event }/>
+				<Chat eventId={ this.props.eventId }/>
 			</div>
 		)
 	}

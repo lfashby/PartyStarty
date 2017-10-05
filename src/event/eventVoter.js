@@ -6,7 +6,7 @@ const EventVoter = (props) => (
     <form className='voterBox'>
       <div className='movieOption'>
         <div className="qEntry">
-	        <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[0].poster}`} />
+	        {/* <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[0].poster}`} /> */}
 	      </div>
         <select value={props.firstRating} onChange={props.handleFirstRating}>
           <option value="0">0</option>
@@ -24,7 +24,7 @@ const EventVoter = (props) => (
       </div>
       <div className='movieOption'>
         <div className="qEntry">
-	        <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[1].poster}`} />
+	        {/* <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[1].poster}`} /> */}
 	      </div>
         <select value={props.secondRating} onChange={props.handleSecondRating}>
           <option value="0">0</option>
@@ -42,7 +42,7 @@ const EventVoter = (props) => (
       </div>
       <div className='movieOption'>
         <div className="qEntry">
-	        <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[2].poster}`} />
+	        {/* <img className="card-img-list" src={`https://image.tmdb.org/t/p/w500${props.movies[2].poster}`} /> */}
 	      </div>
         <select value={props.thirdRating} onChange={props.handleThirdRating}>
           <option value="0">0</option>
