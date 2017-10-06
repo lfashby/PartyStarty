@@ -100,6 +100,19 @@ exports.getEventDetail = function(req, res, next) {
     });
 };
 
+exports.getAllEvents = function(req, res, next) {
+  Event.find({})
+    .exec(function(err, events) {
+      if (events) {
+        res.send(events);
+      } else {
+        res.end('Events do not exist', err);
+      }
+    });
+};
+
+
+
 exports.getEvents = function(req, res, next) {
   var username = req.session.user.username;
 
