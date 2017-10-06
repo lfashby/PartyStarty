@@ -34,6 +34,8 @@ class User extends React.Component {
       var values = [this.state.invited,this.state.going,this.state.hosting];
       //console.log(this.props)
       this.props.setInviteGoingHosting(props, values);
+      console.log(this.state)
+      console.log(this.props);
     })
     .catch(err => {
       console.log('line 26 user.js ', err);
@@ -45,7 +47,38 @@ class User extends React.Component {
     return (
       <div>
         <div className='userHead'> {this.props.username}'s Profile </div>
-        <div className='eventsContainer'>
+          <ul className="nav nav-pills nav-stacked nav-fill">
+            <li className="dropdown">
+              <a className="dropdown-toggle" data-toggle="dropdown" href="#">See All Invited Events
+              <span className="caret"></span></a>
+              <ul className="dropdown-menu">
+                  {this.props.mapOut('invited')}
+              </ul>
+            </li>
+            <li className="dropdown">
+              <a className="dropdown-toggle" data-toggle="dropdown" href="#">See All Events I'm Going To
+              <span className="caret"></span></a>
+              <ul className="dropdown-menu">
+                {this.props.mapOut(`going`)}
+              </ul>
+            </li>
+            <li className="dropdown">
+              <a className="dropdown-toggle" data-toggle="dropdown" href="#">See All Events I'm Hosting
+              <span className="caret"></span></a>
+              <ul className="dropdown-menu">
+                {this.props.mapOut(`hosting`)}
+              </ul>
+            </li>
+          </ul>
+      </div>
+    )
+  }
+}
+
+export default User;
+
+
+{/* <div className='eventsContainer'>
           <div className='invited'>
             <Link to='invited' className='row' style={{ textDecoration: 'none' }}>
               <button className='eventButtons invitedButton'>See All Invited Events</button>
@@ -65,26 +98,7 @@ class User extends React.Component {
               <button className='eventButtons hostingButton'>See All Events I'm Hosting</button>
             </Link>
             <br/>
-          </div>
-        </div>
-      </div>
-    )
-  }
-}
-
-export default User;
-
-
-
-
-
-
-
-
-
-
-
-
+          </div> */}
 
 
 

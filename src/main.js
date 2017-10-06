@@ -72,7 +72,7 @@ class App extends React.Component {
   mapOut (type) {
     console.log('working with data ', this.state[type],'this.setLookingAtEvent',this.setLookingAtEvent)
     return (
-      <div className='mapOfEvents'>
+      <li className='mapOfEvents'>
         {this.state[type].map((event,i) => {
           return (
             <Link to='/eventpage' key={i} style={{fontSize:`180%`}}>
@@ -86,7 +86,7 @@ class App extends React.Component {
             </Link>
           )
         })}
-      </div>
+      </li>
     )
   }
   
@@ -136,6 +136,7 @@ class App extends React.Component {
                 <User setLookingAtEvent={this.setLookingAtEvent}
                   setInviteGoingHosting={this.setInviteGoingHosting}
                   invited={this.state.invited}
+                  mapOut={this.mapOut}
                   going={this.state.going}
                   hosting={this.state.hosting}
                   username={this.state.username}/>
