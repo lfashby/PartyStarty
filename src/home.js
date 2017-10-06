@@ -27,6 +27,12 @@ class Home extends React.Component {
   grabPublicEvents() {
     axios.get('/publicEvents')
     .then((response) => {
+      // console.log('HERE', response.data);
+      response.data.sort((one, two) => {
+        if (one.eventDate > two.eventDate) return 1;
+        if (one.eventDate < two.eventDate) return -1;
+        return 0;
+      })
       this.setState({publicEvents: response.data});
     })
     .catch((err) => {
