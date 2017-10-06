@@ -179,6 +179,7 @@ class App extends React.Component {
                   mapOut={this.mapOut}/>
               }
             }/>
+            <Route path="/signup" component={SignUp} />
 
         </Switch>
       </div>
