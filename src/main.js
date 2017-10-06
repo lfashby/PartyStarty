@@ -31,7 +31,7 @@ class App extends React.Component {
       password: ''
     }
 
-    
+    this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
     this.setInviteGoingHosting = this.setInviteGoingHosting.bind(this);
     this.mapOut = this.mapOut.bind(this);
     this.login = this.login.bind(this);
