@@ -113,16 +113,23 @@ justify-content: space-around;
 
 .btn {
   border: 1px grey solid;
+}
+
+.dropper {
+  position: relative;
+  padding-right: 25%;
+  transition-property: padding-right;
+  transition-duration: 2s;
+  margin-right: 1%;
   
 }
 
 .nav {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 0;
-  list-style: none;
-  flex-direction: column;
+  list-style: none; */
 }
 
 .btnSub {

@@ -47,22 +47,15 @@ class User extends React.Component {
     return (
       <div>
         <div className='userHead'> {this.props.username}'s Profile </div>
-          <ul className="nav nav-pills nav-stacked nav-fill">
-            <li className="dropdown">
+          <ul>
+            <li className="dropper dropdown btn">
               <a className="dropdown-toggle" data-toggle="dropdown" href="#">See All Invited Events
               <span className="caret"></span></a>
               <ul className="dropdown-menu">
                   {this.props.mapOut('invited')}
               </ul>
             </li>
-            <li className="dropdown">
-              <a className="dropdown-toggle" data-toggle="dropdown" href="#">See All Events I'm Going To
-              <span className="caret"></span></a>
-              <ul className="dropdown-menu">
-                {this.props.mapOut(`going`)}
-              </ul>
-            </li>
-            <li className="dropdown">
+            <li className="dropper dropdown btn">
               <a className="dropdown-toggle" data-toggle="dropdown" href="#">See All Events I'm Hosting
               <span className="caret"></span></a>
               <ul className="dropdown-menu">
