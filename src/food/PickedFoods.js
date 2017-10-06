@@ -7,7 +7,7 @@ class PickedFoods extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='pickedFoods'>
         {
           this.props.foods.map((food, i) => {
             return (

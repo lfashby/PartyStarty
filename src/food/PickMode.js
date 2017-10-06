@@ -11,10 +11,14 @@ class PickMode extends React.Component {
       {recipes.map((recipe, i) => {
         return ( 
           <div className='individualRecipe' key={i}>
+            <img className="foodImage" src={recipe.image} />
             <div>{recipe.label}</div>
             <a href={recipe.url}>Source: {recipe.source}</a><br/>
-            <button type='button' onClick={() => this.props.addtoFoods(recipe)} >Select Meal</button>
-            <img className="foodImage" src={recipe.image} />
+            <button 
+              className='btn btn-primary' 
+              type='button' 
+              onClick={() => this.props.addtoFoods(recipe)}>
+              EAT</button><br/>
           </div>
         )
       })}

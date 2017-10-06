@@ -61,7 +61,7 @@ class SearchFood extends React.Component {
               value={this.state.term}/>
             <button type='button'
               onClick={this.submit}>
-              Send
+              Search
             </button>
           </div>)
           :
