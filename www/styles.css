@@ -301,13 +301,12 @@ justify-content: space-around;
   padding-top: 3%;
 }
 
-.chatMessageText {
+/* .chatMessageText {
   border: 1px solid black;
   border-radius: 3px;
   padding-left: 1%;
-}
+} */
 
-#messageDisplayContainer {
-  overflow: auto;
-  height: 65%;
+#messageDisplayContainer .list-group-item {
+  border-color: grey !important;
 }
