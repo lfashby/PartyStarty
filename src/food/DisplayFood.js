@@ -2,6 +2,7 @@ import React from 'react';
 import BrowseMode from './BrowseMode.js';
 import SubmitFood from './SubmitFood.js';
 import PickedFoods from './PickedFoods.js';
+import PickMode from './PickMode.js';
 
 class DisplayFood extends React.Component {
   constructor (props) {
@@ -13,6 +14,7 @@ class DisplayFood extends React.Component {
   }
 
   addtoFoods(recipe) {
+    this.state.foods.length === 2 ? this.props.setPickStatus() : null;
     this.setState({
       foods: [...this.state.foods, recipe]
     })
@@ -20,46 +22,24 @@ class DisplayFood extends React.Component {
 
   render () {
     var recipes = this.props.recipes;
+    var finished = this.state.foods.length === 3;
+
     return (
       this.props.status === 'browse' ?
       <BrowseMode recipes={recipes}/>
       :
       (<div>
-        { this.state.foods.length === 3 ?
-          <SubmitFood handleFoodPicked={this.props.handleFoodPicked} foods={this.state.food}/>
+        { finished ?
+          <SubmitFood handleFoodPicked={this.props.handleFoodPicked} foods={this.state.foods}/>
           :null
         }
-        {
-          <div>
-          {
-            this.state.foods.map((food, i) => {
-              return (
-                <img key={i} src={food.image}/>
-              )
-            })
-          }
-          </div>
-        }
         <PickedFoods foods={this.state.foods}/>
-        { this.state.foods.length === 3 ?
+        { finished ?
           null
           :
-          (<div>
-            {recipes.map((recipe, i) => {
-              return ( 
-                <div className='individualRecipe' key={i}>
-                  <div>{recipe.label}</div>
-                  <a href={recipe.url}>Source: {recipe.source}</a><br/>
-                  <button type='button' onClick={() => this.addtoFoods(recipe)} >Select Meal</button>
-                  <img className="foodImage" src={recipe.image} />
-                </div>
-              )
-            })}
-          </div>
-          )
+          <PickMode recipes={recipes} addtoFoods={this.addtoFoods}/>
         }
-      </div>  
-      )
+      </div>)
     )
   }
 }

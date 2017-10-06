@@ -7,10 +7,12 @@ class SearchFood extends React.Component {
     super (props);
     this.state = {
       term: ``,
-      recipeData: []
+      recipeData: [],
+      picking: true
     }
     this.setTerm = this.setTerm.bind(this);
     this.submit = this.submit.bind(this);
+    this.setPickStatus = this.setPickStatus.bind(this);
   }
 
   setTerm (e) {
@@ -43,20 +45,35 @@ class SearchFood extends React.Component {
     })
   }
 
+  setPickStatus () {
+    this.setState({
+      picking: !this.state.picking
+    })
+  }
+
   render () {
     return (
       <div>
-        <input placeholder='enter food'
-          onChange={this.setTerm}
-          value={this.state.term}/>
-        <button type='button'
-          onClick={this.submit}>
-          Send
-        </button>
+        {this.state.picking ? 
+          (<div>
+            <input placeholder='enter food'
+              onChange={this.setTerm}
+              value={this.state.term}/>
+            <button type='button'
+              onClick={this.submit}>
+              Send
+            </button>
+          </div>)
+          :
+          null
+        }
         {
           this.state.recipeData.length > 0 ? 
           (<div>
-            <DisplayFood status={this.props.status} handleFoodPicked={this.props.handleFoodPicked || null} recipes={this.state.recipeData} />
+            <DisplayFood status={this.props.status} 
+              handleFoodPicked={this.props.handleFoodPicked || null} 
+              recipes={this.state.recipeData} 
+              setPickStatus={this.setPickStatus}/>
           </div>)
           :
           null
