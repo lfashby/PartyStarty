@@ -18,6 +18,7 @@ class Create extends React.Component {
 			date: "",
 			time: "",
       description: "",
+      host: '',
       entryDataSubmitted: false,
       filmsAdded: false,
       filmsFinalized: false,
@@ -36,10 +37,10 @@ class Create extends React.Component {
     this.handleFinalizedFilms = this.handleFinalizedFilms.bind(this);
     this.handleFriends = this.handleFriends.bind(this);
     this.handleFriendChange = this.handleFriendChange.bind(this);
-    this.finalEntrySubmit = this.finalEntrySubmit.bind(this);
     this.isPublic = this.isPublic.bind(this);
     this.isPublicRender = this.isPublicRender.bind(this);
     this.handleFoodPicked = this.handleFoodPicked.bind(this);
+    this.listenForUninvite = this.listenForUninvite.bind(this);
 	}
 
 	handleTitle(e){
@@ -94,8 +95,12 @@ class Create extends React.Component {
         public: this.state.public
       })
       .then((response) => {
-        this.setState({eventId: response.data._id});
-        this.setState({filmsAdded: true});
+        this.setState({
+          eventId: response.data._id,
+          filmsAdded: true,
+          host: response.data.eventHostName
+        });
+        
       })
       .catch((error) => {
         console.log('ERROR', error);
@@ -122,36 +127,37 @@ class Create extends React.Component {
     this.setState({friendValue: event.target.value});
   }
 
+  listenForUninvite(friendToRemove) {
+    // Remove friend in friendsArray
+    var friendFinder = this.state.friends.indexOf(friendToRemove);
+    this.state.friends.splice(friendFinder, 1);
+  }
+
   // Send friend username to database
   handleFriends(e) {
     e.preventDefault();
-    axios.post('/invite', {
-      invitedUserName: this.state.friendValue,
-      eventId: this.state.eventId,
-      eventTitle: this.state.title
-    })
-    .then((response) => {
-      if (response.data === 'error') {
-        alert('That username does not exist!');
-        this.setState({friendValue: ''});
-      } else {
-        this.setState({
-          friends: [...this.state.friends, this.state.friendValue],
-          friendValue: ''
-        });
-        console.log(this.state);
-      }
-    })
-    .catch((error) => {
-      console.log('Error sending invite', error)
-    })
-
-  }
-
-  finalEntrySubmit() { // RENAME THIS
-    // if (this.state.friends.length === 0) {
-    //   return <p>You have not yet added any friends to your event. Do you have any?</p>
-    // } 
+    if (this.state.friendValue !== this.state.host && this.state.friends.indexOf(this.state.friendValue) < 0) { // No feedback for this just yet.
+      axios.post('/invite', {
+        invitedUserName: this.state.friendValue,
+        eventId: this.state.eventId,
+        eventTitle: this.state.title
+      })
+      .then((response) => {
+        if (response.data === 'error') {
+          alert('That username does not exist!');
+          this.setState({friendValue: ''});
+        } else {
+          this.setState({
+            friends: [...this.state.friends, this.state.friendValue],
+            friendValue: ''
+          });
+          console.log(this.state);
+        }
+      })
+      .catch((error) => {
+        console.log('Error sending invite', error)
+      })
+    }
   }
 
   isPublic() {
@@ -188,8 +194,8 @@ class Create extends React.Component {
       handleFriendChange={this.handleFriendChange}
       friends={this.state.friends}
       eventId={this.state.eventId}
-      finalEntrySubmit={this.finalEntrySubmit}
       setLookingAtEvent={this.props.setLookingAtEvent}
+      listenForUninvite={this.listenForUninvite}
       /> 
     }
   }
