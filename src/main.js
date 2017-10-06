@@ -132,7 +132,9 @@ class App extends React.Component {
             )}/>
             <Route exact path="/create" render={() => (
               this.state.isAuth ? (
-                <Create /> 
+                <Create 
+                setLookingAtEvent={this.setLookingAtEvent}
+                /> 
               ) : (
                 <Redirect to="/signin"/>
               )
