@@ -179,8 +179,8 @@ class Create extends React.Component {
       />
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;
-    // } else if (this.state.filmsFinalized && !this.state.foodPicked) {
-      // return <SearchFood status={'pick'} handleFoodPicked={this.handleFoodPicked} />
+    } else if (this.state.filmsFinalized && !this.state.foodPicked) {
+      return <SearchFood status={'pick'} handleFoodPicked={this.handleFoodPicked} />
     } else {
       return <Invite 
       handleFriends={this.handleFriends}
