@@ -300,3 +300,9 @@ justify-content: space-around;
   padding-right: 3%;
   padding-top: 3%;
 }
+
+.chatMessageText {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding-left: 1%;
+}
