@@ -46,7 +46,7 @@ exports.addEvent = function(req, res) {
   var invitedUserNames = req.body.invitedUserNames;
   // initialized to null, change when the event is finalized
   var eventMoviePictureUrl = null;
-  var eventFinalized = null;
+  var eventFinalized = false;
   var finalMovieId = '';
   
   Event.create({
