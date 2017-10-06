@@ -18,6 +18,7 @@ grabFilmPoster() {
     .then((results) => {
       this.setState({posters: results.data.movies})
     })
+
     .catch((error) => {
       console.log(error);
     })
@@ -33,8 +34,11 @@ grabFilmPoster() {
         {this.props.event.eventTitle}
         <br></br>
         Location: {this.props.event.eventLocation}
+        <br></br>
+          Date: {this.props.event.eventDate.slice(0, 15)} - {this.props.event.eventTime}
         { this.state.posters.length ? (
           <div>
+            <br></br>
             <p>Hosted by: {this.props.event.eventHostName}</p>
             <p>Description: {this.props.event.eventDesc}</p>
             <img className="posters" src={`https://image.tmdb.org/t/p/w500${this.state.posters[0].poster}`} />

@@ -6,13 +6,17 @@ import EventListEntry from './eventListEntry'
 const EventList = (props) => (
   <div>
     <ul className ="video-list list-group">
-      {props.publicEvents.map((event,i) => (
-        <EventListEntry 
-        event={event} 
-        key={i} 
-        setLookingAtEvent={props.setLookingAtEvent}
-        />
-      ))}
+      {props.publicEvents.map((event,i) => {
+        event.eventDate = new Date(event.eventDate).toString();
+        return (
+          <EventListEntry 
+          event={event} 
+          key={i} 
+          setLookingAtEvent={props.setLookingAtEvent}
+          />
+        ) 
+      })}
+      
     </ul>
 </div>
 )
