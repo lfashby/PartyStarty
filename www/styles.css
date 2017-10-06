@@ -63,6 +63,23 @@ body {
   border-color: blue;
 }
 
+@keyframes reveal {
+  from {height: 0px;}
+  to {height: 458px;}
+}
+
+.postersContainer {
+  height: 458px;
+  /* width: 392.8px */
+  animation-name: reveal;
+  animation-duration: 2s;
+  overflow: hidden;
+}
+/* .postersContainer.loaded {
+  height: 458px;
+} */
+
+
 h2 {
   padding-top: 15px;
 }
@@ -117,19 +134,12 @@ justify-content: space-around;
 
 .dropper {
   position: relative;
-  padding-right: 25%;
-  transition-property: padding-right;
-  transition-duration: 2s;
-  margin-right: 1%;
-  
+  padding-right: 0%;
+  margin-right: 2%;
+  transition: padding-right 2s
 }
-
-.nav {
-  /* display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none; */
+.dropper:hover {
+  padding-right: 25%
 }
 
 .btnSub {
@@ -256,6 +266,12 @@ justify-content: space-around;
 .video-list-entry {
   /* height: 400px; */
   width: 500px;
+  /* margin-right: 1%; */
+  /* transition: width 2s; */
+}
+
+.video-list-entry:hover{
+  /* width: 500px; */
 }
 
 .individualRecipe {
