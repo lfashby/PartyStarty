@@ -21,7 +21,8 @@ class EventPage extends React.Component {
 			firstRating: 0,
       secondRating: 0,
 			thirdRating: 0,
-			justVoted: false
+			justVoted: false,
+			foods: []
 		}
 		this.handleFirstRating=this.handleFirstRating.bind(this);
 		this.handleSecondRating=this.handleSecondRating.bind(this);
@@ -102,7 +103,8 @@ class EventPage extends React.Component {
 					username: username,
 					threeMovies: res.data.movies,
 					event: res.data.event,
-					eventFinalized: res.data.event.eventFinalized
+					eventFinalized: res.data.event.eventFinalized,
+					foods: res.data.foods
 				})
 				return res;
 			})
@@ -114,6 +116,10 @@ class EventPage extends React.Component {
 				this.setState({
 					finalMovie: finalMovie
 				})
+				return res;
+			})
+			.then(res => {
+				axios.get('/recipes')
 			})
 			.catch(err => {
 				console.log(err);
@@ -144,12 +150,14 @@ class EventPage extends React.Component {
 					handleThirdRating={this.handleThirdRating}
 					submitRatings={this.submitRatings}
 					justVoted={this.state.justVoted}
+					foods={this.state.foods}
 				/>;
 		} else {
 			topBox = 
 				<EventWinnerDisplay 
 					event={this.state.event} 
 					finalMovie={this.state.finalMovie}
+					foods={this.state.foods}
 				/>;
 		}
 		

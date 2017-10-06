@@ -67,7 +67,6 @@ const EventVoter = (props) => (
             src={`https://image.tmdb.org/t/p/w500${props.movies[2].poster}`} 
           />
           </div> : ''}
-
 	      </div>
         <select value={props.thirdRating} onChange={props.handleThirdRating}>
           <option value="0">0</option>
@@ -83,11 +82,19 @@ const EventVoter = (props) => (
           <option value="10">10</option>
         </select>
       </div>
-      <button onClick={(e) => {props.submitRatings(e)}} className="btn btn-secondary btn-lg textarea">Vote</button>
+      <br />
+      <button 
+        type="button" 
+        className="btn btn-primary" 
+        onClick={(e) => {props.submitRatings(e)}} 
+      >
+      Vote
+      </button>
     </form>
-    <text>
-      {props.justVoted ? <text> JUST VOTED </text> : ''}
-      </text>
+    {props.justVoted ? 
+      <div className="alert alert-success" role="alert">
+        You've Just Voted. If you change your mind, just vote again! 
+      </div> : ''}
   </div>
 )
 
