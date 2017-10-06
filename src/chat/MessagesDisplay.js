@@ -3,7 +3,7 @@ import Message from './Message';
 
 const MessagesDisplay = ({ messages }) => {
   return (
-    <div id="messageDisplayContainer">
+    <div id="messageDisplayContainer" className="list-group">
       { messages.map((msg, inx) => (
           <Message
             key={ msg + inx }
