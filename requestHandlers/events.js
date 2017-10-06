@@ -5,6 +5,7 @@ var User = require('../model/user.js');
 var Invite = require('../model/invite.js');
 var Message = require('../model/message.js');
 var util = require('../lib/utility');
+var Food = require('../model/food.js')
 
 exports.getPublicEvents = function(req, res) {
   Event.find({ eventPublic: true })
@@ -89,9 +90,13 @@ exports.getEventDetail = function(req, res, next) {
       if (event) {
         Movie.find({ eventId })
           .exec(function(err, movies) {
-            res.send({
-              event: event,
-              movies: movies
+            Food.find({eventId})
+              .exec(function(err, foods) {
+                res.send({
+                  event: event,
+                  movies: movies,
+                  foods: foods
+              })
             });
           });
       } else {
