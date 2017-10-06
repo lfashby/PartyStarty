@@ -7,21 +7,19 @@ class PickMode extends React.Component {
 
   render () {
     var recipes = this.props.recipes;
-    return (<div>
+    return (<div style={{margin:`auto`}}>
       {recipes.map((recipe, i) => {
         return ( 
           <div className='individualRecipe' key={i}>
             <div id="chooseThis">
-              <img className="foodImage img-fluid rounded" src={recipe.image} />
+              <img 
+                className="foodImage img-fluid rounded" 
+                src={recipe.image} 
+                onClick={() => this.props.addtoFoods(recipe)}/>
               <div className='text'>Choose This</div>
             </div>
             <div>{recipe.label}</div>
             <a href={recipe.url}>Source: {recipe.source}</a><br/>
-            <button 
-              className='btn btn-primary' 
-              type='button' 
-              onClick={() => this.props.addtoFoods(recipe)}>
-              EAT</button><br/>
           </div>
         )
       })}

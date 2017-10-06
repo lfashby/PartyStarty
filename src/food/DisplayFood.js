@@ -28,7 +28,7 @@ class DisplayFood extends React.Component {
       this.props.status === 'browse' ?
       <BrowseMode recipes={recipes}/>
       :
-      (<div>
+      (<div style={{textAlign: `center`}}>
         { finished ?
           <SubmitFood handleFoodPicked={this.props.handleFoodPicked} foods={this.state.foods}/>
           :null

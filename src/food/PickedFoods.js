@@ -7,7 +7,7 @@ class PickedFoods extends React.Component {
 
   render () {
     return (
-      <div className='pickedFoods'>
+      <div className='pickedFoods' style={{margin: `auto`}}>
         {
           this.props.foods.map((food, i) => {
             return (
