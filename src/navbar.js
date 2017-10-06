@@ -65,7 +65,7 @@ class Navbar extends React.Component {
 					<Link to="/" 
 						style={{textDecoration: 'none' }} 
 						className="nav-brand" 
-						id="title">Greenfield</Link>
+						id="title">Party Starty</Link>
 					<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign In</Link>
 					<Link to="/signup" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign Up</Link>
 				</div>
