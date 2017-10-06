@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../navbar.js';
 
 class Going extends React.Component {
   constructor (props) {
