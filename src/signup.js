@@ -24,7 +24,7 @@ class SignUp extends React.Component {
 		axios.post('/signup', {username: this.state.username, password: this.state.password, phone: this.state.phone})
 		.then((response) => {
 			console.log(response);
-			this.props.history.push('/home');
+			this.props.history.push('/signin');
 		})
 		.catch((error) => {
 			console.log(error);
