@@ -245,6 +245,7 @@ justify-content: space-around;
 .individualRecipe {
   display: inline-block;
   margin: 0px 2px 0px 2px;
+  /* border: solid 2px rgb(96, 218, 218); */
   /* width: 40%; */
 }
 
@@ -252,7 +253,33 @@ justify-content: space-around;
   width: 100%;
   text-align: center;
   font-style: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
+.sfInputGroup {
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 25%;
+}
+#chooseThis .text {
+  position: relative;
+  bottom:200px;
+  left:100px;
+  visibility: hidden;
+}
+
+#chooseThis:hover .text {
+  visibility: visible;
+}
+
+#chooseThis:hover .foodImage {
+  opacity: .5;
+}
+
+/* .foodInput {
+  width: auto;
+} */
 /*.navLinks {
   display: flex;
   justify-content: space-between;

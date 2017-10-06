@@ -7,7 +7,10 @@ class SubmitFood extends React.Component {
 
   render () {
     return (<div className='submitFood'>
-      <button type='button' onClick={(e) => {
+      <button 
+        className="btn btn-info" 
+        type='button' 
+        onClick={(e) => {
         e.preventDefault;
         this.props.handleFoodPicked(this.props.foods);
         }

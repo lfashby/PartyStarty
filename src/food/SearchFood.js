@@ -56,13 +56,21 @@ class SearchFood extends React.Component {
       <div>
         {this.state.picking ? 
           (<div className='searchFood'>
-            <input placeholder='Search For food'
-              onChange={this.setTerm}
-              value={this.state.term}/>
-            <button type='button'
-              onClick={this.submit}>
-              Search
-            </button>
+            <div className="input-group sfInputGroup">
+              <input 
+                type="text"  
+                className="form-control" 
+                placeholder='Search For food'
+                onChange={this.setTerm}
+                value={this.state.term}
+                />  
+              <span className="input-group-btn">
+              <button 
+                className="btn btn-info" 
+                type="button"
+                onClick={this.submit}>Search!</button>
+              </span>
+            </div>
           </div>)
           :
           null
