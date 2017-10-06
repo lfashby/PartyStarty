@@ -1,4 +1,7 @@
 import React from 'react';
+import BrowseMode from './BrowseMode.js';
+import SubmitFood from './SubmitFood.js';
+import PickedFoods from './PickedFoods.js';
 
 class DisplayFood extends React.Component {
   constructor (props) {
@@ -19,27 +22,11 @@ class DisplayFood extends React.Component {
     var recipes = this.props.recipes;
     return (
       this.props.status === 'browse' ?
-      (<div>
-        {recipes.map((recipe, i) => {
-          return ( 
-            <div className='individualRecipe' key={i}>
-              <div>{recipe.label}</div>
-              <a href={recipe.url}>Source: {recipe.source}</a><br/>
-              <img className="foodImage" src={recipe.image} />
-            </div>
-          )
-        })}
-      </div>)
+      <BrowseMode recipes={recipes}/>
       :
       (<div>
         { this.state.foods.length === 3 ?
-          (<div className='submitFood'>
-            <button type='button' onClick={(e) => {
-              e.preventDefault;
-              this.props.handleFoodPicked(this.state.foods);
-              }
-            }>Submit Meal</button>
-          </div>)
+          <SubmitFood handleFoodPicked={this.props.handleFoodPicked} foods={this.state.food}/>
           :null
         }
         {
@@ -53,6 +40,7 @@ class DisplayFood extends React.Component {
           }
           </div>
         }
+        <PickedFoods foods={this.state.foods}/>
         { this.state.foods.length === 3 ?
           null
           :
