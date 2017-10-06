@@ -55,8 +55,8 @@ class SearchFood extends React.Component {
     return (
       <div>
         {this.state.picking ? 
-          (<div>
-            <input placeholder='enter food'
+          (<div className='searchFood'>
+            <input placeholder='Search For food'
               onChange={this.setTerm}
               value={this.state.term}/>
             <button type='button'
