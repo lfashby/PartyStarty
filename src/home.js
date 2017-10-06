@@ -28,7 +28,6 @@ class Home extends React.Component {
     axios.get('/publicEvents')
     .then((response) => {
       if (response.data !== 'error') {
-        console.log(response.data);
         response.data.sort((one, two) => {
           if (one.eventDate > two.eventDate) return 1;
           if (one.eventDate < two.eventDate) return -1;
