@@ -30,15 +30,10 @@ class App extends React.Component {
       username: '',
       password: ''
     }
-    this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
 
     
-    this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
     this.setInviteGoingHosting = this.setInviteGoingHosting.bind(this);
     this.mapOut = this.mapOut.bind(this);
-    this.setLookingAtEvent = this.setLookingAtEvent.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
@@ -95,19 +90,6 @@ class App extends React.Component {
     )
   }
   
-  login(username, password) {
-    this.setState({
-      username,
-      password,
-      isAuth: true
-    });
-  }
-
-  logout() {
-    this.setState({
-      isAuth: false
-    });
-  }
 
   render(){
     return (
@@ -170,11 +152,7 @@ class App extends React.Component {
             )} />
             <Route path="/signin" render={() => (
               <SignIn login={ this.login } />
-            )} />
-            {/* <Route path="/home" component={Home}/> */}
-
-     
-            
+            )} />        
 
 
             <Route path='/userpage' render={() => {
@@ -201,9 +179,6 @@ class App extends React.Component {
               }
             }/>
 
-            <Route path="/signin" component={SignIn} />
-            <Route path="/signup" component={SignUp} />
-            <Route path="*" component={Home} />
         </Switch>
       </Navbar>
       </BrowserRouter>
