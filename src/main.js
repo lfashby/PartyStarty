@@ -113,6 +113,7 @@ class App extends React.Component {
     return (
       <BrowserRouter basename='/#' >
         <Navbar logout={ this.logout } signedIn={this.state.isAuth}>
+        <div id="appBody">
         <Switch>
             <Route exact path="/" render={() => (
               this.state.isAuth ? (
@@ -171,11 +172,6 @@ class App extends React.Component {
             <Route path="/signin" render={() => (
               <SignIn login={ this.login } />
             )} />
-            {/* <Route path="/home" component={Home}/> */}
-
-     
-            
-
 
             <Route path='/userpage' render={() => {
                 return <User setLookingAtEvent={this.setLookingAtEvent}
@@ -205,6 +201,7 @@ class App extends React.Component {
             <Route path="/signup" component={SignUp} />
             <Route path="*" component={Home} />
         </Switch>
+      </div>
       </Navbar>
       </BrowserRouter>
     )

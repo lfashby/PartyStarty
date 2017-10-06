@@ -23,6 +23,7 @@ class MessageCreator extends Component {
           type="text" 
           value={ this.state.message } 
           onChange={ this.handleInputChange }
+          id="chatTextInput"
         />
         <button onClick={
           (e) => { 

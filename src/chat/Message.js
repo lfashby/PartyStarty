@@ -2,7 +2,7 @@ import React from 'react';
 
 const Message = ({ msg, inx }) => (
   <div>
-    <h4>{ msg.from }</h4>
+    <h4><span class="glyphicon glyphicon-user"></span> { msg.from }</h4>
     <p>{ msg.text }</p>
   </div>
 );
