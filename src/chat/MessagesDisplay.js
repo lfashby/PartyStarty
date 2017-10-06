@@ -3,7 +3,7 @@ import Message from './Message';
 
 const MessagesDisplay = ({ messages }) => {
   return (
-    <div>
+    <div id="messageDisplayContainer">
       { messages.map((msg, inx) => (
           <Message
             key={ msg + inx }
