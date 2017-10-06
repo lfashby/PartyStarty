@@ -12,6 +12,7 @@ class InviteEntry extends React.Component {
 
   uninvite() {
     this.setState({invited: false});
+    {this.props.listenForUninvite(this.props.friend)}
     axios.delete('/invite', { data: { username: this.props.friend, eventId: this.props.eventId } })
     .then((response) => {
       // console.log('Success', response);

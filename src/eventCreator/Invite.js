@@ -18,7 +18,12 @@ const Invite = (props) => (
         </form>
       <ul>
         {props.friends.map((friend, i) => {
-          return <InviteEntry friend={friend} eventId={props.eventId} key={i} setLookingAtEvent={props.setLookingAtEvent} />
+          return <InviteEntry friend={friend} 
+          eventId={props.eventId} 
+          key={i} 
+          setLookingAtEvent={props.setLookingAtEvent} 
+          listenForUninvite={props.listenForUninvite}
+          />
         })}
       </ul>
     </div>
@@ -27,4 +32,3 @@ const Invite = (props) => (
 
 export default Invite;
 
-// {props.finalEntrySubmit()}
