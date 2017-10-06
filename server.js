@@ -78,6 +78,7 @@ io.on('connection', function(socket) {
 app.get(['/chat/:eventId', '/chat'], util.checkUser, requestHandler.getChatMessages);
 
 // User Account handling
+app.get('/checkLogin', requestHandler.checkLogin);
 app.post('/signup', requestHandler.addUser);
 app.post('/signin', requestHandler.getUser);
 app.get('/logout', function(req, res) {
@@ -97,14 +98,12 @@ app.get('/getEvents', util.checkUser, requestHandler.getEvents);
 app.get('/event/:event_id', requestHandler.getEventDetail);
 // app.get('/event/:event_id', util.checkUser, requestHandler.getEventDetail);
 
-
 // Movies
 app.post('/addMovies', util.checkUser, requestHandler.addMovies);
 app.put('/movies', requestHandler.updateMovies);
 // app.put('/movies', util.checkUser, requestHandler.updateMovies);
 app.get('/movies', util.checkUser, requestHandler.getMovies);
 app.post('/recipes', recipeRouter);
-
 
 // Catch All
 app.get('*', (req, res) => {
