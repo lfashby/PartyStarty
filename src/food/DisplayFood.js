@@ -47,7 +47,7 @@ class DisplayFood extends React.Component {
           {
             this.state.foods.map((food, i) => {
               return (
-                <img src={food.image}/>
+                <img key={i} src={food.image}/>
               )
             })
           }
