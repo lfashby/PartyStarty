@@ -148,17 +148,10 @@ class Create extends React.Component {
 
   }
 
-  // Redirect when event creation finished
-  finalEntrySubmit(e) {
-    e.preventDefault();
-    if (this.state.friends.length === 0) {
-      if (confirm('Are you sure you don\'t want to add any friends?\n Click Ok to create the Event without adding friends.')) {
-        alert('Event created!');
-        this.props.history.push('/home');        
-      }
-    } else {
-      this.props.history.push('/home');
-    }
+  finalEntrySubmit() { // RENAME THIS
+    // if (this.state.friends.length === 0) {
+    //   return <p>You have not yet added any friends to your event. Do you have any?</p>
+    // } 
   }
 
   isPublic() {
@@ -186,8 +179,8 @@ class Create extends React.Component {
       />
     } else if (!this.state.filmsFinalized) {
       return <Search handleFinalized={this.handleFinalizedFilms} />;
-    } else if (this.state.filmsFinalized && !this.state.foodPicked) {
-      return <SearchFood status={'pick'} handleFoodPicked={this.handleFoodPicked} />
+    // } else if (this.state.filmsFinalized && !this.state.foodPicked) {
+      // return <SearchFood status={'pick'} handleFoodPicked={this.handleFoodPicked} />
     } else {
       return <Invite 
       handleFriends={this.handleFriends}
@@ -196,6 +189,7 @@ class Create extends React.Component {
       friends={this.state.friends}
       eventId={this.state.eventId}
       finalEntrySubmit={this.finalEntrySubmit}
+      setLookingAtEvent={this.props.setLookingAtEvent}
       /> 
     }
   }
