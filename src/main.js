@@ -95,6 +95,7 @@ class App extends React.Component {
     return (
       <BrowserRouter basename='/#' >
         <Navbar logout={ this.logout } signedIn={this.state.isAuth}>
+        <div id="appBody">
         <Switch>
             <Route exact path="/" render={() => (
               this.state.isAuth ? (
@@ -152,7 +153,7 @@ class App extends React.Component {
             )} />
             <Route path="/signin" render={() => (
               <SignIn login={ this.login } />
-            )} />        
+            )} />
 
 
             <Route path='/userpage' render={() => {
@@ -180,6 +181,7 @@ class App extends React.Component {
             }/>
 
         </Switch>
+      </div>
       </Navbar>
       </BrowserRouter>
     )

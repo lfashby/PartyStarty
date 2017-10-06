@@ -253,6 +253,10 @@ justify-content: space-around;
   text-align: center;
   font-style: 100%;
 }
+
+#chatTextInput {
+  width: 100%;
+}
 /*.navLinks {
   display: flex;
   justify-content: space-between;
@@ -290,3 +294,15 @@ justify-content: space-around;
     color: white;
 }
 */
+
+#appBody {
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 3%;
+}
+
+.chatMessageText {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding-left: 1%;
+}
