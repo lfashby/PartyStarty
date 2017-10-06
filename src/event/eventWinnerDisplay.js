@@ -7,6 +7,8 @@ const EventWinnerDisplay = (props) => {
       {props.event.eventLocation}
       {props.event.eventDate}
       {props.event.eventDesc}
+      {props.finalMovie.title}
+      hey this is showing
     </div>
   )
 }
