@@ -15,7 +15,7 @@ class EventPage extends React.Component {
 			username: '',
 			hasVoted: false,
       event: {},
-			eventFinalized: true,
+			eventFinalized: false,
 			threeMovies: [],
 			firstRating: 0,
       secondRating: 0,
@@ -84,11 +84,12 @@ class EventPage extends React.Component {
 				this.setState({
 					username: username,
 					threeMovies: res.data.movies,
-					event: res.data.event
+					event: res.data.event,
+					eventFinalized: res.data.event.eventFinalized
 				})
 			})
 			.then(res => {
-				console.log('event after compdidmount', this.state.event);
+				console.log('eventFinalized after compdidmount', this.state.eventFinalized);
 			})
 			.catch(err => {
 				console.log(err);

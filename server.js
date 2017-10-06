@@ -50,7 +50,7 @@ app.use('/recipes', recipeRouter);
 
 // This will create a set interval, checking how often you pass in in milliseconds (defaults to 600000)
 // for events about to start, if one is about to start, it will send out a text reminder to that user
-util.regularlyCheckForUpcomingEvents(60000);
+util.regularlyCheckForUpcomingEvents(6000);
 
 // socket connections 
 io.on('connection', function(socket) {
@@ -96,7 +96,7 @@ app.get('/publicEvents', util.checkUser, requestHandler.getPublicEvents);
 app.get('/getEvents', util.checkUser, requestHandler.getEvents);
 app.get('/event/:event_id', requestHandler.getEventDetail);
 // app.get('/event/:event_id', util.checkUser, requestHandler.getEventDetail);
-
+app.get('/events', requestHandler.getAllEvents)
 
 // Movies
 app.post('/addMovies', util.checkUser, requestHandler.addMovies);

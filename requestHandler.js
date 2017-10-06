@@ -17,6 +17,7 @@ module.exports = {
   // EVENT handlers
   getEvents: events.getEvents,
   getEventDetail: events.getEventDetail,
+  getAllEvents: events.getAllEvents,
   addEvent: events.addEvent,
   getPublicEvents: events.getPublicEvents,
   updateEvent: events.updateEvent,
