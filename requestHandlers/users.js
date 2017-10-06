@@ -52,3 +52,7 @@ exports.getUser = function(req, res, next) {
     }
   });
 };
+
+exports.checkLogin = function(req, res) {
+    res.send({'data': req.session.user || 'no user!'});
+};

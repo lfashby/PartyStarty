@@ -11,6 +11,7 @@ var events = require('./requestHandlers/events.js');
 
 module.exports = {
   // USER handlers
+  checkLogin: users.checkLogin,
   getUser: users.getUser,
   addUser: users.addUser,
   

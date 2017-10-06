@@ -17,6 +17,24 @@ class SignIn extends React.Component {
 		this.handlePasswordInput = this.handlePasswordInput.bind(this);
 	}
 
+	componentDidMount() {
+		fetch('/checkLogin', {
+			credentials: 'same-origin'
+		})
+			.then((data) => {
+				console.log(data);
+				return data.json();
+			})
+			.then((resp) => {
+				console.log(resp);
+				if(!(resp.data === 'no user!')) {
+					this.props.login(resp.username, resp.password);
+					this.props.history.push('/');
+				}
+			})
+			.catch((err) => console.log(`Error checking login: ${err}`));
+	}
+
 	handleSubmit(event){
 		console.log(this.state.username, this.state.password);
 		axios.post('/signin', {username: this.state.username, password: this.state.password})
