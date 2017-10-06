@@ -16,6 +16,8 @@ class User extends React.Component {
   }
 
   componentDidMount () {
+    console.log('StATE', this.state);
+    console.log('PROPS', this.props);
     axios({
       method: `GET`,
       url: `/getEvents`
