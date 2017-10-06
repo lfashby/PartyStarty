@@ -67,16 +67,21 @@ class Create extends React.Component {
     this.setState({
       foodPicked: !this.state.foodPicked
     })
-    // axios.post('/addFood', {
-    //   food: foods,
-    //   eventId: this.state.eventId
-    // })
-    // .then((response) => {
-    //   console.log('Food sent');
-    // })
-    // .catch((error) => {
-    //   console.log('Error sending films to db', error);
-    // })
+    foods = foods.map(food => {
+      food.eventId = this.state.eventId;
+      return food;
+    });
+    console.log('foods ',foods);
+    axios.post('/recipes/add', {
+      foods: foods,
+      eventId: this.state.eventId
+    })
+    .then((response) => {
+      console.log('Food sent');
+    })
+    .catch((error) => {
+      console.log('Error sending films to db', error);
+    })
   }
   
   submitEntryData(){
