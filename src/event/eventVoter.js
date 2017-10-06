@@ -1,6 +1,4 @@
 import React from 'react';
-
-
 const EventVoter = (props) => (
   <div>
     <form className='voterBox'>
@@ -87,6 +85,9 @@ const EventVoter = (props) => (
       </div>
       <button onClick={(e) => {props.submitRatings(e)}} className="btn btn-secondary btn-lg textarea">Vote</button>
     </form>
+    <text>
+      {props.justVoted ? <text> JUST VOTED </text> : ''}
+      </text>
   </div>
 )
 
