@@ -299,13 +299,10 @@ justify-content: space-around;
   padding-left: 3%;
   padding-right: 3%;
   padding-top: 3%;
-<<<<<<< HEAD
 }
 
 .chatMessageText {
   border: 1px solid black;
   border-radius: 3px;
   padding-left: 1%;
-=======
->>>>>>> update messaging css
 }
