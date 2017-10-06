@@ -131,7 +131,6 @@ class Create extends React.Component {
     // Remove friend in friendsArray
     var friendFinder = this.state.friends.indexOf(friendToRemove);
     this.state.friends.splice(friendFinder, 1);
-    console.log(this.state.friends);
   }
 
   // Send friend username to database
