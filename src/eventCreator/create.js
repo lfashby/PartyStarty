@@ -67,9 +67,13 @@ class Create extends React.Component {
     this.setState({
       foodPicked: !this.state.foodPicked
     })
-    foods = foods.map(food => food.eventId = this.state.eventId);
+    foods = foods.map(food => {
+      food.eventId = this.state.eventId;
+      return food;
+    });
+    console.log('foods ',foods);
     axios.post('/recipes/add', {
-      food: foods,
+      foods: foods,
       eventId: this.state.eventId
     })
     .then((response) => {

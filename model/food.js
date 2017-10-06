@@ -8,7 +8,7 @@ var FoodSchema = new mongoose.Schema({
   ingredientLines: [String],
   label: String,
   url: String,
-  totalNutrients: [String] 
+  totalNutrients: [mongoose.Schema.Types.Mixed] 
 
 });
 
