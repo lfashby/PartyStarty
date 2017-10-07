@@ -1,20 +1,26 @@
 import React from 'react';
 const EventVoter = (props) => (
   <div>
+
+    <div className="eventDetailBox">
+      You were invited to the {props.event.eventTitle}:{props.event.eventDesc}
+      <br/>
+      Hosted By {props.event.eventHostName}
+      <br/>
+      on {props.event.eventDate} {props.event.eventTime}
+      <br/>
+      at {props.event.eventLocation}
+    </div>
+
     <form className='voterBox'>
       <div className='movieOption'>
-        <div className="qEntry">
-          
-	        {props.movies.length > 0 ? 
-          <div>
-          <text>{props.movies[0].title}</text>
+        {props.movies.length > 0 ? 
+        <div className='boxItem'>
           <img 
-            className="card-img-list" 
+            className="img-thumbnail" 
             src={`https://image.tmdb.org/t/p/w500${props.movies[0].poster}`} 
           />
-          </div> : ''}
-
-	      </div>
+        </div> : ''}
         <select value={props.firstRating} onChange={props.handleFirstRating}>
           <option value="0">0</option>
           <option value="1">1</option>
@@ -30,18 +36,13 @@ const EventVoter = (props) => (
         </select>
       </div>
       <div className='movieOption'>
-        <div className="qEntry">
-
         {props.movies.length > 0 ? 
-          <div>
-          <text>{props.movies[1].title}</text>
+        <div className='boxItem'>
           <img 
-            className="card-img-list" 
+            className="img-thumbnail" 
             src={`https://image.tmdb.org/t/p/w500${props.movies[1].poster}`} 
           />
-          </div> : ''}
-
-	      </div>
+        </div> : ''}
         <select value={props.secondRating} onChange={props.handleSecondRating}>
           <option value="0">0</option>
           <option value="1">1</option>
@@ -57,17 +58,13 @@ const EventVoter = (props) => (
         </select>
       </div>
       <div className='movieOption'>
-        <div className="qEntry">
-	        
         {props.movies.length > 0 ? 
-          <div>
-          <text>{props.movies[2].title}</text>
+        <div className='boxItem'>
           <img 
-            className="card-img-list" 
+            className="img-thumbnail" 
             src={`https://image.tmdb.org/t/p/w500${props.movies[2].poster}`} 
           />
-          </div> : ''}
-	      </div>
+        </div> : ''}
         <select value={props.thirdRating} onChange={props.handleThirdRating}>
           <option value="0">0</option>
           <option value="1">1</option>
@@ -82,29 +79,29 @@ const EventVoter = (props) => (
           <option value="10">10</option>
         </select>
       </div>
-      <br />
-      <button 
+    </form>
+    <button
         type="button" 
         className="btn btn-primary" 
+        id="voteButton"
         onClick={(e) => {props.submitRatings(e)}} 
       >
       Vote
-      </button>
-    </form>
-    {props.justVoted ? 
-      <div className="alert alert-success" role="alert">
-        You've Just Voted. If you change your mind, just vote again! 
-      </div> : ''}
+    </button>
 
-      <div className='voterBox'>
+    {props.justVoted ? 
+    <div className="alert alert-success" role="alert">
+      You've Just Voted. If you change your mind, just vote again! 
+    </div> : ''}
+
+      <div className='foodBox'>
         {props.foods.map((food, index) => {
           return <div key={index} className='movieOption'>
             <div className="qEntry">
-            <img 
-            className="card-img-list" 
-            src={food.image} 
-          />
-              {food.label}
+              <img 
+                className="img-thumbnail" 
+                src={food.image} 
+              />
             </div>
           </div>
         })}
