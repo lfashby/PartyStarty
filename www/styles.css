@@ -116,6 +116,15 @@ justify-content: space-around;
   
 }
 
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  flex-direction: column;
+}
+
 .btnSub {
   float: right;
 }
@@ -265,6 +274,10 @@ justify-content: space-around;
   margin-bottom: 5px;
   width: 25%;
 }
+
+#chatTextInput {
+  width: 100%;
+}
 #chooseThis .text {
   position: relative;
   bottom:200px;
@@ -323,3 +336,19 @@ justify-content: space-around;
     color: white;
 }
 */
+
+#appBody {
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 3%;
+}
+
+/* .chatMessageText {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding-left: 1%;
+} */
+
+#messageDisplayContainer .list-group-item {
+  border-color: grey !important;
+}

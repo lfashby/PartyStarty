@@ -5,6 +5,7 @@ var User = require('../model/user.js');
 var Invite = require('../model/invite.js');
 var Message = require('../model/message.js');
 var util = require('../lib/utility');
+var Food = require('../model/food.js')
 
 exports.getPublicEvents = function(req, res) {
   Event.find({ eventPublic: true })
@@ -46,7 +47,7 @@ exports.addEvent = function(req, res) {
   var invitedUserNames = req.body.invitedUserNames;
   // initialized to null, change when the event is finalized
   var eventMoviePictureUrl = null;
-  var eventFinalized = null;
+  var eventFinalized = false;
   var finalMovieId = '';
   
   Event.create({
@@ -89,9 +90,13 @@ exports.getEventDetail = function(req, res, next) {
       if (event) {
         Movie.find({ eventId })
           .exec(function(err, movies) {
-            res.send({
-              event: event,
-              movies: movies
+            Food.find({eventId})
+              .exec(function(err, foods) {
+                res.send({
+                  event: event,
+                  movies: movies,
+                  foods: foods
+              })
             });
           });
       } else {
@@ -99,6 +104,19 @@ exports.getEventDetail = function(req, res, next) {
       }
     });
 };
+
+exports.getAllEvents = function(req, res, next) {
+  Event.find({})
+    .exec(function(err, events) {
+      if (events) {
+        res.send(events);
+      } else {
+        res.end('Events do not exist', err);
+      }
+    });
+};
+
+
 
 exports.getEvents = function(req, res, next) {
   var username = req.session.user.username;

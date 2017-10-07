@@ -19,7 +19,7 @@ class Navbar extends React.Component {
 		this.props.logout();
 		axios.get('/logout')
 		.then((data) => {
-			console.log(data);
+			console.log(data); 
 			this.props.history.push('/signin');
 		})
 		.catch(error => {
@@ -36,7 +36,7 @@ class Navbar extends React.Component {
 						<Link to="/" 
 							style={{textDecoration: 'none' }} 
 							className="nav-brand" 
-							id="title">Greenfield</Link>
+							id="title">Party Starty</Link>
 						
 						<Link to='/userpage' 
 							style={{textDecoration: 'none' }} 
@@ -65,7 +65,7 @@ class Navbar extends React.Component {
 					<Link to="/" 
 						style={{textDecoration: 'none' }} 
 						className="nav-brand" 
-						id="title">Greenfield</Link>
+						id="title">Party Starty</Link>
 					<Link to="/signin" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign In</Link>
 					<Link to="/signup" style={{textDecoration: 'none' }} className="Link nav-link h4">Sign Up</Link>
 				</div>

@@ -17,24 +17,34 @@ class MessageCreator extends Component {
 
   render() {
     return (
-      <div>
         <form>
-        <input 
-          type="text" 
-          value={ this.state.message } 
-          onChange={ this.handleInputChange }
-        />
-        <button onClick={
-          (e) => { 
-              e.preventDefault();
-              this.props.sendMessage(this.state.message);
-              this.setState({ message: '' });
-            }
-        }>
-          Send message!
-        </button>
-        </form>
-      </div>
+          <div className="input-group">
+          <span className="input-group-btn">
+            <button 
+              className="btn btn-secondary"
+              type="button"
+              onClick={
+              (e) => { 
+                  e.preventDefault();
+                  if(this.state.message) {
+                    this.props.sendMessage(this.state.message);
+                    this.setState({ message: '' });
+                  }
+                }
+            }>
+              Send message!
+            </button>
+          </span>
+          <input
+            className="form-control" 
+            type="text" 
+            value={ this.state.message } 
+            onChange={ this.handleInputChange }
+            id="chatTextInput"
+            placeholder="Your message here..."
+          />
+          </div>
+          </form>
     )
   }
 }
