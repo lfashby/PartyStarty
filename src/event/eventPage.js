@@ -162,14 +162,25 @@ class EventPage extends React.Component {
 		}
 		
 		return (
+
 			<div>
-				{topBox}
+				<h1 className="eventHeader">
+					{this.state.event.eventTitle + ' '} 
+					{this.state.eventFinalized ? <span className="badge badge-primary">Finalized</span> : ''}
+				</h1>
+				<h3 className="eventHeader">
+					hosted by {this.state.event.eventHostName}
+				</h3>
+				<div className="eventDisplayContainer">
+					{topBox}
+				</div>
 				<Chat 
 					eventId={ this.props.event }
 					username={ this.props.username}
 				/>
 			</div>
 		)
+
 	}
 }
 

@@ -333,16 +333,59 @@ justify-content: space-around;
   background-color: #3b5998;
 }
 
+/* EventPage CSS Styles */
+
+.eventDisplayContainer {
+  border: 1px solid grey;
+  padding: 3%;
+}
+
+.eventHeader {
+  text-align: center;
+}
+
+.eventDetailBox {
+  display:flex;
+  border: 1px solid grey;
+  padding: 3%;
+}
+
+.finalMovieBox {
+  display:flex;
+  border: 1px solid grey;
+  padding: 3%;
+}
+
 .voterBox {
   display:flex;
   justify-content:center;
+  border: 1px solid grey;
+  padding: 3%;
 }
-.voterBox > div {
+
+.foodBox {
+  display:flex;
+  justify-content:center;
+  border: 1px solid grey;
+  padding: 3%;
+}
+
+.boxItem {
   margin:10px;
-  background-color:#bada55;
+  padding: 3%;
 }
+
 .movieOption {
-  width:300px;
+  width:100%;
+}
+
+.buttonWrapper {
+  text-align: center;
+}
+
+#voteButton {
+  position: absolute;
+  top: 50%;
 }
 
 .mapOfEvents {
@@ -470,8 +513,8 @@ justify-content: space-around;
 */
 
 #appBody {
-  padding-left: 3%;
-  padding-right: 3%;
+  padding-left: 10%;
+  padding-right: 10%;
   padding-top: 1%;
 }
 
