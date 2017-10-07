@@ -115,24 +115,26 @@ class Search extends React.Component {
 				<h2>Add three films</h2>
 				<div className="row">
 					<div className="col-6">
-							<input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm form-control" type="text" placeholder="Search for movies..." />
+					  <input onChange={this.handleSearch} onClick={this.clearSearch} className="typeahead searchForm form-control filmSearch" type="text" placeholder="Search for movies..." /> 
 						<div className="card w-75">
 						<div className="card-header">
 								<h3 className="card-title">{this.state.currentMovie.title}</h3>
 							</div>
-							<img className="card-img-top" src={`https://image.tmdb.org/t/p/w500${this.state.currentMovie.poster}`} />
+							<img className="card-img-top bugsLife" src={`https://image.tmdb.org/t/p/w500${this.state.currentMovie.poster}`} />
 							<div className="card-body">
 								<div className="card-text">
 									<p>{this.state.currentMovie.overview}</p>
-									<p>Release Date {this.state.currentMovie.date}</p>
-									<p>Average Score {this.state.currentMovie.votes}</p>
+									<p className="homeText">Release Date {this.state.currentMovie.date}</p>
+									<div className="filmBar">
+										<p>Average Score {this.state.currentMovie.votes}</p>
+										{this.state.movies.length <= 2 ? (
+										<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary w-50 filmsButton center"> Add Film</p>
+										) : (
+										<p onClick={() => this.props.handleFinalized(this.state.movies)} className="btn btn-secondary w-50 filmsButton center"> Submit Films </p>
+								        )}
+                  </div>
 								</div>	
 							</div>
-							{this.state.movies.length <= 2 ? (
-								<p onClick={this.handleAddMovieToQueue} className="btn btn-secondary w-50 center"> Add A Film </p>
-							) : (
-								<p onClick={() => this.props.handleFinalized(this.state.movies)} className="btn btn-secondary w-50 center"> Submit Films </p>
-							)}
 						</div>	
 						</div>
 					<div className="col-6">
