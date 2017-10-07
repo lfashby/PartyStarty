@@ -19,21 +19,6 @@ exports.getPublicEvents = function(req, res) {
     });
 };
 
-exports.updateEvent = function(req, res, next) {
-  var eventTitle = req.body.eventTitle;
-  var eventUser = req.body.user;
-  
-  Event.findOne({eventTitle: eventTitle})
-  .exec(function(err, event) {
-    if(event) {
-      event.eventUsers.push(eventUser);
-      event.save();
-    } else {
-      console.log('Event does not exisit');
-    }
-  });
-};
-
 exports.addEvent = function(req, res) {
   
   var eventTitle = req.body.title;
