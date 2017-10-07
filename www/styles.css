@@ -344,11 +344,7 @@ justify-content: space-around;
   text-align: center;
 }
 
-.eventDetailBox {
-  display:flex;
-  border: 1px solid grey;
-  padding: 3%;
-}
+
 
 .finalMovieBox {
   display:flex;
@@ -386,6 +382,23 @@ justify-content: space-around;
 #voteButton {
   position: absolute;
   top: 50%;
+}
+
+.eventDetailBox {
+  display:flex;
+  border: 1px solid grey;
+  padding: 3%;
+  width: 70%;
+}
+
+.eventVoteBox {
+  display:flex;
+  border: 1px solid grey;
+  padding: 3%;
+}
+
+.imageBox {
+  width: 30%
 }
 
 .mapOfEvents {
