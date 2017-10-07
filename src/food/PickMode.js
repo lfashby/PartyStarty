@@ -16,10 +16,12 @@ class PickMode extends React.Component {
                 className="foodImage img-fluid rounded" 
                 src={recipe.image} 
                 onClick={() => this.props.addtoFoods(recipe)}/>
-              <div className='text'>Choose This</div>
+              <div className='text'
+                onClick={() => this.props.addtoFoods(recipe)}
+                >Choose This</div>
             </div>
-            <div>{recipe.label}</div>
-            <a href={recipe.url}>Source: {recipe.source}</a><br/>
+            <div className='noOverFlow recipeInfo'>{recipe.label}</div>
+            <a className='noOverFlow recipeInfo' href={recipe.url} target='_blank'>{recipe.source}</a><br/>
           </div>
         )
       })}
