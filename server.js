@@ -23,15 +23,17 @@ const compiler = webpack(webpackConfig);
 
 app.use(morgan('tiny'));
 app.use(express.static(__dirname + '/www'));
-app.use(webpackDevMiddleware(compiler, {
-  hot: true,
-  filename: 'bundle.js',
-  publicPath: '/',
-  stats: {
-    colors: true,
-  },
-  historyApiFallback: true,
-}));
+
+// app.use(webpackDevMiddleware(compiler, {
+//   hot: true,
+//   filename: 'bundle.js',
+//   publicPath: '/',
+//   stats: {
+//     colors: true,
+//   },
+//   historyApiFallback: true,
+// }));
+
 app.use(partial());
 // Parse JSON (uniform resource locators)
 app.use(bodyParser.json()); 
@@ -112,7 +114,7 @@ app.get('*', (req, res) => {
 });
 
 // Invoke the server to listen on a port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 http.listen(port, function() {
   console.log(`server listening on port ${port}`);
 });

@@ -46,10 +46,6 @@ class Navbar extends React.Component {
 							style={{textDecoration: 'none' }} 
 							className="Link nav-link h4">Create</Link>
 
-						<Link to="/eventpage" 
-							style={{textDecoration: 'none' }} 
-							className="Link nav-link h4">EventPage</Link>
-
 						<Link to="/signin" 
 							style={{textDecoration: 'none' }} 
 							className="Link nav-link h4" id="logout" 
