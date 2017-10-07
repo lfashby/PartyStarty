@@ -4,28 +4,34 @@ import EventFoodDisplay from './eventFood.js'
 const EventWinnerDisplay = (props) => {
   return (
     <div>
-      <div className="eventDetailBox">
-        You were invited to the {props.event.eventTitle}:{props.event.eventDesc}
-        <br/>
-        Hosted By {props.event.eventHostName}
-        <br/>
-        on {props.event.eventDate} {props.event.eventTime}
-        <br/>
-        at {props.event.eventLocation}
-      </div>
+      
 
       <div className="voterBox" >
-        <img 
-          className="img-thumbnail" 
-          src={`https://image.tmdb.org/t/p/w500${props.finalMovie.poster}`} 
-        />
-        <text>
-          Title: {props.finalMovie.title}
-          <br />
-          Overview: {props.finalMovie.overview}
-          <br />
-          Total Points: {props.finalMovie.totalUserVotes}
-        </text>
+        <div className="imageBox" >
+          <img 
+            className="img-thumbnail" 
+            src={`https://image.tmdb.org/t/p/w500${props.finalMovie.poster}`} 
+          />
+        </div>
+
+        <div className="eventDetailBox">
+          <text>
+              You were invited to the {props.event.eventTitle}:{props.event.eventDesc}
+              <br/>
+              Hosted By {props.event.eventHostName}
+              <br/>
+              on {props.event.eventDate} {props.event.eventTime}
+              <br/>
+              at {props.event.eventLocation}
+              <br />
+              Title: {props.finalMovie.title}
+              <br />
+              Overview: {props.finalMovie.overview}
+              <br />
+              Total Points: {props.finalMovie.totalUserVotes}
+          </text>
+        </div>
+
       </div>
 
       <div className='foodBox'>
