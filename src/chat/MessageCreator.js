@@ -17,21 +17,20 @@ class MessageCreator extends Component {
 
   render() {
     return (
-        <form>
+        <form onSubmit={
+          (e) => { 
+              e.preventDefault();
+              if(this.state.message) {
+                this.props.sendMessage(this.state.message);
+                this.setState({ message: '' });
+              }
+            }}>
           <div className="input-group">
           <span className="input-group-btn">
             <button 
               className="btn btn-secondary"
               type="button"
-              onClick={
-              (e) => { 
-                  e.preventDefault();
-                  if(this.state.message) {
-                    this.props.sendMessage(this.state.message);
-                    this.setState({ message: '' });
-                  }
-                }
-            }>
+            >
               Send message!
             </button>
           </span>
