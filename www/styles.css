@@ -65,19 +65,17 @@ body {
 
 @keyframes reveal {
   from {height: 0px;}
-  to {height: 458px;}
+  to {height: 338px;}
 }
 
 .postersContainer {
-  height: 458px;
+  /* height: 458px; */
   /* width: 392.8px */
   animation-name: reveal;
   animation-duration: 2s;
   overflow: auto;
 }
-/* .postersContainer.loaded {
-  height: 458px;
-} */
+
 
 
 h2 {
@@ -134,26 +132,8 @@ justify-content: space-around;
 
 .dropper {
   position: relative;
-  padding-right: 0%;
-  margin-right: 2%;
-  transition: padding-right 2s
-}
-.dropper:hover {
-  padding-right: 25%
-}
-
-.dropper {
-  position: relative;
   padding-right: 25%;
-  transition-property: padding-right;
-  transition-duration: 2s;
-  margin-right: 1%;
-}
-
-.dropper {
-  position: relative;
-  padding-right: 0%;
-  margin-right: 25%;
+  margin-right: 2%;
 }
 
 
@@ -171,6 +151,11 @@ justify-content: space-around;
 .subH {
   float: left;
 }
+
+.homeText {
+  margin-bottom: 1;
+}
+
 
 .userInput, .passInput {
   padding: 5px;
@@ -287,14 +272,10 @@ justify-content: space-around;
 }
 
 .video-list-entry {
-  /* height: 400px; */
+
   width: 100%;
   /* margin-right: 1%; */
   /* transition: width 2s; */
-}
-
-.video-list-entry:hover{
-  /* width: 500px; */
 }
 
 .individualRecipe {
