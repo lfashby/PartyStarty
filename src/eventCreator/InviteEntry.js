@@ -24,11 +24,11 @@ class InviteEntry extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="users">
         { this.state.invited ? (
           <li>
-          {this.props.friend}
-          <button onClick={this.uninvite} type="button" className="btn">Uninvite</button>
+          <p className="invite">{this.props.friend}</p>
+          <button onClick={this.uninvite} type="button" className="btn inviteButton">Uninvite</button>
         </li>
         ) : (null)}
       </div>
