@@ -37,7 +37,7 @@ grabFilmPoster() {
         <br></br>
           Date: {this.props.event.eventDate.slice(0, 15)} - {this.props.event.eventTime}
         { this.state.posters.length ? (
-          <div>
+          <div className="postersContainer">
             <br></br>
             <p>Hosted by: {this.props.event.eventHostName}</p>
             <p>Description: {this.props.event.eventDesc}</p>
@@ -47,8 +47,6 @@ grabFilmPoster() {
             <Link to='/eventpage'>
               <button onClick={this.props.setLookingAtEvent} value={this.props.event._id} type="button" className="btn">Checkout the Event</button>
             </Link>
-
-      
           </div>
         ):( null )
         }
