@@ -130,7 +130,6 @@ justify-content: space-around;
 
 .btn {
   border: 1px grey solid;
-<<<<<<< HEAD
 }
 
 .dropper {
@@ -141,7 +140,6 @@ justify-content: space-around;
 }
 .dropper:hover {
   padding-right: 25%
-=======
 }
 
 .dropper {
@@ -150,8 +148,14 @@ justify-content: space-around;
   transition-property: padding-right;
   transition-duration: 2s;
   margin-right: 1%;
-  
 }
+
+.dropper {
+  position: relative;
+  padding-right: 0%;
+  margin-right: 25%;
+}
+
 
 .nav {
   /* display: flex;
@@ -159,7 +163,6 @@ justify-content: space-around;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none; */
->>>>>>> Styling changes to users page
 }
 
 .btnSub {
