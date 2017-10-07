@@ -95,6 +95,20 @@ const EventVoter = (props) => (
       <div className="alert alert-success" role="alert">
         You've Just Voted. If you change your mind, just vote again! 
       </div> : ''}
+
+      <div className='voterBox'>
+        {props.foods.map((food, index) => {
+          return <div key={index} className='movieOption'>
+            <div className="qEntry">
+            <img 
+            className="card-img-list" 
+            src={food.image} 
+          />
+              {food.label}
+            </div>
+          </div>
+        })}
+      </div>
   </div>
 )
 
