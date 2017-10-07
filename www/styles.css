@@ -66,8 +66,13 @@ body {
 }
 
 @keyframes reveal {
-  from {height: 0px;}
+  from {height: 110px;}
   to {height: 338px;}
+}
+
+@keyframes hide {
+  from {height: 338px;}
+  to {height: 64px;}
 }
 
 .postersContainer {
@@ -78,7 +83,10 @@ body {
   overflow: auto;
 }
 
-
+.openPostersContainer {
+  animation-name: hide;
+  animation-duration: 2s;
+}
 
 h2 {
   /* padding-top: 15px; */

@@ -48,17 +48,11 @@ class Home extends React.Component {
 		return (
 			<div>
 				<div className="container">
-          <h2>Home</h2>
-					<div>
-            Public Events:
-            <br></br>
-            Click on an event to learn more about it
-						<div className="EventList"> 
-							<EventList 
-              publicEvents={this.state.publicEvents} 
-              setLookingAtEvent={this.props.setLookingAtEvent}
-              />
-						</div>
+          <div className="EventList"> 
+            <EventList 
+            publicEvents={this.state.publicEvents} 
+            setLookingAtEvent={this.props.setLookingAtEvent}
+            />
 					</div>
 				</div>
 			</div>
