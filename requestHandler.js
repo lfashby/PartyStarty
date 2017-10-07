@@ -21,7 +21,6 @@ module.exports = {
   getAllEvents: events.getAllEvents,
   addEvent: events.addEvent,
   getPublicEvents: events.getPublicEvents,
-  updateEvent: events.updateEvent,
 
   // MOVIE handlers
   getMovie: movies.getMovie,
