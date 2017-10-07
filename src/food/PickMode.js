@@ -18,8 +18,8 @@ class PickMode extends React.Component {
                 onClick={() => this.props.addtoFoods(recipe)}/>
               <div className='text'>Choose This</div>
             </div>
-            <div>{recipe.label}</div>
-            <a href={recipe.url}>Source: {recipe.source}</a><br/>
+            <div className='noOverFlow'>{recipe.label}</div>
+            <a className='noOverFlow' href={recipe.url}>Source: {recipe.source}</a><br/>
           </div>
         )
       })}
