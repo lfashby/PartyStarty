@@ -7,7 +7,7 @@ class PickMode extends React.Component {
 
   render () {
     var recipes = this.props.recipes;
-    return (<div style={{margin:`auto`}}>
+    return (<div style={{margin:`auto`}} className="fadeIn">
       {recipes.map((recipe, i) => {
         return ( 
           <div className='individualRecipe' key={i}>

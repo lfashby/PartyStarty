@@ -53,7 +53,8 @@ class SearchFood extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="searchFoodContainer">
+        <h2 className="searchHeader">Pick three meals</h2>
         {this.state.picking ? 
           (<div className='searchFood'>
             <div>
@@ -68,7 +69,7 @@ class SearchFood extends React.Component {
         }
         {
           this.state.recipeData.length > 0 ? 
-          (<div>
+          (<div className="foodDisplay">
             <DisplayFood status={this.props.status} 
               handleFoodPicked={this.props.handleFoodPicked || null} 
               recipes={this.state.recipeData} 
