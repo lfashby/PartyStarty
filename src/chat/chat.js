@@ -3,10 +3,18 @@ import openSocket from 'socket.io-client';
 import MessageCreator from './MessageCreator';
 import MessagesDisplay from './MessagesDisplay';
 
-const socket = openSocket('http://localhost:3000');
+var socket;
 
 const listenToMessages = (event, cb) => {
-  socket.on(event, cb);
+  fetch('/port')
+    .then((data) => data.json())
+    .then((port) => {
+      console.log(`PORT: ${port}
+      URL: ${window.location.host}`);
+      socket = openSocket(`${window.location.host}`);
+      socket.on(event, cb);
+    })
+    .catch((err) => console.log(`Error ${err}`));
 };
 
 const emitMessage = (event, msg) => {
