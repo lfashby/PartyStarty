@@ -129,6 +129,8 @@ h2 {
 .createpage {
   margin-left: 10%;
   margin-right: 10%;
+  border: 1px solid black;
+  padding: 3%;
 }
 .navbar{
 display: flex;
@@ -214,9 +216,33 @@ justify-content: space-around;
 }
 
 .searchComp {
-  /* padding-top: 20px; */
-  /* padding-bottom: 20px */
+  border: 1px solid black;
+  padding: 3%;
 }
+
+@keyframes foodReveal {
+  from {height: 0%;}
+  to {height: 100%;}
+}
+
+
+.searchFoodContainer {
+  border: 1px solid black;
+  padding: 3%;
+}
+
+.foodDisplay {
+  animation-name: foodReveal;
+  animation-duration: 1s;
+  overflow: auto;
+}
+
+.searchHeader {
+  text-align: center
+}
+
+/* //158 */
+
 .card-header {
   /*color: grey;*/
   display: flex;
@@ -331,6 +357,7 @@ justify-content: space-around;
   /* transition: width 2s; */
 }
 
+
 .individualRecipe {
   display: inline-block;
   margin: 0px 2px 0px 2px;
@@ -348,6 +375,7 @@ justify-content: space-around;
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
 .sfInputGroup {
   margin: auto;
   margin-top: 5px;
