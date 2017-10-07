@@ -79,7 +79,38 @@ body {
 
 
 h2 {
-  padding-top: 15px;
+  /* padding-top: 15px; */
+}
+
+.w-75 {
+  width: 100% !important
+}
+
+/* .w-50 {
+  position: absolute;
+  right: 0px;
+  margin-right: 4%;
+} */
+
+.filmBar {
+  display: flex;
+}
+
+.filmsButton {
+  position: absolute;
+  right: 5%;
+}
+
+
+.twitter-typeahead {
+  width: 85%;
+}
+
+.bugsLife {
+  height: 500px;
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .h4 {
@@ -173,8 +204,8 @@ justify-content: space-around;
 }
 
 .searchComp {
-  padding-top: 20px;
-  padding-bottom: 20px
+  /* padding-top: 20px; */
+  /* padding-bottom: 20px */
 }
 .card-header {
   /*color: grey;*/
@@ -391,7 +422,7 @@ justify-content: space-around;
 #appBody {
   padding-left: 3%;
   padding-right: 3%;
-  padding-top: 3%;
+  padding-top: 1%;
 }
 
 /* .chatMessageText {
