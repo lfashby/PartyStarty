@@ -176,34 +176,33 @@ class Create extends React.Component {
   }
 
   renderViews() { 
-    // if (!this.state.filmsAdded) {
-    //   return <EntryDetails 
-    //   handleTitle={this.handleTitle}
-    //   handleLocation={this.handleLocation}
-    //   handleDate={this.handleDate}
-    //   handleTime={this.handleTime}
-    //   handleDescription={this.handleDescription}
-    //   addFilmsSubmit={this.addFilmsSubmit}
-    //   public={this.state.public}
-    //   isPublic={this.isPublic}
-    //   isPublicRender={this.isPublicRender}
-    //   />
-    // } else if (!this.state.filmsFinalized) {
-    //   return <Search handleFinalized={this.handleFinalizedFilms} />;
-    // } else if (this.state.filmsFinalized && !this.state.foodPicked) {
-    //   return <SearchFood status={'pick'} handleFoodPicked={this.handleFoodPicked} />
-    // } else {
-    //   return <Invite 
-    //   handleFriends={this.handleFriends}
-    //   friendValue={this.state.friendValue}
-    //   handleFriendChange={this.handleFriendChange}
-    //   friends={this.state.friends}
-    //   eventId={this.state.eventId}
-    //   setLookingAtEvent={this.props.setLookingAtEvent}
-    //   listenForUninvite={this.listenForUninvite}
-    //   /> 
-    // }
-    return <SearchFood status={'pick'} handleFoodPicked={this.handleFoodPicked} />
+    if (!this.state.filmsAdded) {
+      return <EntryDetails 
+      handleTitle={this.handleTitle}
+      handleLocation={this.handleLocation}
+      handleDate={this.handleDate}
+      handleTime={this.handleTime}
+      handleDescription={this.handleDescription}
+      addFilmsSubmit={this.addFilmsSubmit}
+      public={this.state.public}
+      isPublic={this.isPublic}
+      isPublicRender={this.isPublicRender}
+      />
+    } else if (!this.state.filmsFinalized) {
+      return <Search handleFinalized={this.handleFinalizedFilms} />;
+    } else if (this.state.filmsFinalized && !this.state.foodPicked) {
+      return <SearchFood status={'pick'} handleFoodPicked={this.handleFoodPicked} />
+    } else {
+      return <Invite 
+      handleFriends={this.handleFriends}
+      friendValue={this.state.friendValue}
+      handleFriendChange={this.handleFriendChange}
+      friends={this.state.friends}
+      eventId={this.state.eventId}
+      setLookingAtEvent={this.props.setLookingAtEvent}
+      listenForUninvite={this.listenForUninvite}
+      /> 
+    }
   }
 
 	render(){
