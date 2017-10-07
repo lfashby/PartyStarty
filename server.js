@@ -53,6 +53,9 @@ app.use('/recipes', recipeRouter);
 // This will create a set interval, checking how often you pass in in milliseconds (defaults to 600000)
 // for events about to start, if one is about to start, it will send out a text reminder to that user
 util.regularlyCheckForUpcomingEvents(6000);
+app.get('/port', (req, res) => {
+  res.send(process.env.PORT);
+});
 
 // socket connections 
 io.on('connection', function(socket) {
