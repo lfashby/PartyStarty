@@ -296,6 +296,30 @@ justify-content: space-around;
   overflow: hidden;
   white-space: nowrap;
 }
+
+.recipeInfo {
+  position: relative;
+  bottom: 22px;
+}
+
+.pickedFoods {
+  margin: auto;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  border: solid 1px;
+  padding: 5px;
+  display: inline-block;
+}
+
+.pickedFoodImage {
+  width: 300px;
+  margin: 0px 4px 0px 0%;
+}
+
+.pickedFoodImageLast {
+  width: 300px;
+  margin: 0px 0% 0px 0%;
+}
 /* .foodInput {
   width: auto;
 } */

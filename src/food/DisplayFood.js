@@ -33,7 +33,10 @@ class DisplayFood extends React.Component {
           <SubmitFood handleFoodPicked={this.props.handleFoodPicked} foods={this.state.foods}/>
           :null
         }
-        <PickedFoods foods={this.state.foods}/>
+        { this.state.foods.length > 0 ?
+          <PickedFoods foods={this.state.foods}/>
+          : null
+        }
         { finished ?
           null
           :
