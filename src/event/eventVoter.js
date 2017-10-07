@@ -2,14 +2,18 @@ import React from 'react';
 const EventVoter = (props) => (
   <div>
 
-    <div className="eventDetailBox">
-      You were invited to the {props.event.eventTitle}:{props.event.eventDesc}
+    <div className="eventVoteBox">
+      You were invited to the {props.event.eventTitle}
+      <br />
+      Desscription: {props.event.eventDesc}
       <br/>
       Hosted By {props.event.eventHostName}
       <br/>
       on {props.event.eventDate} {props.event.eventTime}
       <br/>
       at {props.event.eventLocation}
+      <br />
+      Distribute 10 Points among the Movie Options to figure out what Movie we'll watch.
     </div>
 
     <div >
@@ -93,7 +97,7 @@ const EventVoter = (props) => (
 
     </div>
 
-   
+    
 
     {props.justVoted ? 
     <div className="alert alert-success" role="alert">
