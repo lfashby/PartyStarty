@@ -53,11 +53,13 @@ body {
     margin: 0;
 }
 
-/* .list-group {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-} */
+.invitesHeader {
+  display: block:
+}
+
+.finishCreatingButton {
+  float: right;
+}
 
 .list-group-item:hover {
   border-color: blue;
@@ -275,6 +277,18 @@ justify-content: space-around;
 
 .invitedButton {
   background-color: #dfe3ee;
+}
+
+.inviteButton {
+  float: right;
+}
+
+.invite {
+  display: inline;
+}
+
+.users {
+  margin-bottom: 2%
 }
 
 .goingButton {
