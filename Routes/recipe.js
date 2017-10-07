@@ -1,5 +1,5 @@
-const recipeid = require('../config.js').recipeapp_id || process.env.recipeapp_id;
-const recipekey = require('../config.js').recipeapp_key || process.env.recipeapp_key;
+const recipeid = process.env.recipeapp_id || require('../config.js').recipeapp_id;
+const recipekey = process.env.recipeapp_key || require('../config.js').recipeapp_key;
 const Food = require('../model/food.js');
 const express = require('express');
 const axios = require('axios');
