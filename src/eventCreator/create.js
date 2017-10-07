@@ -203,6 +203,8 @@ class Create extends React.Component {
       listenForUninvite={this.listenForUninvite}
       /> 
     }
+    //For Testing food selection //
+    // return <SearchFood status={'pick'} handleFoodPicked={this.handleFoodPicked} />
   }
 
 	render(){
